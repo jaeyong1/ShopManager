@@ -49,6 +49,7 @@ Partial Class Form1
         Me.UserControl_Home1 = New GolfManager.UserControl_Home()
         Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
         Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
+        Me.UserControl_customer_main1 = New GolfManager.UserControl_customer_main()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -219,7 +220,7 @@ Partial Class Form1
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(195, 54)
         Me.Button4.TabIndex = 5
-        Me.Button4.Text = "    패키지판매"
+        Me.Button4.Text = "    패키지관리"
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button4.UseVisualStyleBackColor = True
         '
@@ -234,7 +235,7 @@ Partial Class Form1
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(195, 54)
         Me.Button3.TabIndex = 5
-        Me.Button3.Text = "    레슨예약"
+        Me.Button3.Text = "    레슨예약관리"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button3.UseVisualStyleBackColor = True
         '
@@ -291,22 +292,22 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("HYgprM", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(16, 78)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(75, 12)
+        Me.Label2.Size = New System.Drawing.Size(73, 15)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Restourents"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("HYgtrE", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(5, 60)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(95, 15)
+        Me.Label1.Size = New System.Drawing.Size(85, 18)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Fast Food"
         '
@@ -358,12 +359,15 @@ Partial Class Form1
         Me.UserControl_Home1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.UserControl_Home1.Location = New System.Drawing.Point(224, 109)
         Me.UserControl_Home1.Name = "UserControl_Home1"
-        Me.UserControl_Home1.Size = New System.Drawing.Size(1276, 692)
+        Me.UserControl_Home1.Size = New System.Drawing.Size(1276, 688)
         Me.UserControl_Home1.TabIndex = 7
         '
         'UserControl_Settings1
         '
+        Me.UserControl_Settings1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.UserControl_Settings1.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.UserControl_Settings1.Location = New System.Drawing.Point(224, 108)
+        Me.UserControl_Settings1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.UserControl_Settings1.Name = "UserControl_Settings1"
         Me.UserControl_Settings1.Size = New System.Drawing.Size(1276, 692)
         Me.UserControl_Settings1.TabIndex = 6
@@ -377,6 +381,13 @@ Partial Class Form1
         Me.UserControl_RoomReservation1.Name = "UserControl_RoomReservation1"
         Me.UserControl_RoomReservation1.Size = New System.Drawing.Size(1823, 1096)
         Me.UserControl_RoomReservation1.TabIndex = 8
+        '
+        'UserControl_customer_main1
+        '
+        Me.UserControl_customer_main1.Location = New System.Drawing.Point(224, 108)
+        Me.UserControl_customer_main1.Name = "UserControl_customer_main1"
+        Me.UserControl_customer_main1.Size = New System.Drawing.Size(1276, 692)
+        Me.UserControl_customer_main1.TabIndex = 9
         '
         'Form1
         '
@@ -393,6 +404,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.UserControl_Settings1)
         Me.Controls.Add(Me.UserControl_RoomReservation1)
+        Me.Controls.Add(Me.UserControl_customer_main1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -431,4 +443,5 @@ Partial Class Form1
     Friend WithEvents UserControl_Settings1 As UserControl_Settings
     Friend WithEvents UserControl_Home1 As UserControl_Home
     Friend WithEvents UserControl_RoomReservation1 As UserControl_RoomReservation
+    Friend WithEvents UserControl_customer_main1 As UserControl_customer_main
 End Class

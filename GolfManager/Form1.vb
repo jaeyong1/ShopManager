@@ -11,15 +11,10 @@
             Case "타석예약관리"
                 UserControl_RoomReservation1.BringToFront()
 
-            Case "레슨예약"
-            Case "패키지판매"
             Case "고객정보관리"
-            Case "사물함관리"
-            Case "프로레슨일관리"
-            Case "프로레슨스케쥴조회"
-            Case "계약만료알리미"
-            Case "관리자메뉴"
-            Case "시스템관리자"
+                UserControl_customer_main1.BringToFront()
+
+
         End Select
 
 
@@ -44,6 +39,10 @@
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
         UserControl_Settings1.BringToFront()
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 End Class

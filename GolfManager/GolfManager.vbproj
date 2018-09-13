@@ -100,6 +100,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UserControl_customer_main.Designer.vb">
+      <DependentUpon>UserControl_customer_main.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_customer_main.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControl_Home.Designer.vb">
       <DependentUpon>UserControl_Home.vb</DependentUpon>
     </Compile>
@@ -132,6 +138,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_customer_main.resx">
+      <DependentUpon>UserControl_customer_main.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl_Home.resx">
       <DependentUpon>UserControl_Home.vb</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +162,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Facebook_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
