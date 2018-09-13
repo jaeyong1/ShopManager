@@ -42,14 +42,14 @@ Partial Class Form1
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.btnShowInstagram = New System.Windows.Forms.Button()
-        Me.btnShowFacebook = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.UserControl_Home1 = New GolfManager.UserControl_Home()
         Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
         Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
         Me.UserControl_customer_main1 = New GolfManager.UserControl_customer_main()
+        Me.btnShowInstagram = New System.Windows.Forms.Button()
+        Me.btnShowFacebook = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -311,38 +311,6 @@ Partial Class Form1
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Fast Food"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(86, 51)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
-        '
-        'btnShowInstagram
-        '
-        Me.btnShowInstagram.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnShowInstagram.Font = New System.Drawing.Font("Gulim", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnShowInstagram.Location = New System.Drawing.Point(1001, 9)
-        Me.btnShowInstagram.Name = "btnShowInstagram"
-        Me.btnShowInstagram.Size = New System.Drawing.Size(52, 33)
-        Me.btnShowInstagram.TabIndex = 1
-        Me.btnShowInstagram.Text = "insta"
-        Me.btnShowInstagram.UseVisualStyleBackColor = True
-        '
-        'btnShowFacebook
-        '
-        Me.btnShowFacebook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnShowFacebook.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnShowFacebook.Location = New System.Drawing.Point(956, 9)
-        Me.btnShowFacebook.Name = "btnShowFacebook"
-        Me.btnShowFacebook.Size = New System.Drawing.Size(39, 33)
-        Me.btnShowFacebook.TabIndex = 2
-        Me.btnShowFacebook.Text = "fb"
-        Me.btnShowFacebook.UseVisualStyleBackColor = True
-        '
         'btnExit
         '
         Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -357,7 +325,9 @@ Partial Class Form1
         'UserControl_Home1
         '
         Me.UserControl_Home1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.UserControl_Home1.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.UserControl_Home1.Location = New System.Drawing.Point(224, 109)
+        Me.UserControl_Home1.Margin = New System.Windows.Forms.Padding(4)
         Me.UserControl_Home1.Name = "UserControl_Home1"
         Me.UserControl_Home1.Size = New System.Drawing.Size(1276, 688)
         Me.UserControl_Home1.TabIndex = 7
@@ -384,10 +354,50 @@ Partial Class Form1
         '
         'UserControl_customer_main1
         '
+        Me.UserControl_customer_main1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.UserControl_customer_main1.Location = New System.Drawing.Point(224, 108)
         Me.UserControl_customer_main1.Name = "UserControl_customer_main1"
         Me.UserControl_customer_main1.Size = New System.Drawing.Size(1276, 692)
         Me.UserControl_customer_main1.TabIndex = 9
+        '
+        'btnShowInstagram
+        '
+        Me.btnShowInstagram.BackgroundImage = Global.GolfManager.My.Resources.Resources.instagram
+        Me.btnShowInstagram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnShowInstagram.FlatAppearance.BorderSize = 0
+        Me.btnShowInstagram.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnShowInstagram.Font = New System.Drawing.Font("Gulim", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnShowInstagram.Image = Global.GolfManager.My.Resources.Resources.instagram
+        Me.btnShowInstagram.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnShowInstagram.Location = New System.Drawing.Point(1001, 15)
+        Me.btnShowInstagram.Name = "btnShowInstagram"
+        Me.btnShowInstagram.Size = New System.Drawing.Size(41, 41)
+        Me.btnShowInstagram.TabIndex = 1
+        Me.btnShowInstagram.UseVisualStyleBackColor = True
+        '
+        'btnShowFacebook
+        '
+        Me.btnShowFacebook.BackgroundImage = Global.GolfManager.My.Resources.Resources.facebook_logo_black_and_white_png
+        Me.btnShowFacebook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnShowFacebook.FlatAppearance.BorderSize = 0
+        Me.btnShowFacebook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnShowFacebook.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnShowFacebook.ImageKey = "(none)"
+        Me.btnShowFacebook.Location = New System.Drawing.Point(956, 17)
+        Me.btnShowFacebook.Name = "btnShowFacebook"
+        Me.btnShowFacebook.Size = New System.Drawing.Size(39, 33)
+        Me.btnShowFacebook.TabIndex = 2
+        Me.btnShowFacebook.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(8, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(86, 51)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
         '
         'Form1
         '
@@ -435,7 +445,6 @@ Partial Class Form1
     Friend WithEvents Button8 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
-    Friend WithEvents btnShowInstagram As Button
     Friend WithEvents btnShowFacebook As Button
     Friend WithEvents btnSettings As Button
     Friend WithEvents btnExit As Button
@@ -444,4 +453,5 @@ Partial Class Form1
     Friend WithEvents UserControl_Home1 As UserControl_Home
     Friend WithEvents UserControl_RoomReservation1 As UserControl_RoomReservation
     Friend WithEvents UserControl_customer_main1 As UserControl_customer_main
+    Friend WithEvents btnShowInstagram As Button
 End Class
