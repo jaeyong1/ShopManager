@@ -1,7 +1,14 @@
-﻿Public Class Form2ndMonitor
+﻿Imports System.IO 'xml로 직렬화
+Imports System.Runtime.Serialization.Formatters.Binary 'xml로 직렬화
 
 
-    Public AL As New Collection
+Public Class Form2ndMonitor
+
+    Public boxfont = New Font("Sans Serif", 20, FontStyle.Regular) ' BoxFontSize
+    Public topicfont = New Font("Sans Serif", 18, FontStyle.Regular) 'TopicFontSize
+    Public AL2 As New List(Of dynamicTextBox)
+
+
 
     Private Sub Form2ndMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' 수량만큼 생성
@@ -11,34 +18,41 @@
             Dim a As New dynamicTextBox()
             Me.Controls.Add(a.getTextBoxReferece())
             Me.Controls.Add(a.getLabelReference())
-            AL.Add(a)
+
+            AL2.Add(a)
         Next
 
 
         '문자열 세팅
-        For i = 1 To AL.Count
-            CType(AL.Item(i), dynamicTextBox).setTopicText("타석" & i)
-            CType(AL.Item(i), dynamicTextBox).setBoxText("타석" & i)
+        For i = 0 To (AL2.Count - 1)
+            'CType(AL.Item(i), dynamicTextBox).setTopicText("타석" & i)
+            'CType(AL.Item(i), dynamicTextBox).setBoxText("타석" & i)
+            '
+            AL2.Item(i).setTopicText("타석" & i)
+            AL2.Item(i).setBoxText("타석" & i)
 
         Next
-
-        CType(AL.Item(1), dynamicTextBox).setRoomFree()
-        CType(AL.Item(1), dynamicTextBox).setBoxText("미사용")
-
-        CType(AL.Item(2), dynamicTextBox).setRoomUsing()
-        CType(AL.Item(2), dynamicTextBox).setBoxText("사용중" + vbCrLf + "58:45")
-
-        CType(AL.Item(3), dynamicTextBox).setRoomFreeSoon()
-        CType(AL.Item(3), dynamicTextBox).setBoxText("거의끝나감" + vbCrLf + "02:23"
-                                                     )
+        AL2.Item(1).setRoomFree()
+        AL2.Item(1).setBoxText("미사용")
 
 
+        AL2.Item(2).setRoomUsing()
+        AL2.Item(2).setBoxText("사용중" + vbCrLf + "58:45")
+
+        AL2.Item(3).setRoomFreeSoon()
+        AL2.Item(3).setBoxText("거의끝나감" + vbCrLf + "02:23")
+
+        '화면구성을 직렬화하여 XML로 저장
+        Dim writer As New System.Xml.Serialization.XmlSerializer(GetType(List(Of dynamicTextBox)))
+        Dim file As New System.IO.StreamWriter("RoomServationUISerialization.xml")
+        writer.Serialize(file, AL2)
+        file.Close()
     End Sub
 
     '드래그 가능여부 전체변경
     Public Sub changeDragEnable(en As Boolean)
-        For i = 1 To AL.Count
-            CType(AL.Item(i), dynamicTextBox).setDragEnable(en)
+        For i = 1 To AL2.Count
+            AL2.Item(i).setDragEnable(en)
         Next
     End Sub
 
@@ -56,8 +70,6 @@
         Public BoxHeight As Integer = 100
         Public BoxWidth As Integer = 150
         Public BoxFontSize As Integer = 20
-        Public boxfont As New Font("Sans Serif", BoxFontSize, FontStyle.Regular)
-        Public topicfont As New Font("Sans Serif", TopicFontSize, FontStyle.Regular)
         Private dragEnable As Boolean = True
 
         Public Sub setTopicText(str As String)
@@ -65,7 +77,7 @@
             lblroomnumber.Text = str
 
             '토픽 폰트
-            lblroomnumber.Font = topicfont
+            'lblroomnumber.Font = topicfont
         End Sub
 
         Public Sub setBoxText(str As String)
@@ -73,7 +85,7 @@
             txt.Text = str
 
             '박스 폰트
-            txt.Font = boxfont
+            ' txt.Font = boxfont
             txt.TextAlign = HorizontalAlignment.Center
         End Sub
 
@@ -150,7 +162,7 @@
             txt.BackColor = Color.LightPink
         End Sub
 
-        '종료직전
+        '거의 사용만료
         Public Sub setRoomFreeSoon()
             txt.BackColor = Color.LightYellow
         End Sub

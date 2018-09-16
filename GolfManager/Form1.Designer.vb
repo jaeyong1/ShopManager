@@ -43,15 +43,15 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnShowFacebook = New System.Windows.Forms.Button()
-        Me.UserControl_Home1 = New GolfManager.UserControl_Home()
-        Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
-        Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
-        Me.UserControl_customer_main1 = New GolfManager.UserControl_customer_main()
         Me.btnShowInstagram = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.UserControl_Home1 = New GolfManager.UserControl_Home()
+        Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
+        Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
+        Me.UserControl_customer_main1 = New GolfManager.UserControl_customer_main()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -311,9 +311,9 @@ Partial Class Form1
         Me.Label3.ForeColor = System.Drawing.Color.Gray
         Me.Label3.Location = New System.Drawing.Point(900, 26)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(316, 15)
+        Me.Label3.Size = New System.Drawing.Size(310, 15)
         Me.Label3.TabIndex = 4
-        Me.Label3.Text = "AAA지점 BBB님(매장직원) 으로 로그인 중"
+        Me.Label3.Text = "AAA지점 BBB님(매장직원)으로 로그인 중"
         '
         'btnShowFacebook
         '
@@ -329,44 +329,6 @@ Partial Class Form1
         Me.btnShowFacebook.Size = New System.Drawing.Size(39, 33)
         Me.btnShowFacebook.TabIndex = 2
         Me.btnShowFacebook.UseVisualStyleBackColor = False
-        '
-        'UserControl_Home1
-        '
-        Me.UserControl_Home1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.UserControl_Home1.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.UserControl_Home1.Location = New System.Drawing.Point(224, 109)
-        Me.UserControl_Home1.Margin = New System.Windows.Forms.Padding(4)
-        Me.UserControl_Home1.Name = "UserControl_Home1"
-        Me.UserControl_Home1.Size = New System.Drawing.Size(1276, 688)
-        Me.UserControl_Home1.TabIndex = 7
-        '
-        'UserControl_Settings1
-        '
-        Me.UserControl_Settings1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.UserControl_Settings1.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.UserControl_Settings1.Location = New System.Drawing.Point(224, 108)
-        Me.UserControl_Settings1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.UserControl_Settings1.Name = "UserControl_Settings1"
-        Me.UserControl_Settings1.Size = New System.Drawing.Size(1276, 692)
-        Me.UserControl_Settings1.TabIndex = 6
-        '
-        'UserControl_RoomReservation1
-        '
-        Me.UserControl_RoomReservation1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.UserControl_RoomReservation1.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.UserControl_RoomReservation1.Location = New System.Drawing.Point(224, 108)
-        Me.UserControl_RoomReservation1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.UserControl_RoomReservation1.Name = "UserControl_RoomReservation1"
-        Me.UserControl_RoomReservation1.Size = New System.Drawing.Size(1823, 1096)
-        Me.UserControl_RoomReservation1.TabIndex = 8
-        '
-        'UserControl_customer_main1
-        '
-        Me.UserControl_customer_main1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.UserControl_customer_main1.Location = New System.Drawing.Point(224, 108)
-        Me.UserControl_customer_main1.Name = "UserControl_customer_main1"
-        Me.UserControl_customer_main1.Size = New System.Drawing.Size(1276, 692)
-        Me.UserControl_customer_main1.TabIndex = 9
         '
         'btnShowInstagram
         '
@@ -431,6 +393,44 @@ Partial Class Form1
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox2.TabIndex = 3
         Me.PictureBox2.TabStop = False
+        '
+        'UserControl_Home1
+        '
+        Me.UserControl_Home1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.UserControl_Home1.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.UserControl_Home1.Location = New System.Drawing.Point(224, 109)
+        Me.UserControl_Home1.Margin = New System.Windows.Forms.Padding(4)
+        Me.UserControl_Home1.Name = "UserControl_Home1"
+        Me.UserControl_Home1.Size = New System.Drawing.Size(1276, 688)
+        Me.UserControl_Home1.TabIndex = 7
+        '
+        'UserControl_Settings1
+        '
+        Me.UserControl_Settings1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.UserControl_Settings1.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.UserControl_Settings1.Location = New System.Drawing.Point(224, 108)
+        Me.UserControl_Settings1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.UserControl_Settings1.Name = "UserControl_Settings1"
+        Me.UserControl_Settings1.Size = New System.Drawing.Size(1276, 692)
+        Me.UserControl_Settings1.TabIndex = 6
+        '
+        'UserControl_RoomReservation1
+        '
+        Me.UserControl_RoomReservation1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.UserControl_RoomReservation1.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.UserControl_RoomReservation1.Location = New System.Drawing.Point(224, 108)
+        Me.UserControl_RoomReservation1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.UserControl_RoomReservation1.Name = "UserControl_RoomReservation1"
+        Me.UserControl_RoomReservation1.Size = New System.Drawing.Size(1823, 1096)
+        Me.UserControl_RoomReservation1.TabIndex = 8
+        '
+        'UserControl_customer_main1
+        '
+        Me.UserControl_customer_main1.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.UserControl_customer_main1.Location = New System.Drawing.Point(224, 108)
+        Me.UserControl_customer_main1.Name = "UserControl_customer_main1"
+        Me.UserControl_customer_main1.Size = New System.Drawing.Size(1276, 692)
+        Me.UserControl_customer_main1.TabIndex = 9
         '
         'Form1
         '
