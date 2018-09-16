@@ -24,10 +24,10 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.menubar = New System.Windows.Forms.Panel()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.btnSettings = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -40,24 +40,28 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnExit = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnShowFacebook = New System.Windows.Forms.Button()
         Me.UserControl_Home1 = New GolfManager.UserControl_Home()
         Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
         Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
         Me.UserControl_customer_main1 = New GolfManager.UserControl_customer_main()
         Me.btnShowInstagram = New System.Windows.Forms.Button()
-        Me.btnShowFacebook = New System.Windows.Forms.Button()
+        Me.btnExit = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnSettings = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Panel4)
         Me.Panel1.Controls.Add(Me.menubar)
         Me.Panel1.Controls.Add(Me.Button11)
@@ -72,11 +76,23 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.PictureBox2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(224, 800)
         Me.Panel1.TabIndex = 0
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Gulim", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Gray
+        Me.Label2.Location = New System.Drawing.Point(72, 764)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(69, 15)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "Ver 0.51"
         '
         'Panel4
         '
@@ -107,17 +123,6 @@ Partial Class Form1
         Me.Button11.Text = "    시스템관리자"
         Me.Button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button11.UseVisualStyleBackColor = True
-        '
-        'btnSettings
-        '
-        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(154, 52)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
-        Me.btnSettings.TabIndex = 3
-        Me.btnSettings.Text = "S"
-        Me.btnSettings.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -281,7 +286,6 @@ Partial Class Form1
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(8, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Controls.Add(Me.PictureBox1)
         Me.Panel3.Location = New System.Drawing.Point(301, 12)
@@ -289,38 +293,42 @@ Partial Class Form1
         Me.Panel3.Size = New System.Drawing.Size(108, 97)
         Me.Panel3.TabIndex = 0
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(16, 78)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(73, 15)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Restourents"
-        '
         'Label1
         '
-        Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(5, 60)
+        Me.Label1.Location = New System.Drawing.Point(3, 57)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(85, 18)
+        Me.Label1.Size = New System.Drawing.Size(102, 33)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Fast Food"
+        Me.Label1.Text = "Home"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnExit
+        'Label3
         '
-        Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExit.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(1440, 12)
-        Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(39, 33)
-        Me.btnExit.TabIndex = 4
-        Me.btnExit.Text = "X"
-        Me.btnExit.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Gulim", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Gray
+        Me.Label3.Location = New System.Drawing.Point(900, 26)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(316, 15)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "AAA지점 BBB님(매장직원) 으로 로그인 중"
+        '
+        'btnShowFacebook
+        '
+        Me.btnShowFacebook.BackColor = System.Drawing.Color.Transparent
+        Me.btnShowFacebook.BackgroundImage = Global.GolfManager.My.Resources.Resources.facebook
+        Me.btnShowFacebook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnShowFacebook.FlatAppearance.BorderSize = 0
+        Me.btnShowFacebook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnShowFacebook.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnShowFacebook.ImageKey = "(none)"
+        Me.btnShowFacebook.Location = New System.Drawing.Point(805, 17)
+        Me.btnShowFacebook.Name = "btnShowFacebook"
+        Me.btnShowFacebook.Size = New System.Drawing.Size(39, 33)
+        Me.btnShowFacebook.TabIndex = 2
+        Me.btnShowFacebook.UseVisualStyleBackColor = False
         '
         'UserControl_Home1
         '
@@ -362,42 +370,67 @@ Partial Class Form1
         '
         'btnShowInstagram
         '
+        Me.btnShowInstagram.BackColor = System.Drawing.Color.Transparent
         Me.btnShowInstagram.BackgroundImage = Global.GolfManager.My.Resources.Resources.instagram
         Me.btnShowInstagram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnShowInstagram.FlatAppearance.BorderSize = 0
         Me.btnShowInstagram.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnShowInstagram.Font = New System.Drawing.Font("Gulim", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnShowInstagram.Image = Global.GolfManager.My.Resources.Resources.instagram
         Me.btnShowInstagram.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnShowInstagram.Location = New System.Drawing.Point(1001, 15)
+        Me.btnShowInstagram.Location = New System.Drawing.Point(850, 15)
         Me.btnShowInstagram.Name = "btnShowInstagram"
         Me.btnShowInstagram.Size = New System.Drawing.Size(41, 41)
         Me.btnShowInstagram.TabIndex = 1
-        Me.btnShowInstagram.UseVisualStyleBackColor = True
+        Me.btnShowInstagram.UseVisualStyleBackColor = False
         '
-        'btnShowFacebook
+        'btnExit
         '
-        Me.btnShowFacebook.BackgroundImage = Global.GolfManager.My.Resources.Resources.facebook_logo_black_and_white_png
-        Me.btnShowFacebook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnShowFacebook.FlatAppearance.BorderSize = 0
-        Me.btnShowFacebook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnShowFacebook.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnShowFacebook.ImageKey = "(none)"
-        Me.btnShowFacebook.Location = New System.Drawing.Point(956, 17)
-        Me.btnShowFacebook.Name = "btnShowFacebook"
-        Me.btnShowFacebook.Size = New System.Drawing.Size(39, 33)
-        Me.btnShowFacebook.TabIndex = 2
-        Me.btnShowFacebook.UseVisualStyleBackColor = True
+        Me.btnExit.BackColor = System.Drawing.Color.Transparent
+        Me.btnExit.BackgroundImage = Global.GolfManager.My.Resources.Resources._Exit
+        Me.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnExit.FlatAppearance.BorderSize = 0
+        Me.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExit.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnExit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.btnExit.Location = New System.Drawing.Point(1440, 12)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(39, 33)
+        Me.btnExit.TabIndex = 4
+        Me.btnExit.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 3)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 3)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(86, 51)
+        Me.PictureBox1.Size = New System.Drawing.Size(108, 51)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
+        '
+        'btnSettings
+        '
+        Me.btnSettings.BackgroundImage = Global.GolfManager.My.Resources.Resources.settings
+        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnSettings.FlatAppearance.BorderSize = 0
+        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnSettings.Location = New System.Drawing.Point(169, 66)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
+        Me.btnSettings.TabIndex = 3
+        Me.btnSettings.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.GolfManager.My.Resources.Resources.logo_01
+        Me.PictureBox2.Location = New System.Drawing.Point(11, 3)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(209, 103)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 3
+        Me.PictureBox2.TabStop = False
         '
         'Form1
         '
@@ -405,6 +438,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1500, 800)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.UserControl_Home1)
         Me.Controls.Add(Me.btnShowInstagram)
         Me.Controls.Add(Me.btnShowFacebook)
@@ -420,10 +454,12 @@ Partial Class Form1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " "
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -432,7 +468,6 @@ Partial Class Form1
     Friend WithEvents Panel3 As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Button4 As Button
@@ -454,4 +489,7 @@ Partial Class Form1
     Friend WithEvents UserControl_RoomReservation1 As UserControl_RoomReservation
     Friend WithEvents UserControl_customer_main1 As UserControl_customer_main
     Friend WithEvents btnShowInstagram As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Label2 As Label
 End Class

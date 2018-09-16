@@ -63,9 +63,19 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property facebook_logo_black_and_white_png() As System.Drawing.Bitmap
+        Friend ReadOnly Property _Exit() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("facebook-logo-black-and-white-png", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("_Exit", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property facebook() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("facebook", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -76,6 +86,26 @@ Namespace My.Resources
         Friend ReadOnly Property instagram() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("instagram", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property logo_01() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("logo_01", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property settings() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("settings", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

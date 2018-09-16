@@ -135,9 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_customer_main.resx">
       <DependentUpon>UserControl_customer_main.vb</DependentUpon>
@@ -167,7 +167,11 @@
   <ItemGroup>
     <Content Include="Facebook_icon.png" />
     <None Include="image\instagram.png" />
-    <None Include="image\facebook-logo-black-and-white-png.png" />
+    <None Include="image\facebook.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\logo_01.png" />
+    <None Include="Resources\instagram.png" />
+    <None Include="Resources\Exit.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
