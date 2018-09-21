@@ -25,9 +25,9 @@ Partial Class UserControl_Settings
         Me.btn2ndScrDragEnable = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnApplyUISetting = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnBoxDefaultPosition = New System.Windows.Forms.Button()
+        Me.btnUISettingLoad = New System.Windows.Forms.Button()
+        Me.btnUISettingSave = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -37,13 +37,13 @@ Partial Class UserControl_Settings
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtTopicBoxGap = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtContentFontSize = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtTitleFontSize = New System.Windows.Forms.TextBox()
         Me.lblRooms = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -63,9 +63,9 @@ Partial Class UserControl_Settings
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btnApplyUISetting)
-        Me.GroupBox1.Controls.Add(Me.Button5)
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.btnBoxDefaultPosition)
+        Me.GroupBox1.Controls.Add(Me.btnUISettingLoad)
+        Me.GroupBox1.Controls.Add(Me.btnUISettingSave)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label9)
@@ -100,32 +100,32 @@ Partial Class UserControl_Settings
         Me.btnApplyUISetting.Text = "타석화면에 적용"
         Me.btnApplyUISetting.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnBoxDefaultPosition
         '
-        Me.Button5.Location = New System.Drawing.Point(162, 21)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(94, 23)
-        Me.Button5.TabIndex = 18
-        Me.Button5.Text = "임의배치"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnBoxDefaultPosition.Location = New System.Drawing.Point(162, 21)
+        Me.btnBoxDefaultPosition.Name = "btnBoxDefaultPosition"
+        Me.btnBoxDefaultPosition.Size = New System.Drawing.Size(94, 23)
+        Me.btnBoxDefaultPosition.TabIndex = 18
+        Me.btnBoxDefaultPosition.Text = "임의배치"
+        Me.btnBoxDefaultPosition.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnUISettingLoad
         '
-        Me.Button2.Location = New System.Drawing.Point(369, 21)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(94, 23)
-        Me.Button2.TabIndex = 15
-        Me.Button2.Text = "불러오기"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnUISettingLoad.Location = New System.Drawing.Point(369, 21)
+        Me.btnUISettingLoad.Name = "btnUISettingLoad"
+        Me.btnUISettingLoad.Size = New System.Drawing.Size(94, 23)
+        Me.btnUISettingLoad.TabIndex = 15
+        Me.btnUISettingLoad.Text = "불러오기"
+        Me.btnUISettingLoad.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnUISettingSave
         '
-        Me.Button1.Location = New System.Drawing.Point(269, 21)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(94, 23)
-        Me.Button1.TabIndex = 14
-        Me.Button1.Text = "현재화면 저장"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnUISettingSave.Location = New System.Drawing.Point(269, 21)
+        Me.btnUISettingSave.Name = "btnUISettingSave"
+        Me.btnUISettingSave.Size = New System.Drawing.Size(94, 23)
+        Me.btnUISettingSave.TabIndex = 14
+        Me.btnUISettingSave.Text = "현재화면 저장"
+        Me.btnUISettingSave.UseVisualStyleBackColor = True
         '
         'Label10
         '
@@ -205,6 +205,15 @@ Partial Class UserControl_Settings
         Me.txtTopicBoxGap.TabIndex = 6
         Me.txtTopicBoxGap.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(8, 105)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(419, 15)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "* 설정창이 활성화 되면 타석관리창에서 드래그로 위치를 바꿀 수 있습니다. "
+        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -258,15 +267,6 @@ Partial Class UserControl_Settings
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "타석개수 : "
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 105)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(419, 15)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "* 설정창이 활성화 되면 타석관리창에서 드래그로 위치를 바꿀 수 있습니다. "
-        '
         'UserControl_Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 19.0!)
@@ -286,9 +286,9 @@ Partial Class UserControl_Settings
 
     Friend WithEvents btn2ndScrDragEnable As Button
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnBoxDefaultPosition As Button
+    Friend WithEvents btnUISettingLoad As Button
+    Friend WithEvents btnUISettingSave As Button
     Friend WithEvents Label10 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label9 As Label
