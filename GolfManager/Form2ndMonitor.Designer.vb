@@ -29,7 +29,7 @@ Partial Class Form2ndMonitor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(633, 395)
+        Me.ClientSize = New System.Drawing.Size(1032, 632)
         Me.Name = "Form2ndMonitor"
         Me.ShowIcon = False
         Me.ResumeLayout(False)
