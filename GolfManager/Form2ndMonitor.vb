@@ -30,37 +30,59 @@ Public Class Form2ndMonitor
             dynamicBoxList.Add(a) '향후관리를위해 객체리스트 만듬
         Next
 
+        'XML 파일로딩
+        dynamicBoxList = load2ndMonitorSettings()
 
+        Console.WriteLine(dynamicBoxList.Item(0).PosX)
+        Console.WriteLine(dynamicBoxList.Item(1).PosX)
+
+        'XML -> UI 적용
+        For i = 0 To numOfRooms - 1
+            dynamicBoxList.Item(i).refreshWithLocalVal()
+        Next
+
+
+    End Sub
+
+    '화면배치를 파일로 저장
+    Public Sub save2ndMonitorSettings()
+        Console.WriteLine(" 화면UI를 XML파일로 저장.")
 
         '화면구성을 직렬화하여 XML로 저장
         Dim writer As New System.Xml.Serialization.XmlSerializer(GetType(List(Of dynamicTextBox)))
         Dim file As New System.IO.StreamWriter(SecondScreenDesignXMLFileName)
         writer.Serialize(file, dynamicBoxList)
         file.Close()
-        file.Close()
+    End Sub
+
+    '파일에서 화면배치 불러옴
+    Public Function load2ndMonitorSettings() As List(Of dynamicTextBox)
+        Dim overview As List(Of dynamicTextBox) = New List(Of dynamicTextBox)
+
+        Console.WriteLine("화면UI구성을 XML파일에서 읽기")
 
         '화면구성을 XML에서 읽기
-        Console.WriteLine("화면UI구성을 XML파일에서 읽기")
         Try
             Dim reader As New System.Xml.Serialization.XmlSerializer(GetType(List(Of dynamicTextBox)))
-            Dim overview As List(Of dynamicTextBox)
             Dim file2 As New System.IO.StreamReader(SecondScreenDesignXMLFileName)
 
             overview = CType(reader.Deserialize(file2), List(Of dynamicTextBox))
             Console.WriteLine("File의 XML의 리스트아이템개수 :" & overview.Count)
 
-
+            Console.WriteLine(overview.Item(0).PosX)
             Console.WriteLine(overview.Item(1).PosX)
+
         Catch ex As Exception
             Console.WriteLine("################################################")
             Console.WriteLine(" 화면UI를 구성하는 XML파일을 읽는도중 오류가 발생.")
             Console.WriteLine("################################################")
         End Try
 
+        Return overview
 
 
 
-    End Sub
+    End Function
 
     '드래그 가능여부 전체변경
     Public Sub changeDragEnable(en As Boolean)
@@ -86,6 +108,37 @@ Public Class Form2ndMonitor
         Public BoxWidth As Integer
         Public BoxFontSize As Integer
         Private dragEnable As Boolean = False
+
+        Public Sub refreshWithLocalVal()
+
+            '박스위치 업데이트
+            txt.Left = PosX
+            txt.Top = PosY
+            Console.WriteLine("set:" & PosX & "," & PosY)
+
+            '박스사이즈 
+            txt.Height = BoxHeight
+            txt.Width = BoxWidth
+
+            '토픽위치 업데이트
+            lblroomnumber.Left = txt.Left
+            lblroomnumber.Top = txt.Top - TopicGap
+            lblroomnumber.BackColor = Color.Transparent
+            txt.Multiline = True
+
+            '토픽폰트 생성
+            Dim topicfont1 = New Font("Sans Serif", TopicFontSize, FontStyle.Regular)
+
+            '토픽폰트 적용
+            lblroomnumber.Font = topicfont1
+
+            '박스폰트 생성
+            Dim boxfont1 = New Font("Sans Serif", BoxFontSize, FontStyle.Regular)
+
+            '박스폰트 적용
+            txt.Font = boxfont1
+
+        End Sub
 
         Public Sub setStyle(in_TopicFontSize As Integer,
                             in_TopicGap As Integer,
@@ -156,6 +209,9 @@ Public Class Form2ndMonitor
             sender.Left = MousePosition.X - Off.X
             sender.Top = MousePosition.Y - Off.Y
 
+            PosX = sender.Left
+            PosY = sender.Top
+
             '박스사이즈 
             txt.Height = BoxHeight
             txt.Width = BoxWidth
@@ -182,12 +238,15 @@ Public Class Form2ndMonitor
         End Function
 
         '위치 이동
-        Public Sub setPosXY(posx As Integer, posy As Integer)
-            txt.Left = posx
-            txt.Top = posy
+        Public Sub setPosXY(_posx As Integer, _posy As Integer)
+            txt.Left = _posx
+            txt.Top = _posy
             lblroomnumber.Left = txt.Left
             lblroomnumber.Top = txt.Top - TopicGap
             lblroomnumber.BackColor = Color.Transparent
+
+            PosX = _posx
+            PosY = _posy
         End Sub
 
         '초기위치:(100,100)
@@ -195,6 +254,8 @@ Public Class Form2ndMonitor
             moveTo(sender)
             txt.Top = 100
             txt.Left = 100
+            PosX = 100
+            PosY = 100
 
             lblroomnumber.Left = sender.Left
             lblroomnumber.Top = sender.Top - TopicGap

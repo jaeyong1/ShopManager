@@ -73,5 +73,21 @@
         Next
     End Sub
 
+    Private Sub btnUISettingSave_Click(sender As Object, e As EventArgs) Handles btnUISettingSave.Click
+        Call Form2ndMonitor.save2ndMonitorSettings()
+    End Sub
 
+    Private Sub btnUISettingLoad_Click(sender As Object, e As EventArgs) Handles btnUISettingLoad.Click
+        Call Form2ndMonitor.load2ndMonitorSettings()
+
+        '화면 업데이트
+        If Form2ndMonitor.numOfRooms > 0 Then
+            lblRooms.Text = Form2ndMonitor.numOfRooms
+            txtTitleFontSize.Text = Form2ndMonitor.CommonTopicFontSize '토픽 폰트크기
+            txtTopicBoxGap.Text = Form2ndMonitor.CommonTopicGap '토픽~박스상단 간격
+            txtBoxHeight.Text = Form2ndMonitor.CommonBoxHeight '박스높이
+            txtBoxWidth.Text = Form2ndMonitor.CommonBoxWidth '박스넓이
+            txtContentFontSize.Text = Form2ndMonitor.CommonBoxFontSize '박스글자 폰트크기
+        End If
+    End Sub
 End Class
