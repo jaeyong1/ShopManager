@@ -181,6 +181,15 @@ Public Class Form2ndMonitor
             Return lblroomnumber
         End Function
 
+        '위치 이동
+        Public Sub setPosXY(posx As Integer, posy As Integer)
+            txt.Left = posx
+            txt.Top = posy
+            lblroomnumber.Left = txt.Left
+            lblroomnumber.Top = txt.Top - TopicGap
+            lblroomnumber.BackColor = Color.Transparent
+        End Sub
+
         '초기위치:(100,100)
         Private Sub txt_Invalidated(sender As Object, e As InvalidateEventArgs) Handles txt.Invalidated
             moveTo(sender)

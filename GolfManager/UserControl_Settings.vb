@@ -54,7 +54,24 @@
         Next
     End Sub
 
-    Private Sub btn2ndForm_Click(sender As Object, e As EventArgs) Handles btn2ndForm.Click
 
+    Private Sub btnBoxDefaultPosition_Click(sender As Object, e As EventArgs) Handles btnBoxDefaultPosition.Click
+        Dim tempWidthGap As Integer
+        Dim tempHeightGap As Integer
+        Dim tempCnt As Integer = 0
+
+        tempWidthGap = Form2ndMonitor.CommonBoxWidth + (Form2ndMonitor.CommonBoxWidth * 0.3)
+        tempHeightGap = 100
+
+
+        For i = 0 To (Form2ndMonitor.numOfRooms - 1)
+            If ((i Mod 5) = 0 And (i <> 0)) Then
+                tempHeightGap = tempHeightGap + Form2ndMonitor.CommonBoxHeight + (Form2ndMonitor.CommonBoxHeight * 0.6)
+            End If
+
+            Form2ndMonitor.dynamicBoxList.Item(i).setPosXY(tempWidthGap * (i Mod 5) + 100, tempHeightGap)
+        Next
     End Sub
+
+
 End Class
