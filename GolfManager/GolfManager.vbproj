@@ -166,7 +166,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Facebook_icon.png" />
     <None Include="image\instagram.png" />
     <None Include="image\facebook.png" />
     <None Include="Resources\settings.png" />

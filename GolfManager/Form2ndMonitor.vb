@@ -9,7 +9,7 @@ Public Class Form2ndMonitor
 
     Public dynamicBoxList As New List(Of dynamicTextBox) '타석UI 동적생성 리스트
 
-    Public numOfRooms As Integer = 5 '이 계정에 허용된 타석개수
+    Public numOfRooms As Integer = 0 '이 계정에 허용된 타석개수
 
     Public CommonTopicFontSize As Integer = 18 '토픽 폰트크기
     Public CommonTopicGap As Integer = 30 '토픽~박스상단 간격
