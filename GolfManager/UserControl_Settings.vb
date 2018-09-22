@@ -11,6 +11,11 @@
     End Sub
 
     Private Sub btn2ndScrDragEnable_Click(sender As Object, e As EventArgs) Handles btn2ndScrDragEnable.Click
+        If Not Application.OpenForms().OfType(Of Form2ndMonitor).Any Then
+            MessageBox.Show("타석모니터를 먼저 열어주세요")
+            Exit Sub
+        End If
+
         If (secondScrDragEnable) Then
             'Enable -> Disable
             btn2ndScrDragEnable.BackColor = Color.Gray
@@ -47,5 +52,9 @@
                  txtBoxWidth.Text,
                  txtContentFontSize.Text)
         Next
+    End Sub
+
+    Private Sub btn2ndForm_Click(sender As Object, e As EventArgs) Handles btn2ndForm.Click
+
     End Sub
 End Class

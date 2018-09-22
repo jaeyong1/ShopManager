@@ -44,6 +44,7 @@ Partial Class UserControl_Settings
         Me.txtTitleFontSize = New System.Windows.Forms.TextBox()
         Me.lblRooms = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btn2ndForm = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -267,11 +268,21 @@ Partial Class UserControl_Settings
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "타석개수 : "
         '
+        'btn2ndForm
+        '
+        Me.btn2ndForm.Location = New System.Drawing.Point(34, 191)
+        Me.btn2ndForm.Name = "btn2ndForm"
+        Me.btn2ndForm.Size = New System.Drawing.Size(154, 23)
+        Me.btn2ndForm.TabIndex = 2
+        Me.btn2ndForm.Text = "타석모니터열기"
+        Me.btn2ndForm.UseVisualStyleBackColor = True
+        '
         'UserControl_Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.Controls.Add(Me.btn2ndForm)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btn2ndScrDragEnable)
         Me.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
@@ -306,4 +317,5 @@ Partial Class UserControl_Settings
     Friend WithEvents btnApplyUISetting As Button
     Friend WithEvents Label8 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents btn2ndForm As Button
 End Class
