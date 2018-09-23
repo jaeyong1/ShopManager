@@ -3,12 +3,13 @@
         Form2ndMonitor.numOfRooms = 10
         Form2ndMonitor.Show()
 
-        '문자열 세팅
+        '문자열 세팅 샘플코드
         For i = 0 To (Form2ndMonitor.dynamicBoxList.Count - 1)
             Form2ndMonitor.dynamicBoxList.Item(i).setTopicText((i + 1) & "번")
             Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("내용" & (i + 1))
         Next
 
+        '배경색변경 샘플코드
         Form2ndMonitor.dynamicBoxList.Item(1).setRoomFree()
         Form2ndMonitor.dynamicBoxList.Item(1).setBoxText("미사용")
 

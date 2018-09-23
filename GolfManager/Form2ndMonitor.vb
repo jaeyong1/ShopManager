@@ -11,35 +11,48 @@ Public Class Form2ndMonitor
 
     Public numOfRooms As Integer = 0 '이 계정에 허용된 타석개수
 
-    Public CommonTopicFontSize As Integer = 18 '토픽 폰트크기
-    Public CommonTopicGap As Integer = 30 '토픽~박스상단 간격
-    Public CommonBoxHeight As Integer = 100 '박스높이
-    Public CommonBoxWidth As Integer = 150 '박스넓이
-    Public CommonBoxFontSize As Integer = 20 '박스글자 폰트크기
+    Public CommonTopicFontSize As Integer = 18 '토픽 폰트크기(디폴트)
+    Public CommonTopicGap As Integer = 30 '토픽~박스상단 간격(디폴트)
+    Public CommonBoxHeight As Integer = 100 '박스높이(디폴트)
+    Public CommonBoxWidth As Integer = 150 '박스넓이(디폴트)
+    Public CommonBoxFontSize As Integer = 20 '박스글자 폰트크기(디폴트)
 
 
     Private Sub Form2ndMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' 수량만큼 생성
 
-        Console.WriteLine("타석표시기 동적생성 {0}개", numOfRooms)
-        For i = 0 To numOfRooms - 1
-            Dim a As New dynamicTextBox()
-            Me.Controls.Add(a.getLabelReference()) '토픽
-            Me.Controls.Add(a.getTextBoxReferece()) '박스
-            a.setStyle(CommonTopicFontSize, CommonTopicGap, CommonBoxHeight, CommonBoxWidth, CommonBoxFontSize) '기본모양설정
-            dynamicBoxList.Add(a) '향후관리를위해 객체리스트 만듬
-        Next
-
-        'XML 파일로딩
+        ''XML 파일로딩
         dynamicBoxList = load2ndMonitorSettings()
 
-        Console.WriteLine(dynamicBoxList.Item(0).PosX)
-        Console.WriteLine(dynamicBoxList.Item(1).PosX)
 
-        'XML -> UI 적용
-        For i = 0 To numOfRooms - 1
-            dynamicBoxList.Item(i).refreshWithLocalVal()
-        Next
+        ' 수량만큼 생성
+        If dynamicBoxList.Count = 0 Then
+            Console.WriteLine("타석표시기 신규박스생성 {0}개", numOfRooms)
+            For i = 0 To numOfRooms - 1
+                Dim a As New dynamicTextBox()
+                Me.Controls.Add(a.getLabelReference()) '토픽
+                Me.Controls.Add(a.getTextBoxReferece()) '박스
+                a.setStyle(CommonTopicFontSize, CommonTopicGap, CommonBoxHeight, CommonBoxWidth, CommonBoxFontSize) '기본모양설정
+                dynamicBoxList.Add(a) '향후관리를위해 객체리스트 만듬
+                dynamicBoxList.Item(i).setPosXY(100, 100) '임의위치(100,100)
+            Next
+            MessageBox.Show("화면구성파일이 없습니다. 설정에서 위치와 모양을 변경하세요.")
+
+        Else
+            Console.WriteLine("타석표시기 파일에서 불러옴 {0}개", numOfRooms)
+            For i = 0 To numOfRooms - 1
+                Console.WriteLine("Loaded (" & i & ") " &
+                dynamicBoxList.Item(i).PosX & ", " &
+                dynamicBoxList.Item(i).PosY)
+                Me.Controls.Add(dynamicBoxList.Item(i).getLabelReference()) '토픽
+                Me.Controls.Add(dynamicBoxList.Item(i).getTextBoxReferece()) '박스
+                dynamicBoxList.Item(i).setPosXY(dynamicBoxList.Item(i).PosX, dynamicBoxList.Item(i).PosY)
+                dynamicBoxList.Item(i).refreshWithLocalVal() 'XML -> UI 적용
+
+            Next
+
+
+        End If
+
 
 
     End Sub
@@ -58,30 +71,24 @@ Public Class Form2ndMonitor
     '파일에서 화면배치 불러옴
     Public Function load2ndMonitorSettings() As List(Of dynamicTextBox)
         Dim overview As List(Of dynamicTextBox) = New List(Of dynamicTextBox)
+        Dim reader As New System.Xml.Serialization.XmlSerializer(GetType(List(Of dynamicTextBox)))
 
         Console.WriteLine("화면UI구성을 XML파일에서 읽기")
 
         '화면구성을 XML에서 읽기
         Try
-            Dim reader As New System.Xml.Serialization.XmlSerializer(GetType(List(Of dynamicTextBox)))
             Dim file2 As New System.IO.StreamReader(SecondScreenDesignXMLFileName)
 
             overview = CType(reader.Deserialize(file2), List(Of dynamicTextBox))
             Console.WriteLine("File의 XML의 리스트아이템개수 :" & overview.Count)
-
-            Console.WriteLine(overview.Item(0).PosX)
-            Console.WriteLine(overview.Item(1).PosX)
+            file2.Close()
 
         Catch ex As Exception
             Console.WriteLine("################################################")
             Console.WriteLine(" 화면UI를 구성하는 XML파일을 읽는도중 오류가 발생.")
             Console.WriteLine("################################################")
         End Try
-
         Return overview
-
-
-
     End Function
 
     '드래그 가능여부 전체변경
@@ -90,6 +97,7 @@ Public Class Form2ndMonitor
             dynamicBoxList.Item(i).setDragEnable(en)
         Next
     End Sub
+
 
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     ''' <summary>
@@ -112,19 +120,13 @@ Public Class Form2ndMonitor
         Public Sub refreshWithLocalVal()
 
             '박스위치 업데이트
-            txt.Left = PosX
-            txt.Top = PosY
-            Console.WriteLine("set:" & PosX & "," & PosY)
+            setPosXY(PosX, PosY)
+            Console.WriteLine("refresh - set:" & PosX & "," & PosY)
 
             '박스사이즈 
             txt.Height = BoxHeight
             txt.Width = BoxWidth
 
-            '토픽위치 업데이트
-            lblroomnumber.Left = txt.Left
-            lblroomnumber.Top = txt.Top - TopicGap
-            lblroomnumber.BackColor = Color.Transparent
-            txt.Multiline = True
 
             '토픽폰트 생성
             Dim topicfont1 = New Font("Sans Serif", TopicFontSize, FontStyle.Regular)
@@ -237,29 +239,20 @@ Public Class Form2ndMonitor
             Return lblroomnumber
         End Function
 
-        '위치 이동
+        '토픽과 박스 새로운 위치로 이동
         Public Sub setPosXY(_posx As Integer, _posy As Integer)
+            Console.WriteLine("setposxy" & _posx & ", " & _posy)
+
             txt.Left = _posx
             txt.Top = _posy
             lblroomnumber.Left = txt.Left
             lblroomnumber.Top = txt.Top - TopicGap
             lblroomnumber.BackColor = Color.Transparent
+            txt.Multiline = True
+
 
             PosX = _posx
             PosY = _posy
-        End Sub
-
-        '초기위치:(100,100)
-        Private Sub txt_Invalidated(sender As Object, e As InvalidateEventArgs) Handles txt.Invalidated
-            moveTo(sender)
-            txt.Top = 100
-            txt.Left = 100
-            PosX = 100
-            PosY = 100
-
-            lblroomnumber.Left = sender.Left
-            lblroomnumber.Top = sender.Top - TopicGap
-            lblroomnumber.BackColor = Color.Transparent
         End Sub
 
         '사용가능 색깔
