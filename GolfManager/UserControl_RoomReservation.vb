@@ -1,5 +1,5 @@
 ﻿Public Class UserControl_RoomReservation
-    Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
+    Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click, Button1.Click
         Form2ndMonitor.numOfRooms = 10
         Form2ndMonitor.Show()
 

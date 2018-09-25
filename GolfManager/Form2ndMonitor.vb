@@ -23,10 +23,11 @@ Public Class Form2ndMonitor
         ''XML 파일로딩
         dynamicBoxList = load2ndMonitorSettings()
 
-
-        ' 수량만큼 생성
         If dynamicBoxList.Count = 0 Then
+            '파일 불러온것 없음(파일이 없거나 XML 파싱중 exception)
             Console.WriteLine("타석표시기 신규박스생성 {0}개", numOfRooms)
+
+            ' 타석수만큼 박스 생성
             For i = 0 To numOfRooms - 1
                 Dim a As New dynamicTextBox()
                 Me.Controls.Add(a.getLabelReference()) '토픽
@@ -38,6 +39,7 @@ Public Class Form2ndMonitor
             MessageBox.Show("화면구성파일이 없습니다. 설정에서 위치와 모양을 변경하세요.")
 
         Else
+            '파일에서 화면구성 불러옴
             Console.WriteLine("타석표시기 파일에서 불러옴 {0}개", numOfRooms)
             For i = 0 To numOfRooms - 1
                 Console.WriteLine("Loaded (" & i & ") " &
@@ -91,7 +93,7 @@ Public Class Form2ndMonitor
         Return overview
     End Function
 
-    '드래그 가능여부 전체변경
+    '드래그 가능여부 전체변경(외부인터페이스)
     Public Sub changeDragEnable(en As Boolean)
         For i = 0 To (dynamicBoxList.Count - 1)
             dynamicBoxList.Item(i).setDragEnable(en)
