@@ -1,6 +1,6 @@
 ﻿Public Class UserControl_RoomReservation
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click, Button1.Click
-        Form2ndMonitor.numOfRooms = 10
+        Form2ndMonitor.numOfRooms = NumberOfRooms
         Form2ndMonitor.Show()
 
         '문자열 세팅 샘플코드
@@ -19,6 +19,22 @@
 
         Form2ndMonitor.dynamicBoxList.Item(3).setRoomFreeSoon()
         Form2ndMonitor.dynamicBoxList.Item(3).setBoxText("거의끝나감" + vbCrLf + "02:23")
+
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub UserControl_RoomReservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Console.WriteLine("타석예약화면 초기화")
+
+        ComboRoomNumber.Items.Clear()
+        '문자열 세팅 샘플코드
+        For i = 1 To (Form2ndMonitor.numOfRooms)
+            ComboRoomNumber.Items.Add((i + 1) & "번")
+
+        Next
 
     End Sub
 End Class
