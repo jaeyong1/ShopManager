@@ -1,6 +1,6 @@
 ﻿Public Class UserControl_RoomReservation
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click, Button1.Click
-        Form2ndMonitor.numOfRooms = NumberOfRooms
+        Form2ndMonitor.numOfRooms = G_NumberOfRooms
         Form2ndMonitor.Show()
 
         '문자열 세팅 샘플코드
