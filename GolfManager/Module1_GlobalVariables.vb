@@ -4,5 +4,6 @@
     Public G_LoginID As String '앱로그인 아이디
     Public G_LoginName As String '앱로그인 이름
 
+    Public lstRoomReservation As New List(Of clsRoomReservation) '타석예약 리스트 (=데이터그리드 화면과 동기화)
 
 End Module
