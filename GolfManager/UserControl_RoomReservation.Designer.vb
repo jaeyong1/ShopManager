@@ -43,12 +43,16 @@ Partial Class UserControl_RoomReservation
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboRoomNumber = New System.Windows.Forms.ComboBox()
         Me.groupWaitings = New System.Windows.Forms.GroupBox()
+        Me.lstWaitingCust = New System.Windows.Forms.ListBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lst5min = New System.Windows.Forms.ListBox()
         Me.btnRoomReservRefresh = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupNewRoomReserv.SuspendLayout()
+        Me.groupWaitings.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnShow
@@ -74,7 +78,7 @@ Partial Class UserControl_RoomReservation
         Me.DataGridView1.Location = New System.Drawing.Point(30, 357)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(1029, 340)
+        Me.DataGridView1.Size = New System.Drawing.Size(1098, 340)
         Me.DataGridView1.TabIndex = 1
         '
         'groupNewRoomReserv
@@ -98,7 +102,7 @@ Partial Class UserControl_RoomReservation
         Me.groupNewRoomReserv.Font = New System.Drawing.Font("GulimChe", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.groupNewRoomReserv.Location = New System.Drawing.Point(232, 14)
         Me.groupNewRoomReserv.Name = "groupNewRoomReserv"
-        Me.groupNewRoomReserv.Size = New System.Drawing.Size(463, 315)
+        Me.groupNewRoomReserv.Size = New System.Drawing.Size(446, 315)
         Me.groupNewRoomReserv.TabIndex = 2
         Me.groupNewRoomReserv.TabStop = False
         Me.groupNewRoomReserv.Text = "타석예약"
@@ -267,23 +271,41 @@ Partial Class UserControl_RoomReservation
         '
         'groupWaitings
         '
+        Me.groupWaitings.Controls.Add(Me.lstWaitingCust)
         Me.groupWaitings.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.groupWaitings.Location = New System.Drawing.Point(712, 14)
+        Me.groupWaitings.Location = New System.Drawing.Point(702, 14)
         Me.groupWaitings.Name = "groupWaitings"
-        Me.groupWaitings.Size = New System.Drawing.Size(347, 209)
+        Me.groupWaitings.Size = New System.Drawing.Size(215, 315)
         Me.groupWaitings.TabIndex = 3
         Me.groupWaitings.TabStop = False
         Me.groupWaitings.Text = "대기중"
         '
+        'lstWaitingCust
+        '
+        Me.lstWaitingCust.FormattingEnabled = True
+        Me.lstWaitingCust.Location = New System.Drawing.Point(6, 18)
+        Me.lstWaitingCust.Name = "lstWaitingCust"
+        Me.lstWaitingCust.Size = New System.Drawing.Size(203, 290)
+        Me.lstWaitingCust.TabIndex = 1
+        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lst5min)
         Me.GroupBox1.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(712, 229)
+        Me.GroupBox1.Location = New System.Drawing.Point(944, 14)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(347, 100)
+        Me.GroupBox1.Size = New System.Drawing.Size(184, 315)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "사용종료 5분전"
+        Me.GroupBox1.Text = "사용종료 5분전 / 종료지연"
+        '
+        'lst5min
+        '
+        Me.lst5min.FormattingEnabled = True
+        Me.lst5min.Location = New System.Drawing.Point(6, 18)
+        Me.lst5min.Name = "lst5min"
+        Me.lst5min.Size = New System.Drawing.Size(172, 290)
+        Me.lst5min.TabIndex = 0
         '
         'btnRoomReservRefresh
         '
@@ -321,6 +343,8 @@ Partial Class UserControl_RoomReservation
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.groupNewRoomReserv.ResumeLayout(False)
         Me.groupNewRoomReserv.PerformLayout()
+        Me.groupWaitings.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -349,4 +373,6 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents btnRoomReservRefresh As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents lst5min As ListBox
+    Friend WithEvents lstWaitingCust As ListBox
 End Class

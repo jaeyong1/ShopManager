@@ -58,17 +58,26 @@ Public Class clsRoomReservation
 
     '소팅함수
     Public Function CompareTo(other As clsRoomReservation) As Integer Implements IComparable(Of clsRoomReservation).CompareTo
+        '1순위 타석번호
         If 타석번호 > other.타석번호 Then
             Return 1
         ElseIf 타석번호 < other.타석번호 Then
             Return -1
         Else
+            '2순위 시작시간
             If 시작시간 > other.시작시간 Then
                 Return 1
             ElseIf 시작시간 < other.시작시간 Then
                 Return -1
             Else
-                Return 0
+                '3순위 입력순서
+                If Index > other.Index Then
+                    Return 1
+                ElseIf Index < other.Index Then
+                    Return -1
+                Else
+                    Return 0
+                End If
             End If
         End If
     End Function
@@ -122,7 +131,7 @@ Public Class clsRoomReservation
             Dim calctime As DateTime
             calctime = DateTime.Parse(_startTime)
             Dim showTime As String = ""
-            showTime = calctime.ToString("hh:mm")
+            showTime = calctime.ToString("HH:mm")
             Return showTime 'datagrid에 보일내용
         End Get
         Set(ByVal value As String)
@@ -135,7 +144,7 @@ Public Class clsRoomReservation
             Dim calctime As DateTime
             calctime = DateTime.Parse(_endTime)
             Dim showTime As String = ""
-            showTime = calctime.ToString("hh:mm")
+            showTime = calctime.ToString("HH:mm")
             Return showTime 'datagrid에 보일내용
         End Get
         Set(ByVal value As String)

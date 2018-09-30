@@ -25,15 +25,15 @@ Public Class UserControl_RoomReservation
         Next
 
         '배경색변경 샘플코드
-        Form2ndMonitor.dynamicBoxList.Item(1).setRoomFree()
-        Form2ndMonitor.dynamicBoxList.Item(1).setBoxText("미사용")
+        'Form2ndMonitor.dynamicBoxList.Item(1).setRoomFree()
+        'Form2ndMonitor.dynamicBoxList.Item(1).setBoxText("미사용")
 
 
-        Form2ndMonitor.dynamicBoxList.Item(2).setRoomUsing()
-        Form2ndMonitor.dynamicBoxList.Item(2).setBoxText("사용중" + vbCrLf + "58:45")
+        'Form2ndMonitor.dynamicBoxList.Item(2).setRoomUsing()
+        'Form2ndMonitor.dynamicBoxList.Item(2).setBoxText("사용중" + vbCrLf + "58:45")
 
-        Form2ndMonitor.dynamicBoxList.Item(3).setRoomFreeSoon()
-        Form2ndMonitor.dynamicBoxList.Item(3).setBoxText("거의끝나감" + vbCrLf + "02:23")
+        'Form2ndMonitor.dynamicBoxList.Item(3).setRoomFreeSoon()
+        'Form2ndMonitor.dynamicBoxList.Item(3).setBoxText("거의끝나감" + vbCrLf + "02:23")
 
     End Sub
 
@@ -49,6 +49,9 @@ Public Class UserControl_RoomReservation
 
         BindingSource1.DataSource = lstRoomReservation
         DataGridView1.DataSource = BindingSource1
+
+        updateRoomReservationWithServer()
+
     End Sub
 
     Private Sub btnAddReserv_Click(sender As Object, e As EventArgs) Handles btnAddReserv.Click
@@ -94,7 +97,6 @@ Public Class UserControl_RoomReservation
         If lstStartTime.Items(lstStartTime.SelectedIndex).Contains("오전") Then
             starthour_1 = starthour_1.Replace("오전 ", "").Trim()
             starthour_num = Integer.Parse(starthour_1)
-
         Else
             starthour_1 = starthour_1.Replace("오후 ", "").Trim()
             starthour_num = Integer.Parse(starthour_1) + 12 '오후면 12시간 추가
@@ -105,7 +107,6 @@ Public Class UserControl_RoomReservation
                                                  0, 'minutes
                                                  0, 'seconds
                                                  0) 'milliseconds
-
 
         '종료시간 변환
         Dim usageTime_1 As String = comboUsageTime.Text.Replace(" 시간", "").Trim()
@@ -145,9 +146,8 @@ Public Class UserControl_RoomReservation
                                                       "대기중",
                                                       txtCustomerID.Text,
                                                       txtEmployeeId.Text,
-                                                      startTime.ToString,
-                                                      endTime.ToString)
-                                                      )
+                                   Format(startTime, "HH:mm"),                                   Format(endTime, "HH:mm")
+                                                      ))
 
 
         'DB Update  < 서버
@@ -245,5 +245,73 @@ Public Class UserControl_RoomReservation
             updateRoomReservationWithServer()
             timer_cnt = 61
         End If
+
+        update2ndScreen()
+
     End Sub
+
+    Private Sub update2ndScreen()
+        Me.lst5min.Items.Clear()
+        lstWaitingCust.Items.Clear()
+        For i = 0 To (Form2ndMonitor.dynamicBoxList.Count - 1)
+            '토픽
+            Form2ndMonitor.dynamicBoxList.Item(i).setTopicText((i + 1) & "번")
+
+            '내용 
+            Dim contents As String = "내용" & (i + 1)
+            Dim isSetted As Boolean = False
+            Dim waiting As Integer = 0
+
+            For j = 0 To (lstRoomReservation.Count - 1)
+                '[사용중] 남은시간 표시
+                If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("사용중") Then
+                    Dim endTime As DateTime
+                    endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
+                    Dim timediff As TimeSpan = endTime - DateTime.Now
+                    contents = Format(timediff.Hours, "0").Replace("-", "") &
+                        Format(timediff.Minutes, ":00").Replace("-", "") &
+                        Format(timediff.Seconds, ":00").Replace("-", "")
+
+
+                    '5분이하 : [끝나감] 색깔
+                    If timediff.TotalMinutes >= 0 And timediff.TotalMinutes <= 5.0 Then
+                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
+                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("끝나감" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                        Me.lst5min.Items.Add(lstRoomReservation.Item(j).타석번호 & "번타석 / " & Format(timediff.Minutes, "0") & "분남음")
+
+                    ElseIf timediff.TotalMinutes < 0 Then '시간초과/종료지연
+                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
+                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("종료지연" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                        Me.lst5min.Items.Add(lstRoomReservation.Item(j).타석번호 & "번타석 / " & Format(-timediff.TotalMinutes, "0") & "분 시간초과")
+
+                    Else '[사용중]색깔
+                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomUsing()
+                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("사용중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                    End If
+
+
+
+                    isSetted = True '뭔가 변경함
+                End If
+
+
+                '[사용중] 아닌경우
+                If isSetted = False Then
+                    Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
+                    Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
+                End If
+
+                '대기인원 카운트
+                If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("대기중") Then
+                    waiting = waiting + 1
+                    lstWaitingCust.Items.Add(lstRoomReservation.Item(j).타석번호 & "번방 / " & lstRoomReservation.Item(j).회원 & "님 대기중")
+                End If
+            Next
+
+
+        Next
+
+
+    End Sub
+
 End Class
