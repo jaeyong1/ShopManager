@@ -6,4 +6,8 @@
 
     Public lstRoomReservation As New List(Of clsRoomReservation) '타석예약 리스트 (=데이터그리드 화면과 동기화)
 
+
+    Public G_WebServerURL As String = "http://puttingone.cafe24.com/"
+    Public JYP_G_WebServerURL As String = "http://192.168.0.50:8080/putting/"
+
 End Module

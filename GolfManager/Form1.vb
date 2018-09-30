@@ -21,13 +21,27 @@
 
 
     End Sub
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim h As System.Net.IPHostEntry = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName)
 
+        For i = 0 To (h.AddressList.Length - 1)
+            If "192.168.0.50".Equals(h.AddressList.GetValue(i).ToString()) Then
+                Console.WriteLine("---------------------------------------")
+                Console.WriteLine("박재용 PC에서 실행중. 웹URL을 로컬로 변경")
+                Console.WriteLine("---------------------------------------")
+                btnLocalWebserverIP.Visible = True
+                G_WebServerURL = JYP_G_WebServerURL
 
+            End If
+        Next i
 
     End Sub
 
+    '웹서버 주소를 로컬 -> cafe24로 변경
+    Private Sub btnLocalWebserverIP_Click(sender As Object, e As EventArgs) Handles btnLocalWebserverIP.Click
+        G_WebServerURL = "http://puttingone.cafe24.com/"
+        btnLocalWebserverIP.Text = "puttingone.cafe24로 변경됨"
+    End Sub
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
 
         Dim result As Integer = MessageBox.Show("프로그램을 종료하시겠습니까?", "종료", MessageBoxButtons.YesNo)
@@ -45,4 +59,5 @@
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
+
 End Class

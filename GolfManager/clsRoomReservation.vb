@@ -1,5 +1,8 @@
 ﻿'타석예약 클래스
+Imports GolfManager
+
 Public Class clsRoomReservation
+    Implements IComparable(Of clsRoomReservation)
 
     Private _index As String 'index(pk)
     Private _RoomNumber As String '타석번호
@@ -21,8 +24,8 @@ Public Class clsRoomReservation
 
     '새로추가하려는 예약이 valid한지 확인
     Public Function isValidNewReservation(ByVal newRoomNumber As String,
-                                          ByVal newStartTime As String,
-                                          ByVal newEndTime As String)
+                                      ByVal newStartTime As String,
+                                      ByVal newEndTime As String)
         '확인하려는 방번호가 이것의 방번호와 다름 > false
         If Not newRoomNumber.Equals(_RoomNumber) Then
             Return True
@@ -53,6 +56,23 @@ Public Class clsRoomReservation
         Return False '겹치는 경우
     End Function
 
+    '소팅함수
+    Public Function CompareTo(other As clsRoomReservation) As Integer Implements IComparable(Of clsRoomReservation).CompareTo
+        If 타석번호 > other.타석번호 Then
+            Return 1
+        ElseIf 타석번호 < other.타석번호 Then
+            Return -1
+        Else
+            If 시작시간 > other.시작시간 Then
+                Return 1
+            ElseIf 시작시간 < other.시작시간 Then
+                Return -1
+            Else
+                Return 0
+            End If
+        End If
+    End Function
+
     Public Property Index() As String
         Get
             Return _index
@@ -63,7 +83,7 @@ Public Class clsRoomReservation
     End Property
     Public Property 타석번호() As String
         Get
-            Return _RoomNumber & "번" 'datagrid에 보일내용
+            Return _RoomNumber & "" 'datagrid에 보일내용
         End Get
         Set(ByVal value As String)
             _RoomNumber = value
@@ -102,7 +122,7 @@ Public Class clsRoomReservation
             Dim calctime As DateTime
             calctime = DateTime.Parse(_startTime)
             Dim showTime As String = ""
-            showTime = calctime.Hour & ":00"
+            showTime = calctime.ToString("hh:mm")
             Return showTime 'datagrid에 보일내용
         End Get
         Set(ByVal value As String)
@@ -115,12 +135,11 @@ Public Class clsRoomReservation
             Dim calctime As DateTime
             calctime = DateTime.Parse(_endTime)
             Dim showTime As String = ""
-            showTime = calctime.Hour & ":00"
+            showTime = calctime.ToString("hh:mm")
             Return showTime 'datagrid에 보일내용
         End Get
         Set(ByVal value As String)
             _endTime = value
         End Set
     End Property
-
 End Class
