@@ -262,6 +262,17 @@ Public Class UserControl_RoomReservation
             Dim isSetted As Boolean = False
             Dim waiting As Integer = 0
 
+            '타석상태 결정순서
+            '미사용 > 사용중 > 곧끝남 > 종료지연(시간고려 추가)
+
+            For j = 0 To (lstRoomReservation.Count - 1)
+                '대기인원 카운트
+                If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("대기중") Then
+                    waiting = waiting + 1
+                    lstWaitingCust.Items.Add(lstRoomReservation.Item(j).타석번호 & "번방 / " & lstRoomReservation.Item(j).회원 & "님 대기중")
+                End If
+            Next j
+
             For j = 0 To (lstRoomReservation.Count - 1)
                 '[사용중] 남은시간 표시
                 If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("사용중") Then
@@ -301,11 +312,7 @@ Public Class UserControl_RoomReservation
                     Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
                 End If
 
-                '대기인원 카운트
-                If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("대기중") Then
-                    waiting = waiting + 1
-                    lstWaitingCust.Items.Add(lstRoomReservation.Item(j).타석번호 & "번방 / " & lstRoomReservation.Item(j).회원 & "님 대기중")
-                End If
+
             Next
 
 
