@@ -562,7 +562,10 @@ Public Class UserControl_RoomReservation
                 txtCustomerID.Text = lstRoomReservation.Item(j).회원
                 txtEmployeeId.Text = "(미정)"
                 lstStartTime.SelectedIndex = -1
+
                 txtCustomerName.Text = lstRoomReservation.Item(j).회원
+
+                selectStartTimeUI(lstRoomReservation.Item(j).시작시간)
 
                 Dim startTime As DateTime : startTime = DateTime.Parse(lstRoomReservation.Item(j).시작시간)
                 Dim endTime As DateTime : endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
@@ -702,12 +705,55 @@ Public Class UserControl_RoomReservation
                 '삭제후 업데이트
                 refreshRoomReservationWithServer()
                 Exit Sub
-
-
-                Exit Sub
             End If
         Next j
     End Sub
 
+    '시작시간 선택함수
+    Private Sub selectStartTimeUI(startTime As String)
+        Console.WriteLine("selectStartTimeUI>" & startTime)
+
+        For k = 0 To (lstStartTime.Items.Count - 1)
+            If startTime.Equals("07:00") And lstStartTime.Items(k).Equals("오전 7:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("08:00") And lstStartTime.Items(k).Equals("오전 8:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("09:00") And lstStartTime.Items(k).Equals("오전 9:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("10:00") And lstStartTime.Items(k).Equals("오전 10:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("11:00") And lstStartTime.Items(k).Equals("오전 11:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("12:00") And lstStartTime.Items(k).Equals("오전 12:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("13:00") And lstStartTime.Items(k).Equals("오후 1:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("14:00") And lstStartTime.Items(k).Equals("오후 2:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("15:00") And lstStartTime.Items(k).Equals("오후 3:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("16:00") And lstStartTime.Items(k).Equals("오후 4:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("17:00") And lstStartTime.Items(k).Equals("오후 5:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("18:00") And lstStartTime.Items(k).Equals("오후 6:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("19:00") And lstStartTime.Items(k).Equals("오후 7:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("20:00") And lstStartTime.Items(k).Equals("오후 8:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("21:00") And lstStartTime.Items(k).Equals("오후 9:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals(lstStartTime.Items(k)) Then
+                '입력이랑이름같으면
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            End If
+
+
+        Next
+
+        '못찾으면
+        lstStartTime.SelectedIndex = -1
+    End Sub
 
 End Class
