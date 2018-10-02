@@ -4,7 +4,7 @@ Imports GolfManager
 Public Class clsRoomReservation
     Implements IComparable(Of clsRoomReservation)
 
-    Private _index As String 'index(pk)
+    Private _index As String '고유index(pk)
     Private _RoomNumber As String '타석번호
     Private _state As String '상태
     Private _customerId As String '회원ID
@@ -71,9 +71,9 @@ Public Class clsRoomReservation
                 Return -1
             Else
                 '3순위 입력순서
-                If Index > other.Index Then
+                If 고유Index > other.고유Index Then
                     Return 1
-                ElseIf Index < other.Index Then
+                ElseIf 고유Index < other.고유Index Then
                     Return -1
                 Else
                     Return 0
@@ -82,7 +82,7 @@ Public Class clsRoomReservation
         End If
     End Function
 
-    Public Property Index() As String
+    Public Property 고유Index() As String
         Get
             Return _index
         End Get

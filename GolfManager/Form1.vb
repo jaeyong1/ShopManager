@@ -56,9 +56,6 @@
 
     End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
 
     '전체Form 마우스드래그로 이동
     Public MoveForm As Boolean

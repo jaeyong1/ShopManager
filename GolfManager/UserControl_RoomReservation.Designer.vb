@@ -26,8 +26,11 @@ Partial Class UserControl_RoomReservation
         Me.btnShow = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.groupNewRoomReserv = New System.Windows.Forms.GroupBox()
+        Me.btnSetRoomEnd = New System.Windows.Forms.Button()
+        Me.btnSetRoomStart = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtRoomState = New System.Windows.Forms.TextBox()
+        Me.btnAddWaiting = New System.Windows.Forms.Button()
         Me.btnAddReserv = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtCustomerID = New System.Windows.Forms.TextBox()
@@ -37,18 +40,19 @@ Partial Class UserControl_RoomReservation
         Me.txtCustomerName = New System.Windows.Forms.TextBox()
         Me.comboUsageTime = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lstStartTime = New System.Windows.Forms.ListBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboRoomNumber = New System.Windows.Forms.ComboBox()
         Me.groupWaitings = New System.Windows.Forms.GroupBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.lstWaitingCust = New System.Windows.Forms.ListBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lst5min = New System.Windows.Forms.ListBox()
         Me.btnRoomReservRefresh = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.lblRoomReservIndex = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupNewRoomReserv.SuspendLayout()
         Me.groupWaitings.SuspendLayout()
@@ -83,8 +87,12 @@ Partial Class UserControl_RoomReservation
         '
         'groupNewRoomReserv
         '
+        Me.groupNewRoomReserv.Controls.Add(Me.lblRoomReservIndex)
+        Me.groupNewRoomReserv.Controls.Add(Me.btnSetRoomEnd)
+        Me.groupNewRoomReserv.Controls.Add(Me.btnSetRoomStart)
         Me.groupNewRoomReserv.Controls.Add(Me.Label7)
         Me.groupNewRoomReserv.Controls.Add(Me.txtRoomState)
+        Me.groupNewRoomReserv.Controls.Add(Me.btnAddWaiting)
         Me.groupNewRoomReserv.Controls.Add(Me.btnAddReserv)
         Me.groupNewRoomReserv.Controls.Add(Me.Label1)
         Me.groupNewRoomReserv.Controls.Add(Me.txtCustomerID)
@@ -94,7 +102,6 @@ Partial Class UserControl_RoomReservation
         Me.groupNewRoomReserv.Controls.Add(Me.txtCustomerName)
         Me.groupNewRoomReserv.Controls.Add(Me.comboUsageTime)
         Me.groupNewRoomReserv.Controls.Add(Me.Label4)
-        Me.groupNewRoomReserv.Controls.Add(Me.Button1)
         Me.groupNewRoomReserv.Controls.Add(Me.Label3)
         Me.groupNewRoomReserv.Controls.Add(Me.lstStartTime)
         Me.groupNewRoomReserv.Controls.Add(Me.Label2)
@@ -106,6 +113,32 @@ Partial Class UserControl_RoomReservation
         Me.groupNewRoomReserv.TabIndex = 2
         Me.groupNewRoomReserv.TabStop = False
         Me.groupNewRoomReserv.Text = "타석예약"
+        '
+        'btnSetRoomEnd
+        '
+        Me.btnSetRoomEnd.BackColor = System.Drawing.Color.Gray
+        Me.btnSetRoomEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSetRoomEnd.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnSetRoomEnd.ForeColor = System.Drawing.Color.White
+        Me.btnSetRoomEnd.Location = New System.Drawing.Point(335, 251)
+        Me.btnSetRoomEnd.Name = "btnSetRoomEnd"
+        Me.btnSetRoomEnd.Size = New System.Drawing.Size(95, 37)
+        Me.btnSetRoomEnd.TabIndex = 18
+        Me.btnSetRoomEnd.Text = "사용종료"
+        Me.btnSetRoomEnd.UseVisualStyleBackColor = False
+        '
+        'btnSetRoomStart
+        '
+        Me.btnSetRoomStart.BackColor = System.Drawing.Color.Gray
+        Me.btnSetRoomStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSetRoomStart.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnSetRoomStart.ForeColor = System.Drawing.Color.White
+        Me.btnSetRoomStart.Location = New System.Drawing.Point(239, 251)
+        Me.btnSetRoomStart.Name = "btnSetRoomStart"
+        Me.btnSetRoomStart.Size = New System.Drawing.Size(95, 37)
+        Me.btnSetRoomStart.TabIndex = 18
+        Me.btnSetRoomStart.Text = "사용시작"
+        Me.btnSetRoomStart.UseVisualStyleBackColor = False
         '
         'Label7
         '
@@ -126,6 +159,19 @@ Partial Class UserControl_RoomReservation
         Me.txtRoomState.TabIndex = 16
         Me.txtRoomState.TabStop = False
         '
+        'btnAddWaiting
+        '
+        Me.btnAddWaiting.BackColor = System.Drawing.Color.Gray
+        Me.btnAddWaiting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAddWaiting.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnAddWaiting.ForeColor = System.Drawing.Color.White
+        Me.btnAddWaiting.Location = New System.Drawing.Point(239, 198)
+        Me.btnAddWaiting.Name = "btnAddWaiting"
+        Me.btnAddWaiting.Size = New System.Drawing.Size(191, 37)
+        Me.btnAddWaiting.TabIndex = 6
+        Me.btnAddWaiting.Text = "(시간선택없이)대기추가"
+        Me.btnAddWaiting.UseVisualStyleBackColor = False
+        '
         'btnAddReserv
         '
         Me.btnAddReserv.BackColor = System.Drawing.Color.Gray
@@ -136,7 +182,7 @@ Partial Class UserControl_RoomReservation
         Me.btnAddReserv.Name = "btnAddReserv"
         Me.btnAddReserv.Size = New System.Drawing.Size(191, 37)
         Me.btnAddReserv.TabIndex = 6
-        Me.btnAddReserv.Text = "예약추가"
+        Me.btnAddReserv.Text = "타석예약추가"
         Me.btnAddReserv.UseVisualStyleBackColor = False
         '
         'Label1
@@ -215,19 +261,6 @@ Partial Class UserControl_RoomReservation
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "사용시간"
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.Gray
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(238, 201)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(191, 37)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "(시작시간없이)대기추가"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -271,6 +304,7 @@ Partial Class UserControl_RoomReservation
         '
         'groupWaitings
         '
+        Me.groupWaitings.Controls.Add(Me.Label8)
         Me.groupWaitings.Controls.Add(Me.lstWaitingCust)
         Me.groupWaitings.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.groupWaitings.Location = New System.Drawing.Point(702, 14)
@@ -280,12 +314,21 @@ Partial Class UserControl_RoomReservation
         Me.groupWaitings.TabStop = False
         Me.groupWaitings.Text = "대기중"
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(32, 285)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(151, 13)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "(더블클릭으로 예약취소)"
+        '
         'lstWaitingCust
         '
         Me.lstWaitingCust.FormattingEnabled = True
         Me.lstWaitingCust.Location = New System.Drawing.Point(6, 18)
         Me.lstWaitingCust.Name = "lstWaitingCust"
-        Me.lstWaitingCust.Size = New System.Drawing.Size(203, 290)
+        Me.lstWaitingCust.Size = New System.Drawing.Size(203, 264)
         Me.lstWaitingCust.TabIndex = 1
         '
         'GroupBox1
@@ -325,6 +368,14 @@ Partial Class UserControl_RoomReservation
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
+        'lblRoomReservIndex
+        '
+        Me.lblRoomReservIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblRoomReservIndex.Location = New System.Drawing.Point(306, 119)
+        Me.lblRoomReservIndex.Name = "lblRoomReservIndex"
+        Me.lblRoomReservIndex.Size = New System.Drawing.Size(123, 23)
+        Me.lblRoomReservIndex.TabIndex = 19
+        '
         'UserControl_RoomReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -344,6 +395,7 @@ Partial Class UserControl_RoomReservation
         Me.groupNewRoomReserv.ResumeLayout(False)
         Me.groupNewRoomReserv.PerformLayout()
         Me.groupWaitings.ResumeLayout(False)
+        Me.groupWaitings.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -358,7 +410,6 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents Label3 As Label
     Friend WithEvents comboUsageTime As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents Button1 As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents txtEmployeeId As TextBox
     Friend WithEvents Label5 As Label
@@ -375,4 +426,9 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents Timer1 As Timer
     Friend WithEvents lst5min As ListBox
     Friend WithEvents lstWaitingCust As ListBox
+    Friend WithEvents btnAddWaiting As Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents btnSetRoomEnd As Button
+    Friend WithEvents btnSetRoomStart As Button
+    Friend WithEvents lblRoomReservIndex As Label
 End Class
