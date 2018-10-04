@@ -135,6 +135,8 @@ Public Class Form2ndMonitor
 
             '토픽폰트 적용
             lblroomnumber.Font = topicfont1
+            lblroomnumber.ForeColor = Color.White
+
 
             '박스폰트 생성
             Dim boxfont1 = New Font("Sans Serif", BoxFontSize, FontStyle.Regular)

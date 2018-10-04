@@ -522,12 +522,13 @@ Public Class UserControl_RoomReservation
                     isSetted = True '뭔가 변경함
                 End If
 
-                '[사용중] 아닌경우
-                If isSetted = False Then
-                    Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
-                    Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
-                End If
+
             Next
+            '[사용중] 아닌경우
+            If isSetted = False Then
+                Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
+                Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
+            End If
         Next
     End Sub
 
