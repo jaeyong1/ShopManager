@@ -110,6 +110,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Settings.vb" />
     <Compile Include="UserControl_customer_main.Designer.vb">
       <DependentUpon>UserControl_customer_main.vb</DependentUpon>
     </Compile>

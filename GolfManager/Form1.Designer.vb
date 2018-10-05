@@ -345,9 +345,9 @@ Partial Class Form1
         Me.Label3.ForeColor = System.Drawing.Color.Gray
         Me.Label3.Location = New System.Drawing.Point(900, 26)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(310, 15)
+        Me.Label3.Size = New System.Drawing.Size(320, 15)
         Me.Label3.TabIndex = 4
-        Me.Label3.Text = "AAA지점 BBB님(매장직원)으로 로그인 중"
+        Me.Label3.Text = "2호점 이중영님(안내데스크)으로 로그인 중"
         '
         'btnShowFacebook
         '

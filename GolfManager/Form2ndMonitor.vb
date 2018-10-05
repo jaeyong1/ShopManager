@@ -22,6 +22,7 @@ Public Class Form2ndMonitor
 
         ''XML 파일로딩
         dynamicBoxList = load2ndMonitorSettings()
+        load2ndMonitorOtherSettings()
 
         If dynamicBoxList.Count = 0 Then
             '파일 불러온것 없음(파일이 없거나 XML 파싱중 exception)
@@ -68,6 +69,7 @@ Public Class Form2ndMonitor
         Dim file As New System.IO.StreamWriter(SecondScreenDesignXMLFileName)
         writer.Serialize(file, dynamicBoxList)
         file.Close()
+        MsgBox("저장되었습니다")
     End Sub
 
     '파일에서 화면배치 불러옴
@@ -93,11 +95,53 @@ Public Class Form2ndMonitor
         Return overview
     End Function
 
+    '파일에서 화면배치외 "기타설정" 불러옴
+    Public Sub load2ndMonitorOtherSettings()
+        Console.WriteLine(My.Settings.Text2ndScreenTopBanner)
+        '상단배너내용
+        Call setTopbanner(My.Settings.Text2ndScreenTopBanner, My.Settings.Text2ndScreenTopBannerFontSize)
+
+    End Sub
+
+
+    Private txtTopBanners() As String '탑배너문자열 리스트
+    Private cursorTopBanners As Integer = 0 '탑배너문자열 로테이션 인덱스
+
+    '탑배너 설정
+    Public Sub setTopbanner(_contents As String, _fontsize As Integer)
+        cursorTopBanners = 0
+        txtTopBanners = Split(_contents, vbCrLf, , vbTextCompare)
+        Console.WriteLine("lines : " & txtTopBanners.Count)
+    End Sub
+
+    '타이머에 따라 탑배너 바뀜
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        '탑배너 설정없으면 종료
+        If txtTopBanners.Count = 0 Then
+            Exit Sub
+        End If
+
+        lblTopBannerText.Text = txtTopBanners(cursorTopBanners) '내용
+        lblTopBannerText.Font = New Font("Sans Serif", My.Settings.Text2ndScreenTopBannerFontSize, FontStyle.Regular) '폰트/크기
+
+        cursorTopBanners = cursorTopBanners + 1
+        If (cursorTopBanners >= txtTopBanners.Count) Then
+            cursorTopBanners = 0
+        End If
+    End Sub
+
+
     '드래그 가능여부 전체변경(외부인터페이스)
     Public Sub changeDragEnable(en As Boolean)
         For i = 0 To (dynamicBoxList.Count - 1)
             dynamicBoxList.Item(i).setDragEnable(en)
         Next
+    End Sub
+
+    Private Sub Form2ndMonitor_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Console.WriteLine("resize")
+        lblTopBannerText.Width = Me.Size.Width
+
     End Sub
 
 
@@ -274,4 +318,5 @@ Public Class Form2ndMonitor
             txt.BackColor = Color.LightYellow
         End Sub
     End Class
+
 End Class

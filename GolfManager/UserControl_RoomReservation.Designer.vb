@@ -26,6 +26,8 @@ Partial Class UserControl_RoomReservation
         Me.btnShow = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.groupNewRoomReserv = New System.Windows.Forms.GroupBox()
+        Me.btnInitUI = New System.Windows.Forms.Button()
+        Me.lblRoomReservIndex = New System.Windows.Forms.Label()
         Me.btnSetRoomEnd = New System.Windows.Forms.Button()
         Me.btnSetRoomStart = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -52,7 +54,6 @@ Partial Class UserControl_RoomReservation
         Me.lst5min = New System.Windows.Forms.ListBox()
         Me.btnRoomReservRefresh = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.lblRoomReservIndex = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupNewRoomReserv.SuspendLayout()
         Me.groupWaitings.SuspendLayout()
@@ -82,11 +83,12 @@ Partial Class UserControl_RoomReservation
         Me.DataGridView1.Location = New System.Drawing.Point(30, 357)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(1098, 340)
+        Me.DataGridView1.Size = New System.Drawing.Size(1098, 357)
         Me.DataGridView1.TabIndex = 1
         '
         'groupNewRoomReserv
         '
+        Me.groupNewRoomReserv.Controls.Add(Me.btnInitUI)
         Me.groupNewRoomReserv.Controls.Add(Me.lblRoomReservIndex)
         Me.groupNewRoomReserv.Controls.Add(Me.btnSetRoomEnd)
         Me.groupNewRoomReserv.Controls.Add(Me.btnSetRoomStart)
@@ -113,6 +115,28 @@ Partial Class UserControl_RoomReservation
         Me.groupNewRoomReserv.TabIndex = 2
         Me.groupNewRoomReserv.TabStop = False
         Me.groupNewRoomReserv.Text = "타석예약"
+        '
+        'btnInitUI
+        '
+        Me.btnInitUI.BackColor = System.Drawing.Color.Gray
+        Me.btnInitUI.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnInitUI.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnInitUI.ForeColor = System.Drawing.Color.White
+        Me.btnInitUI.Location = New System.Drawing.Point(238, 119)
+        Me.btnInitUI.Name = "btnInitUI"
+        Me.btnInitUI.Size = New System.Drawing.Size(191, 37)
+        Me.btnInitUI.TabIndex = 20
+        Me.btnInitUI.Text = "입력화면초기화"
+        Me.btnInitUI.UseVisualStyleBackColor = False
+        '
+        'lblRoomReservIndex
+        '
+        Me.lblRoomReservIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblRoomReservIndex.Location = New System.Drawing.Point(6, 146)
+        Me.lblRoomReservIndex.Name = "lblRoomReservIndex"
+        Me.lblRoomReservIndex.Size = New System.Drawing.Size(65, 23)
+        Me.lblRoomReservIndex.TabIndex = 19
+        Me.lblRoomReservIndex.Visible = False
         '
         'btnSetRoomEnd
         '
@@ -152,6 +176,7 @@ Partial Class UserControl_RoomReservation
         '
         'txtRoomState
         '
+        Me.txtRoomState.Enabled = False
         Me.txtRoomState.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.txtRoomState.Location = New System.Drawing.Point(309, 23)
         Me.txtRoomState.Name = "txtRoomState"
@@ -165,7 +190,7 @@ Partial Class UserControl_RoomReservation
         Me.btnAddWaiting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddWaiting.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.btnAddWaiting.ForeColor = System.Drawing.Color.White
-        Me.btnAddWaiting.Location = New System.Drawing.Point(239, 198)
+        Me.btnAddWaiting.Location = New System.Drawing.Point(239, 208)
         Me.btnAddWaiting.Name = "btnAddWaiting"
         Me.btnAddWaiting.Size = New System.Drawing.Size(191, 37)
         Me.btnAddWaiting.TabIndex = 6
@@ -178,7 +203,7 @@ Partial Class UserControl_RoomReservation
         Me.btnAddReserv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddReserv.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.btnAddReserv.ForeColor = System.Drawing.Color.White
-        Me.btnAddReserv.Location = New System.Drawing.Point(238, 146)
+        Me.btnAddReserv.Location = New System.Drawing.Point(238, 165)
         Me.btnAddReserv.Name = "btnAddReserv"
         Me.btnAddReserv.Size = New System.Drawing.Size(191, 37)
         Me.btnAddReserv.TabIndex = 6
@@ -233,6 +258,7 @@ Partial Class UserControl_RoomReservation
         '
         'txtCustomerName
         '
+        Me.txtCustomerName.Enabled = False
         Me.txtCustomerName.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.txtCustomerName.Location = New System.Drawing.Point(309, 55)
         Me.txtCustomerName.Name = "txtCustomerName"
@@ -368,14 +394,6 @@ Partial Class UserControl_RoomReservation
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
-        'lblRoomReservIndex
-        '
-        Me.lblRoomReservIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblRoomReservIndex.Location = New System.Drawing.Point(306, 119)
-        Me.lblRoomReservIndex.Name = "lblRoomReservIndex"
-        Me.lblRoomReservIndex.Size = New System.Drawing.Size(123, 23)
-        Me.lblRoomReservIndex.TabIndex = 19
-        '
         'UserControl_RoomReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -431,4 +449,5 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents btnSetRoomEnd As Button
     Friend WithEvents btnSetRoomStart As Button
     Friend WithEvents lblRoomReservIndex As Label
+    Friend WithEvents btnInitUI As Button
 End Class

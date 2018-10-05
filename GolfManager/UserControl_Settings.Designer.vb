@@ -24,6 +24,18 @@ Partial Class UserControl_Settings
     Private Sub InitializeComponent()
         Me.btn2ndScrDragEnable = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.chkbottomimg = New System.Windows.Forms.CheckBox()
+        Me.chkBgimg = New System.Windows.Forms.CheckBox()
+        Me.btnBottomBannerPath = New System.Windows.Forms.Button()
+        Me.txtBottomImgPath = New System.Windows.Forms.TextBox()
+        Me.btnBgimgPath = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtBackgroundimgPath = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtTopbanner = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtTopbannerFontsize = New System.Windows.Forms.TextBox()
         Me.btnApplyUISetting = New System.Windows.Forms.Button()
         Me.btnBoxDefaultPosition = New System.Windows.Forms.Button()
         Me.btnUISettingLoad = New System.Windows.Forms.Button()
@@ -44,6 +56,8 @@ Partial Class UserControl_Settings
         Me.txtTitleFontSize = New System.Windows.Forms.TextBox()
         Me.lblRooms = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -62,6 +76,18 @@ Partial Class UserControl_Settings
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.chkbottomimg)
+        Me.GroupBox1.Controls.Add(Me.chkBgimg)
+        Me.GroupBox1.Controls.Add(Me.btnBottomBannerPath)
+        Me.GroupBox1.Controls.Add(Me.txtBottomImgPath)
+        Me.GroupBox1.Controls.Add(Me.btnBgimgPath)
+        Me.GroupBox1.Controls.Add(Me.Label14)
+        Me.GroupBox1.Controls.Add(Me.txtBackgroundimgPath)
+        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.txtTopbanner)
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.txtTopbannerFontsize)
         Me.GroupBox1.Controls.Add(Me.btnApplyUISetting)
         Me.GroupBox1.Controls.Add(Me.btnBoxDefaultPosition)
         Me.GroupBox1.Controls.Add(Me.btnUISettingLoad)
@@ -86,10 +112,117 @@ Partial Class UserControl_Settings
         Me.GroupBox1.Font = New System.Drawing.Font("NanumGothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(182, 38)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(510, 130)
+        Me.GroupBox1.Size = New System.Drawing.Size(477, 312)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " 타석표시 화면설정 "
+        '
+        'chkbottomimg
+        '
+        Me.chkbottomimg.AutoSize = True
+        Me.chkbottomimg.Location = New System.Drawing.Point(414, 276)
+        Me.chkbottomimg.Name = "chkbottomimg"
+        Me.chkbottomimg.Size = New System.Drawing.Size(50, 19)
+        Me.chkbottomimg.TabIndex = 27
+        Me.chkbottomimg.Text = "사용"
+        Me.chkbottomimg.UseVisualStyleBackColor = True
+        '
+        'chkBgimg
+        '
+        Me.chkBgimg.AutoSize = True
+        Me.chkBgimg.Location = New System.Drawing.Point(414, 244)
+        Me.chkBgimg.Name = "chkBgimg"
+        Me.chkBgimg.Size = New System.Drawing.Size(50, 19)
+        Me.chkBgimg.TabIndex = 26
+        Me.chkBgimg.Text = "사용"
+        Me.chkBgimg.UseVisualStyleBackColor = True
+        '
+        'btnBottomBannerPath
+        '
+        Me.btnBottomBannerPath.Location = New System.Drawing.Point(369, 272)
+        Me.btnBottomBannerPath.Name = "btnBottomBannerPath"
+        Me.btnBottomBannerPath.Size = New System.Drawing.Size(39, 23)
+        Me.btnBottomBannerPath.TabIndex = 25
+        Me.btnBottomBannerPath.Text = "..."
+        Me.btnBottomBannerPath.UseVisualStyleBackColor = True
+        '
+        'txtBottomImgPath
+        '
+        Me.txtBottomImgPath.Enabled = False
+        Me.txtBottomImgPath.Location = New System.Drawing.Point(103, 273)
+        Me.txtBottomImgPath.Name = "txtBottomImgPath"
+        Me.txtBottomImgPath.Size = New System.Drawing.Size(260, 22)
+        Me.txtBottomImgPath.TabIndex = 24
+        '
+        'btnBgimgPath
+        '
+        Me.btnBgimgPath.Location = New System.Drawing.Point(369, 243)
+        Me.btnBgimgPath.Name = "btnBgimgPath"
+        Me.btnBgimgPath.Size = New System.Drawing.Size(39, 23)
+        Me.btnBgimgPath.TabIndex = 25
+        Me.btnBgimgPath.Text = "..."
+        Me.btnBgimgPath.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(8, 276)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(91, 15)
+        Me.Label14.TabIndex = 23
+        Me.Label14.Text = "하단배너경로 : "
+        '
+        'txtBackgroundimgPath
+        '
+        Me.txtBackgroundimgPath.Enabled = False
+        Me.txtBackgroundimgPath.Location = New System.Drawing.Point(103, 244)
+        Me.txtBackgroundimgPath.Name = "txtBackgroundimgPath"
+        Me.txtBackgroundimgPath.Size = New System.Drawing.Size(260, 22)
+        Me.txtBackgroundimgPath.TabIndex = 24
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(8, 247)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(91, 15)
+        Me.Label13.TabIndex = 23
+        Me.Label13.Text = "배경그림경로 : "
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(10, 147)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(67, 15)
+        Me.Label12.TabIndex = 23
+        Me.Label12.Text = "상단메모 : "
+        '
+        'txtTopbanner
+        '
+        Me.txtTopbanner.Location = New System.Drawing.Point(83, 144)
+        Me.txtTopbanner.Multiline = True
+        Me.txtTopbanner.Name = "txtTopbanner"
+        Me.txtTopbanner.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtTopbanner.Size = New System.Drawing.Size(370, 66)
+        Me.txtTopbanner.TabIndex = 22
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(8, 219)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(115, 15)
+        Me.Label11.TabIndex = 21
+        Me.Label11.Text = "상단메모글씨크기 : "
+        '
+        'txtTopbannerFontsize
+        '
+        Me.txtTopbannerFontsize.Location = New System.Drawing.Point(126, 216)
+        Me.txtTopbannerFontsize.Name = "txtTopbannerFontsize"
+        Me.txtTopbannerFontsize.Size = New System.Drawing.Size(48, 22)
+        Me.txtTopbannerFontsize.TabIndex = 20
+        Me.txtTopbannerFontsize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnApplyUISetting
         '
@@ -124,7 +257,7 @@ Partial Class UserControl_Settings
         Me.btnUISettingSave.Name = "btnUISettingSave"
         Me.btnUISettingSave.Size = New System.Drawing.Size(94, 23)
         Me.btnUISettingSave.TabIndex = 14
-        Me.btnUISettingSave.Text = "현재화면 저장"
+        Me.btnUISettingSave.Text = "현재설정 저장"
         Me.btnUISettingSave.UseVisualStyleBackColor = True
         '
         'Label10
@@ -221,7 +354,7 @@ Partial Class UserControl_Settings
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(91, 15)
         Me.Label4.TabIndex = 5
-        Me.Label4.Text = "내용글씨크기 : "
+        Me.Label4.Text = "내용글자크기 : "
         '
         'txtContentFontSize
         '
@@ -238,7 +371,7 @@ Partial Class UserControl_Settings
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(91, 15)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "제목글씨크기 : "
+        Me.Label3.Text = "제목글자크기 : "
         '
         'txtTitleFontSize
         '
@@ -266,6 +399,10 @@ Partial Class UserControl_Settings
         Me.Label1.Size = New System.Drawing.Size(67, 15)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "타석개수 : "
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'UserControl_Settings
         '
@@ -306,4 +443,18 @@ Partial Class UserControl_Settings
     Friend WithEvents btnApplyUISetting As Button
     Friend WithEvents Label8 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents txtTopbanner As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtTopbannerFontsize As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents btnBgimgPath As Button
+    Friend WithEvents txtBackgroundimgPath As TextBox
+    Friend WithEvents btnBottomBannerPath As Button
+    Friend WithEvents txtBottomImgPath As TextBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents chkbottomimg As CheckBox
+    Friend WithEvents chkBgimg As CheckBox
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class

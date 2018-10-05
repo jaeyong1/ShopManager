@@ -250,6 +250,10 @@ Public Class UserControl_RoomReservation
         Next i
         Console.WriteLine("추가정보 isValid ? " & isValid)
 
+        Dim yn = MsgBox(txtCustomerID.Text & "님께서 " & ComboRoomNumber.Text & "번타석. " & Format(startTime, "HH:mm") & "부터 사용시작합니다.", MsgBoxStyle.YesNo)
+        If yn = vbNo Then
+            Exit Sub
+        End If
 
         '대기회원에서 선택했으면 지움(옵션)
         If lblRoomReservIndex.Text <> "" Then
@@ -435,7 +439,7 @@ Public Class UserControl_RoomReservation
             Next
             'sort 
             lstRoomReservation.Sort()
-            'Me.DataGridView1.Columns("index").Visible = False
+            Me.DataGridView1.Columns("고유index").Visible = False
             BindingSource1.ResetBindings(False)
         End If
         timer_cnt = 61 'force reset cnt
@@ -557,23 +561,9 @@ Public Class UserControl_RoomReservation
                     lstRoomReservation.Item(j).시작시간 = selectedStartTime And
                     lstRoomReservation.Item(j).회원 = selectedCustName Then
 
+                displayReservationInfo(lstRoomReservation.Item(j).고유Index)
+                gridCellSelect(lstRoomReservation.Item(j).고유Index)
 
-                lblRoomReservIndex.Text = lstRoomReservation.Item(j).고유Index
-                ComboRoomNumber.Text = lstRoomReservation.Item(j).타석번호
-                txtCustomerID.Text = lstRoomReservation.Item(j).회원
-                txtEmployeeId.Text = "(미정)"
-                lstStartTime.SelectedIndex = -1
-
-                txtCustomerName.Text = lstRoomReservation.Item(j).회원
-
-                selectStartTimeUI(lstRoomReservation.Item(j).시작시간)
-
-                Dim startTime As DateTime : startTime = DateTime.Parse(lstRoomReservation.Item(j).시작시간)
-                Dim endTime As DateTime : endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
-                Dim timediff As TimeSpan = endTime - startTime
-                comboUsageTime.Text = timediff.Hours & " 시간"
-
-                txtRoomState.Text = ""
             End If
         Next j
 
@@ -653,20 +643,9 @@ Public Class UserControl_RoomReservation
             If lstRoomReservation.Item(j).타석번호 = selectedRoomNum And
                 lstRoomReservation.Item(j).상태.Equals("사용중") Then
 
-                lblRoomReservIndex.Text = lstRoomReservation.Item(j).고유Index
-                ComboRoomNumber.Text = lstRoomReservation.Item(j).타석번호
-                txtCustomerID.Text = lstRoomReservation.Item(j).회원
-                txtEmployeeId.Text = "(미정)"
-                lstStartTime.SelectedIndex = -1
-                txtCustomerName.Text = lstRoomReservation.Item(j).회원
-
-                Dim startTime As DateTime : startTime = DateTime.Parse(lstRoomReservation.Item(j).시작시간)
-                Dim endTime As DateTime : endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
-                Dim timediff As TimeSpan = endTime - startTime
-                comboUsageTime.Text = timediff.Hours & " 시간"
-
-                txtRoomState.Text = ""
-
+                displayReservationInfo(lstRoomReservation.Item(j).고유Index)
+                gridCellSelect(lstRoomReservation.Item(j).고유Index)
+                comboUsageTime.Text = ""
                 Exit Sub
             End If
         Next j
@@ -755,6 +734,81 @@ Public Class UserControl_RoomReservation
 
         '못찾으면
         lstStartTime.SelectedIndex = -1
+    End Sub
+
+    '화면입력초기화 버튼클릭
+    Private Sub btnInitUI_Click(sender As Object, e As EventArgs) Handles btnInitUI.Click
+        '입력화면정리
+        clearRoomReservUI()
+    End Sub
+
+    '예약의 고유index(PK)로 예약상황 표시
+    Private Sub displayReservationInfo(_예약고유index As String)
+        '정보검색
+        For j = 0 To (lstRoomReservation.Count - 1)
+            If lstRoomReservation.Item(j).고유Index.Equals(_예약고유index) Then
+
+                lblRoomReservIndex.Text = _예약고유index
+                ComboRoomNumber.Text = lstRoomReservation.Item(j).타석번호
+                txtCustomerID.Text = lstRoomReservation.Item(j).회원
+                txtCustomerName.Text = "-"
+                txtEmployeeId.Text = "-"
+
+
+                If lstRoomReservation.Item(j).시작시간.Equals("00:00") Then
+                    lstStartTime.SelectedIndex = -1
+                Else
+                    '시작시간
+                    selectStartTimeUI(lstRoomReservation.Item(j).시작시간)
+
+                    '사용시간
+                    Dim startTime As DateTime : startTime = DateTime.Parse(lstRoomReservation.Item(j).시작시간)
+                    Dim endTime As DateTime : endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
+                    Dim timediff As TimeSpan = endTime - startTime
+                    comboUsageTime.Text = timediff.Hours & " 시간"
+                End If
+
+
+
+                txtRoomState.Text = ""
+
+                Exit Sub
+            End If
+        Next j
+
+    End Sub
+
+
+    '테이블클릭 -> UI로 띄움
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        If (e.RowIndex < 0 Or e.ColumnIndex < 0) Then
+            '헤더나 열전체 선택시 무시
+            Exit Sub
+        End If
+
+        Dim data As String = DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+
+
+        Dim data0_index As String = DataGridView1.Rows(e.RowIndex).Cells(0).Value '고유Index
+        Dim data1_rnum As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value '타석번호
+        Dim data2_rstate As String = DataGridView1.Rows(e.RowIndex).Cells(2).Value '상태
+        Dim data3_emp As String = DataGridView1.Rows(e.RowIndex).Cells(3).Value '담당직원
+        Dim data4_custid As String = DataGridView1.Rows(e.RowIndex).Cells(4).Value '회원
+        Dim data5_starttime As String = DataGridView1.Rows(e.RowIndex).Cells(5).Value '시작시간
+
+        Console.WriteLine("{0}", data0_index)
+
+        displayReservationInfo(data0_index)
+    End Sub
+
+    '예약PK -> 테이블셀이동
+    Private Sub gridCellSelect(_고유Index As String)
+        For i = 0 To DataGridView1.Rows.Count - 1
+            If DataGridView1.Rows(i).Cells(0).Value.Equals(_고유Index) Then
+                DataGridView1.CurrentCell = DataGridView1.Rows(i).Cells(1)
+            End If
+        Next i
+
     End Sub
 
 End Class
