@@ -66,12 +66,29 @@ Public Class Form2ndMonitor
 
         End If
 
+        '상단배너 뒤로 보냄
+        lblTopBannerText.SendToBack()
+
         '하단 이미지 배너 사용유무
         If My.Settings.BottomImgPath.Equals("") Or My.Settings.BottomImgPath = Nothing Then
             Console.WriteLine("하단 이미지 배너 사용안함")
             picboxBottomBanner.Visible = False
         Else
             picboxBottomBanner.Visible = True
+            '하단배너 이미지 파일리스트업
+            txtBottomBannerImageFiles.Clear()
+            Try
+                For Each foundFile As String In My.Computer.FileSystem.GetFiles(My.Settings.BottomImgPath)
+                    Console.WriteLine("Banner image file: {0}", foundFile)
+                    txtBottomBannerImageFiles.Add(foundFile)
+                Next
+                Console.WriteLine("found " & txtBottomBannerImageFiles.Count & " files.")
+                Timer2.Enabled = True '하단배너이미지 변경타이머
+
+            Catch ex As Exception
+                MsgBox("하단배너이미지경로'" + My.Settings.BottomImgPath + "'에서 파일을 읽는 중 에러발생.")
+                picboxBottomBanner.Visible = False
+            End Try
         End If
 
         '배경화면 설정
@@ -139,9 +156,10 @@ Public Class Form2ndMonitor
     End Sub
 
 
-    Private txtTopBanners() As String '탑배너문자열 리스트
-    Private cursorTopBanners As Integer = 0 '탑배너문자열 로테이션 인덱스
-
+    Private txtTopBanners() As String '상단배너문자열 리스트
+    Private cursorTopBanners As Integer = 0 '상단배너문자열 로테이션 인덱스
+    Private txtBottomBannerImageFiles As New List(Of String) '하단배너 이미지파일 리스트
+    Private cursorBottomBanners As Integer = 0 '하단배너문자열 로테이션 인덱스
     '탑배너 설정
     Public Sub setTopbanner(_contents As String, _fontsize As Integer)
         cursorTopBanners = 0
@@ -149,14 +167,13 @@ Public Class Form2ndMonitor
         Console.WriteLine("lines : " & txtTopBanners.Count)
     End Sub
 
-    '타이머에 따라 탑배너 바뀜
+    '타이머에 따라 상단 텍스트배너 바뀜
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
         '탑배너 설정없으면 종료
         If txtTopBanners.Count = 0 Then
             Exit Sub
         End If
-
 
         lblTopBannerText.Text = txtTopBanners(cursorTopBanners) '내용
         lblTopBannerText.Font = New Font("Sans Serif", My.Settings.Text2ndScreenTopBannerFontSize, FontStyle.Regular) '폰트/크기
@@ -173,6 +190,29 @@ Public Class Form2ndMonitor
         End If
     End Sub
 
+    '타이머에 따라 하단 배너이미지 바뀜
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        '배너이미지 없으면 종료
+        If txtBottomBannerImageFiles.Count = 0 Then
+            Exit Sub
+        End If
+
+        Try
+            picboxBottomBanner.Image = System.Drawing.Image.FromFile(txtBottomBannerImageFiles.Item(cursorBottomBanners))
+            picboxBottomBanner.BringToFront()
+
+        Catch ex As Exception
+            Console.WriteLine("하단 배너이미지 읽어오는 과정에서 에러가 발생했습니다.")
+        End Try
+
+
+
+        cursorBottomBanners = cursorBottomBanners + 1
+        If (cursorBottomBanners >= txtBottomBannerImageFiles.Count) Then
+            cursorBottomBanners = 0
+        End If
+
+    End Sub
 
     '드래그 가능여부 전체변경(외부인터페이스)
     Public Sub changeDragEnable(en As Boolean)
@@ -182,7 +222,7 @@ Public Class Form2ndMonitor
     End Sub
 
     Private Sub Form2ndMonitor_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Console.WriteLine("form resized")
+        Console.WriteLine("form resized. picboxBottomBanner:{0}x{1}", picboxBottomBanner.Size.Width, picboxBottomBanner.Size.Height)
         lblTopBannerText.Width = Me.Size.Width
 
     End Sub

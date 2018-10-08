@@ -48,11 +48,10 @@
             txtContentFontSize.Text = Form2ndMonitor.CommonBoxFontSize '박스글자 폰트크기
         End If
 
-        'other 설정 표시
-        txtTopbanner.Text = My.Settings.Text2ndScreenTopBanner
-        txtTopbannerFontsize.Text = My.Settings.Text2ndScreenTopBannerFontSize
-
-        If My.Settings.Text2ndScreenTopBannerFontColor = "White" Then
+        '타석스크린 상단 문자배너 설정
+        txtTopbanner.Text = My.Settings.Text2ndScreenTopBanner '내용
+        txtTopbannerFontsize.Text = My.Settings.Text2ndScreenTopBannerFontSize '글자크기
+        If My.Settings.Text2ndScreenTopBannerFontColor = "White" Then '색깔
             rbtnTopbannerColorWhite.Checked = True
         ElseIf My.Settings.Text2ndScreenTopBannerFontColor = "Black" Then
             rbtnTopbannerColorBlack.Checked = True
@@ -64,7 +63,7 @@
             chkBgimg.Checked = True
         End If
 
-        '타석스크린 하단배너경로
+        '타석스크린 하단 이미지배너 경로
         txtBottomImgPath.Text = My.Settings.BottomImgPath
         If Not txtBottomImgPath.Text.Equals("") Then
             chkbottomimg.Checked = True

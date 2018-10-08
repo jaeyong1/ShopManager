@@ -13,4 +13,5 @@
     Public G_SettingsDir As String = "C:\매장관리\Settings\"
     Public G_BottomBannerImgDir As String = "C:\매장관리\BottomBanner\"
 
+
 End Module

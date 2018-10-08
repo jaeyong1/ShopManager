@@ -26,6 +26,7 @@ Partial Class Form2ndMonitor
         Me.lblTopBannerText = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.picboxBottomBanner = New System.Windows.Forms.PictureBox()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.picboxBottomBanner, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -37,7 +38,7 @@ Partial Class Form2ndMonitor
         Me.lblTopBannerText.ForeColor = System.Drawing.Color.White
         Me.lblTopBannerText.Location = New System.Drawing.Point(0, 0)
         Me.lblTopBannerText.Name = "lblTopBannerText"
-        Me.lblTopBannerText.Size = New System.Drawing.Size(1032, 105)
+        Me.lblTopBannerText.Size = New System.Drawing.Size(1032, 192)
         Me.lblTopBannerText.TabIndex = 0
         Me.lblTopBannerText.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
@@ -47,14 +48,20 @@ Partial Class Form2ndMonitor
         '
         'picboxBottomBanner
         '
-        Me.picboxBottomBanner.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picboxBottomBanner.BackColor = System.Drawing.Color.Transparent
+        Me.picboxBottomBanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.picboxBottomBanner.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.picboxBottomBanner.Location = New System.Drawing.Point(0, 578)
+        Me.picboxBottomBanner.Location = New System.Drawing.Point(0, 528)
         Me.picboxBottomBanner.Margin = New System.Windows.Forms.Padding(0)
         Me.picboxBottomBanner.Name = "picboxBottomBanner"
-        Me.picboxBottomBanner.Size = New System.Drawing.Size(1032, 54)
+        Me.picboxBottomBanner.Size = New System.Drawing.Size(1032, 104)
+        Me.picboxBottomBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.picboxBottomBanner.TabIndex = 1
         Me.picboxBottomBanner.TabStop = False
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 7000
         '
         'Form2ndMonitor
         '
@@ -75,4 +82,5 @@ Partial Class Form2ndMonitor
     Friend WithEvents lblTopBannerText As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents picboxBottomBanner As PictureBox
+    Friend WithEvents Timer2 As Timer
 End Class
