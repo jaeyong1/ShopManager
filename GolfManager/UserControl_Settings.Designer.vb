@@ -68,6 +68,7 @@ Partial Class UserControl_Settings
         Me.btn2ndScrDragEnable.BackColor = System.Drawing.Color.Silver
         Me.btn2ndScrDragEnable.FlatAppearance.BorderSize = 0
         Me.btn2ndScrDragEnable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn2ndScrDragEnable.Font = New System.Drawing.Font("Gulim", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.btn2ndScrDragEnable.ForeColor = System.Drawing.Color.White
         Me.btn2ndScrDragEnable.Location = New System.Drawing.Point(34, 38)
         Me.btn2ndScrDragEnable.Name = "btn2ndScrDragEnable"
@@ -113,7 +114,7 @@ Partial Class UserControl_Settings
         Me.GroupBox1.Controls.Add(Me.lblRooms)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Enabled = False
-        Me.GroupBox1.Font = New System.Drawing.Font("NanumGothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Gulim", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(182, 38)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(477, 312)
@@ -126,7 +127,7 @@ Partial Class UserControl_Settings
         Me.rbtnTopbannerColorBlack.AutoSize = True
         Me.rbtnTopbannerColorBlack.Location = New System.Drawing.Point(247, 216)
         Me.rbtnTopbannerColorBlack.Name = "rbtnTopbannerColorBlack"
-        Me.rbtnTopbannerColorBlack.Size = New System.Drawing.Size(56, 19)
+        Me.rbtnTopbannerColorBlack.Size = New System.Drawing.Size(54, 16)
         Me.rbtnTopbannerColorBlack.TabIndex = 28
         Me.rbtnTopbannerColorBlack.TabStop = True
         Me.rbtnTopbannerColorBlack.Text = "Black"
@@ -137,7 +138,7 @@ Partial Class UserControl_Settings
         Me.rbtnTopbannerColorWhite.AutoSize = True
         Me.rbtnTopbannerColorWhite.Location = New System.Drawing.Point(180, 216)
         Me.rbtnTopbannerColorWhite.Name = "rbtnTopbannerColorWhite"
-        Me.rbtnTopbannerColorWhite.Size = New System.Drawing.Size(61, 19)
+        Me.rbtnTopbannerColorWhite.Size = New System.Drawing.Size(53, 16)
         Me.rbtnTopbannerColorWhite.TabIndex = 28
         Me.rbtnTopbannerColorWhite.TabStop = True
         Me.rbtnTopbannerColorWhite.Text = "White"
@@ -148,7 +149,7 @@ Partial Class UserControl_Settings
         Me.chkbottomimg.AutoSize = True
         Me.chkbottomimg.Location = New System.Drawing.Point(414, 276)
         Me.chkbottomimg.Name = "chkbottomimg"
-        Me.chkbottomimg.Size = New System.Drawing.Size(50, 19)
+        Me.chkbottomimg.Size = New System.Drawing.Size(48, 16)
         Me.chkbottomimg.TabIndex = 27
         Me.chkbottomimg.Text = "사용"
         Me.chkbottomimg.UseVisualStyleBackColor = True
@@ -158,7 +159,7 @@ Partial Class UserControl_Settings
         Me.chkBgimg.AutoSize = True
         Me.chkBgimg.Location = New System.Drawing.Point(414, 244)
         Me.chkBgimg.Name = "chkBgimg"
-        Me.chkBgimg.Size = New System.Drawing.Size(50, 19)
+        Me.chkBgimg.Size = New System.Drawing.Size(48, 16)
         Me.chkBgimg.TabIndex = 26
         Me.chkBgimg.Text = "사용"
         Me.chkBgimg.UseVisualStyleBackColor = True
@@ -177,7 +178,7 @@ Partial Class UserControl_Settings
         Me.txtBottomImgPath.Enabled = False
         Me.txtBottomImgPath.Location = New System.Drawing.Point(103, 273)
         Me.txtBottomImgPath.Name = "txtBottomImgPath"
-        Me.txtBottomImgPath.Size = New System.Drawing.Size(260, 22)
+        Me.txtBottomImgPath.Size = New System.Drawing.Size(260, 21)
         Me.txtBottomImgPath.TabIndex = 24
         '
         'btnBgimgPath
@@ -194,7 +195,7 @@ Partial Class UserControl_Settings
         Me.Label14.AutoSize = True
         Me.Label14.Location = New System.Drawing.Point(8, 276)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(91, 15)
+        Me.Label14.Size = New System.Drawing.Size(89, 12)
         Me.Label14.TabIndex = 23
         Me.Label14.Text = "하단배너경로 : "
         '
@@ -203,7 +204,7 @@ Partial Class UserControl_Settings
         Me.txtBackgroundimgPath.Enabled = False
         Me.txtBackgroundimgPath.Location = New System.Drawing.Point(103, 244)
         Me.txtBackgroundimgPath.Name = "txtBackgroundimgPath"
-        Me.txtBackgroundimgPath.Size = New System.Drawing.Size(260, 22)
+        Me.txtBackgroundimgPath.Size = New System.Drawing.Size(260, 21)
         Me.txtBackgroundimgPath.TabIndex = 24
         '
         'Label13
@@ -211,7 +212,7 @@ Partial Class UserControl_Settings
         Me.Label13.AutoSize = True
         Me.Label13.Location = New System.Drawing.Point(8, 247)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(91, 15)
+        Me.Label13.Size = New System.Drawing.Size(89, 12)
         Me.Label13.TabIndex = 23
         Me.Label13.Text = "배경그림경로 : "
         '
@@ -220,7 +221,7 @@ Partial Class UserControl_Settings
         Me.Label12.AutoSize = True
         Me.Label12.Location = New System.Drawing.Point(10, 147)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(67, 15)
+        Me.Label12.Size = New System.Drawing.Size(65, 12)
         Me.Label12.TabIndex = 23
         Me.Label12.Text = "상단메모 : "
         '
@@ -238,7 +239,7 @@ Partial Class UserControl_Settings
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(8, 219)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(115, 15)
+        Me.Label11.Size = New System.Drawing.Size(113, 12)
         Me.Label11.TabIndex = 21
         Me.Label11.Text = "상단메모글씨크기 : "
         '
@@ -246,7 +247,7 @@ Partial Class UserControl_Settings
         '
         Me.txtTopbannerFontsize.Location = New System.Drawing.Point(126, 216)
         Me.txtTopbannerFontsize.Name = "txtTopbannerFontsize"
-        Me.txtTopbannerFontsize.Size = New System.Drawing.Size(48, 22)
+        Me.txtTopbannerFontsize.Size = New System.Drawing.Size(48, 21)
         Me.txtTopbannerFontsize.TabIndex = 20
         Me.txtTopbannerFontsize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -291,7 +292,7 @@ Partial Class UserControl_Settings
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(432, 84)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(22, 15)
+        Me.Label10.Size = New System.Drawing.Size(19, 12)
         Me.Label10.TabIndex = 11
         Me.Label10.Text = "px"
         '
@@ -300,7 +301,7 @@ Partial Class UserControl_Settings
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(311, 84)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(67, 15)
+        Me.Label6.Size = New System.Drawing.Size(65, 12)
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "박스세로 : "
         '
@@ -309,7 +310,7 @@ Partial Class UserControl_Settings
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(280, 84)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(22, 15)
+        Me.Label9.Size = New System.Drawing.Size(19, 12)
         Me.Label9.TabIndex = 9
         Me.Label9.Text = "px"
         '
@@ -317,7 +318,7 @@ Partial Class UserControl_Settings
         '
         Me.txtBoxHeight.Location = New System.Drawing.Point(382, 80)
         Me.txtBoxHeight.Name = "txtBoxHeight"
-        Me.txtBoxHeight.Size = New System.Drawing.Size(48, 22)
+        Me.txtBoxHeight.Size = New System.Drawing.Size(48, 21)
         Me.txtBoxHeight.TabIndex = 10
         Me.txtBoxHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -326,7 +327,7 @@ Partial Class UserControl_Settings
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(159, 84)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(67, 15)
+        Me.Label7.Size = New System.Drawing.Size(65, 12)
         Me.Label7.TabIndex = 9
         Me.Label7.Text = "박스가로 : "
         '
@@ -334,7 +335,7 @@ Partial Class UserControl_Settings
         '
         Me.txtBoxWidth.Location = New System.Drawing.Point(230, 80)
         Me.txtBoxWidth.Name = "txtBoxWidth"
-        Me.txtBoxWidth.Size = New System.Drawing.Size(48, 22)
+        Me.txtBoxWidth.Size = New System.Drawing.Size(48, 21)
         Me.txtBoxWidth.TabIndex = 8
         Me.txtBoxWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -343,7 +344,7 @@ Partial Class UserControl_Settings
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(123, 25)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(19, 15)
+        Me.Label8.Size = New System.Drawing.Size(17, 12)
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "개"
         '
@@ -352,7 +353,7 @@ Partial Class UserControl_Settings
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(159, 57)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(91, 15)
+        Me.Label5.Size = New System.Drawing.Size(89, 12)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "제목박스간격 : "
         '
@@ -360,7 +361,7 @@ Partial Class UserControl_Settings
         '
         Me.txtTopicBoxGap.Location = New System.Drawing.Point(254, 53)
         Me.txtTopicBoxGap.Name = "txtTopicBoxGap"
-        Me.txtTopicBoxGap.Size = New System.Drawing.Size(48, 22)
+        Me.txtTopicBoxGap.Size = New System.Drawing.Size(48, 21)
         Me.txtTopicBoxGap.TabIndex = 6
         Me.txtTopicBoxGap.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -369,7 +370,7 @@ Partial Class UserControl_Settings
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(8, 105)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(419, 15)
+        Me.Label2.Size = New System.Drawing.Size(415, 12)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "* 설정창이 활성화 되면 타석관리창에서 드래그로 위치를 바꿀 수 있습니다. "
         '
@@ -378,7 +379,7 @@ Partial Class UserControl_Settings
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(8, 84)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(91, 15)
+        Me.Label4.Size = New System.Drawing.Size(89, 12)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "내용글자크기 : "
         '
@@ -386,7 +387,7 @@ Partial Class UserControl_Settings
         '
         Me.txtContentFontSize.Location = New System.Drawing.Point(103, 80)
         Me.txtContentFontSize.Name = "txtContentFontSize"
-        Me.txtContentFontSize.Size = New System.Drawing.Size(48, 22)
+        Me.txtContentFontSize.Size = New System.Drawing.Size(48, 21)
         Me.txtContentFontSize.TabIndex = 4
         Me.txtContentFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -395,7 +396,7 @@ Partial Class UserControl_Settings
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(8, 56)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(91, 15)
+        Me.Label3.Size = New System.Drawing.Size(89, 12)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "제목글자크기 : "
         '
@@ -403,7 +404,7 @@ Partial Class UserControl_Settings
         '
         Me.txtTitleFontSize.Location = New System.Drawing.Point(103, 52)
         Me.txtTitleFontSize.Name = "txtTitleFontSize"
-        Me.txtTitleFontSize.Size = New System.Drawing.Size(48, 22)
+        Me.txtTitleFontSize.Size = New System.Drawing.Size(48, 21)
         Me.txtTitleFontSize.TabIndex = 2
         Me.txtTitleFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -422,7 +423,7 @@ Partial Class UserControl_Settings
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Location = New System.Drawing.Point(12, 26)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(67, 15)
+        Me.Label1.Size = New System.Drawing.Size(65, 12)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "타석개수 : "
         '

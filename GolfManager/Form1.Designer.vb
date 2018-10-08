@@ -22,13 +22,11 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.menubar = New System.Windows.Forms.Panel()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.btnSettings = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -39,24 +37,25 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnShowFacebook = New System.Windows.Forms.Button()
-        Me.btnShowInstagram = New System.Windows.Forms.Button()
-        Me.btnExit = New System.Windows.Forms.Button()
         Me.btnLocalWebserverIP = New System.Windows.Forms.Button()
+        Me.btnShowInstagram = New System.Windows.Forms.Button()
+        Me.btnShowFacebook = New System.Windows.Forms.Button()
+        Me.btnExit = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnSettings = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.UserControl_Home1 = New GolfManager.UserControl_Home()
         Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
         Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
         Me.UserControl_customer_main1 = New GolfManager.UserControl_customer_main()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -125,19 +124,6 @@ Partial Class Form1
         Me.Button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button11.UseVisualStyleBackColor = True
         Me.Button11.Visible = False
-        '
-        'btnSettings
-        '
-        Me.btnSettings.BackgroundImage = Global.GolfManager.My.Resources.Resources.settings
-        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnSettings.FlatAppearance.BorderSize = 0
-        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(169, 66)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
-        Me.btnSettings.TabIndex = 3
-        Me.btnSettings.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -297,16 +283,6 @@ Partial Class Form1
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.GolfManager.My.Resources.Resources.logo_01
-        Me.PictureBox2.Location = New System.Drawing.Point(11, 3)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(209, 103)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 3
-        Me.PictureBox2.TabStop = False
-        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(8, Byte), Integer), CType(CType(55, Byte), Integer))
@@ -328,24 +304,14 @@ Partial Class Form1
         '
         'Label1
         '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label1.Font = New System.Drawing.Font("GulimChe", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(3, 57)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(102, 33)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Home"
+        Me.Label1.Text = "NiceShot"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(108, 51)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
         '
         'Label3
         '
@@ -358,20 +324,15 @@ Partial Class Form1
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "2호점 이중영님(안내데스크)으로 로그인 중"
         '
-        'btnShowFacebook
+        'btnLocalWebserverIP
         '
-        Me.btnShowFacebook.BackColor = System.Drawing.Color.Transparent
-        Me.btnShowFacebook.BackgroundImage = Global.GolfManager.My.Resources.Resources.facebook
-        Me.btnShowFacebook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnShowFacebook.FlatAppearance.BorderSize = 0
-        Me.btnShowFacebook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnShowFacebook.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnShowFacebook.ImageKey = "(none)"
-        Me.btnShowFacebook.Location = New System.Drawing.Point(805, 17)
-        Me.btnShowFacebook.Name = "btnShowFacebook"
-        Me.btnShowFacebook.Size = New System.Drawing.Size(39, 33)
-        Me.btnShowFacebook.TabIndex = 2
-        Me.btnShowFacebook.UseVisualStyleBackColor = False
+        Me.btnLocalWebserverIP.Location = New System.Drawing.Point(415, 21)
+        Me.btnLocalWebserverIP.Name = "btnLocalWebserverIP"
+        Me.btnLocalWebserverIP.Size = New System.Drawing.Size(283, 29)
+        Me.btnLocalWebserverIP.TabIndex = 10
+        Me.btnLocalWebserverIP.Text = "puttingone 서버사용"
+        Me.btnLocalWebserverIP.UseVisualStyleBackColor = True
+        Me.btnLocalWebserverIP.Visible = False
         '
         'btnShowInstagram
         '
@@ -387,6 +348,21 @@ Partial Class Form1
         Me.btnShowInstagram.Size = New System.Drawing.Size(41, 41)
         Me.btnShowInstagram.TabIndex = 1
         Me.btnShowInstagram.UseVisualStyleBackColor = False
+        '
+        'btnShowFacebook
+        '
+        Me.btnShowFacebook.BackColor = System.Drawing.Color.Transparent
+        Me.btnShowFacebook.BackgroundImage = Global.GolfManager.My.Resources.Resources.facebook
+        Me.btnShowFacebook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnShowFacebook.FlatAppearance.BorderSize = 0
+        Me.btnShowFacebook.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnShowFacebook.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnShowFacebook.ImageKey = "(none)"
+        Me.btnShowFacebook.Location = New System.Drawing.Point(805, 17)
+        Me.btnShowFacebook.Name = "btnShowFacebook"
+        Me.btnShowFacebook.Size = New System.Drawing.Size(39, 33)
+        Me.btnShowFacebook.TabIndex = 2
+        Me.btnShowFacebook.UseVisualStyleBackColor = False
         '
         'btnExit
         '
@@ -404,15 +380,38 @@ Partial Class Form1
         Me.btnExit.TabIndex = 4
         Me.btnExit.UseVisualStyleBackColor = False
         '
-        'btnLocalWebserverIP
+        'PictureBox1
         '
-        Me.btnLocalWebserverIP.Location = New System.Drawing.Point(415, 21)
-        Me.btnLocalWebserverIP.Name = "btnLocalWebserverIP"
-        Me.btnLocalWebserverIP.Size = New System.Drawing.Size(283, 29)
-        Me.btnLocalWebserverIP.TabIndex = 10
-        Me.btnLocalWebserverIP.Text = "puttingone 서버사용"
-        Me.btnLocalWebserverIP.UseVisualStyleBackColor = True
-        Me.btnLocalWebserverIP.Visible = False
+        Me.PictureBox1.Image = Global.GolfManager.My.Resources.Resources.logo_golficon
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(108, 51)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
+        'btnSettings
+        '
+        Me.btnSettings.BackgroundImage = Global.GolfManager.My.Resources.Resources.settings
+        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnSettings.FlatAppearance.BorderSize = 0
+        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnSettings.Location = New System.Drawing.Point(169, 69)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
+        Me.btnSettings.TabIndex = 3
+        Me.btnSettings.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.GolfManager.My.Resources.Resources.logo_01
+        Me.PictureBox2.Location = New System.Drawing.Point(11, 3)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(209, 103)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 3
+        Me.PictureBox2.TabStop = False
         '
         'UserControl_Home1
         '
@@ -476,9 +475,9 @@ Partial Class Form1
         Me.Text = " "
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
