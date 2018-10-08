@@ -29,9 +29,12 @@
 
             displayInternalSettings()
 
+            MsgBox("설정완료후 저장을 눌러주세요")
 
 
         End If
+
+
     End Sub
 
     '2nd스크린 -> 여기form에 표시
@@ -39,6 +42,7 @@
         'Form2 공통설정 화면에 표시
         Console.WriteLine("Boxes : " & Form2ndMonitor.numOfRooms)
 
+        '타석 토픽+박스 정보표시
         If Form2ndMonitor.numOfRooms > 0 Then
             lblRooms.Text = Form2ndMonitor.numOfRooms
             txtTitleFontSize.Text = Form2ndMonitor.CommonTopicFontSize '토픽 폰트크기
@@ -48,12 +52,20 @@
             txtContentFontSize.Text = Form2ndMonitor.CommonBoxFontSize '박스글자 폰트크기
         End If
 
+        '타석 토픽색깔 설정
+        If My.Settings.Text2ndScreenTopicFontColor.Equals("White") Then '색깔
+            rbtnTopicWhite.Checked = True
+        ElseIf My.Settings.Text2ndScreenTopicFontColor.Equals("Black") Then
+            rbtnTopicBlack.Checked = True
+        End If
+
+
         '타석스크린 상단 문자배너 설정
         txtTopbanner.Text = My.Settings.Text2ndScreenTopBanner '내용
         txtTopbannerFontsize.Text = My.Settings.Text2ndScreenTopBannerFontSize '글자크기
-        If My.Settings.Text2ndScreenTopBannerFontColor = "White" Then '색깔
+        If My.Settings.Text2ndScreenTopBannerFontColor.Equals("White") Then '색깔
             rbtnTopbannerColorWhite.Checked = True
-        ElseIf My.Settings.Text2ndScreenTopBannerFontColor = "Black" Then
+        ElseIf My.Settings.Text2ndScreenTopBannerFontColor.Equals("Black") Then
             rbtnTopbannerColorBlack.Checked = True
         End If
 

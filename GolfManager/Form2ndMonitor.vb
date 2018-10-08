@@ -269,7 +269,14 @@ Public Class Form2ndMonitor
 
             '토픽폰트 적용
             lblroomnumber.Font = topicfont1
-            lblroomnumber.ForeColor = Color.White
+            If My.Settings.Text2ndScreenTopicFontColor.Equals("White") Then
+                lblroomnumber.ForeColor = Color.White
+            ElseIf My.Settings.Text2ndScreenTopicFontColor.Equals("Black") Then
+                lblroomnumber.ForeColor = Color.Black
+            Else
+                lblroomnumber.ForeColor = Color.White
+            End If
+
 
 
             '박스폰트 생성
@@ -295,6 +302,14 @@ Public Class Form2ndMonitor
             Dim topicfont1 = New Font("Sans Serif", TopicFontSize, FontStyle.Regular)
             '토픽폰트 적용
             lblroomnumber.Font = topicfont1
+            '토픽폰트 색깔
+            If My.Settings.Text2ndScreenTopicFontColor.Equals("White") Then
+                lblroomnumber.ForeColor = Color.White
+            ElseIf My.Settings.Text2ndScreenTopicFontColor.Equals("Black") Then
+                lblroomnumber.ForeColor = Color.Black
+            Else
+                lblroomnumber.ForeColor = Color.White
+            End If
 
             '토픽-박스 간격적용
             lblroomnumber.Top = txt.Top - TopicGap
@@ -362,7 +377,7 @@ Public Class Form2ndMonitor
         Private Sub Obj_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txt.MouseMove
             If e.Button = MouseButtons.Left And dragEnable Then
                 moveTo(sender)
-                Console.WriteLine("New Position : {0},{1}", sender.left, sender.top)
+                Console.WriteLine("New Position :  {0},{1}", sender.left, sender.top)
 
             End If
         End Sub
