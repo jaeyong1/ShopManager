@@ -6,7 +6,7 @@ Imports System.Runtime.Serialization.Formatters.Binary 'xml로 직렬화
 
 
 Public Class Form2ndMonitor
-    Public SecondScreenDesignXMLFileName As String = "RoomServationUISerialization.xml"  '파일명
+    Public SecondScreenDesignXMLFileName As String = G_SettingsDir + "RoomServationUISerialization.xml"  '파일명
 
     Public dynamicBoxList As New List(Of dynamicTextBox) '타석UI 동적생성 리스트
 
@@ -66,8 +66,31 @@ Public Class Form2ndMonitor
 
         End If
 
-            '주기적으로 배너 변경(1초)
-            Timer1.Enabled = True
+        '하단 이미지 배너 사용유무
+        If My.Settings.BottomImgPath.Equals("") Or My.Settings.BottomImgPath = Nothing Then
+            Console.WriteLine("하단 이미지 배너 사용안함")
+            picboxBottomBanner.Visible = False
+        Else
+            picboxBottomBanner.Visible = True
+        End If
+
+        '배경화면 설정
+        If My.Settings.BackgroundimgPath.Equals("") Or My.Settings.BackgroundimgPath = Nothing Then
+            Console.WriteLine("배경이미지 사용안함")
+            Me.BackgroundImage = Nothing
+        Else
+            Try
+                Me.BackgroundImage = System.Drawing.Image.FromFile(My.Settings.BackgroundimgPath)
+            Catch ex As Exception
+                MsgBox("배경그림을 읽어오는중에 에러가 발생했습니다.")
+                Console.WriteLine("배경그림을 읽어오는 과정에서 에러가 발생했습니다.")
+            End Try
+
+        End If
+
+
+        '주기적으로 배너 변경(1초)
+        Timer1.Enabled = True
 
 
     End Sub
@@ -134,8 +157,15 @@ Public Class Form2ndMonitor
             Exit Sub
         End If
 
+
         lblTopBannerText.Text = txtTopBanners(cursorTopBanners) '내용
         lblTopBannerText.Font = New Font("Sans Serif", My.Settings.Text2ndScreenTopBannerFontSize, FontStyle.Regular) '폰트/크기
+        lblTopBannerText.SendToBack()
+        If My.Settings.Text2ndScreenTopBannerFontColor.Equals("Black") Then
+            lblTopBannerText.ForeColor = Color.Black
+        ElseIf My.Settings.Text2ndScreenTopBannerFontColor.Equals("White") Then
+            lblTopBannerText.ForeColor = Color.White
+        End If
 
         cursorTopBanners = cursorTopBanners + 1
         If (cursorTopBanners >= txtTopBanners.Count) Then
@@ -152,7 +182,7 @@ Public Class Form2ndMonitor
     End Sub
 
     Private Sub Form2ndMonitor_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Console.WriteLine("resize")
+        Console.WriteLine("form resized")
         lblTopBannerText.Width = Me.Size.Width
 
     End Sub

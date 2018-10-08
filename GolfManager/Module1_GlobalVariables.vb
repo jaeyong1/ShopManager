@@ -9,5 +9,8 @@
 
     Public G_WebServerURL As String = "http://puttingone.cafe24.com/"
     Public JYP_G_WebServerURL As String = "http://192.168.0.50:8080/putting/"
+    Public G_RootDir As String = "C:\매장관리\"
+    Public G_SettingsDir As String = "C:\매장관리\Settings\"
+    Public G_BottomBannerImgDir As String = "C:\매장관리\BottomBanner\"
 
 End Module

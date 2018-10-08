@@ -101,6 +101,18 @@ Namespace My
                 Me("BottomImgPath") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("White")>  _
+        Public Property Text2ndScreenTopBannerFontColor() As String
+            Get
+                Return CType(Me("Text2ndScreenTopBannerFontColor"),String)
+            End Get
+            Set
+                Me("Text2ndScreenTopBannerFontColor") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

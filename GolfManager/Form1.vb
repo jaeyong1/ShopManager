@@ -35,6 +35,17 @@
             End If
         Next i
 
+
+        '데이터파일 폴더생성
+        Try
+            My.Computer.FileSystem.CreateDirectory(G_RootDir) '기존폴더있어도 throw안함
+            My.Computer.FileSystem.CreateDirectory(G_SettingsDir) '기존폴더있어도 throw안함
+            My.Computer.FileSystem.CreateDirectory(G_BottomBannerImgDir) '기존폴더있어도 throw안함
+
+        Catch ex As Exception
+            MsgBox(G_RootDir & " 또는 하위폴더를 정상적으로 생성할 수 없습니다. 프로그램의 정상동작에 문제가 발생할 수 있습니다.")
+        End Try
+
     End Sub
 
     '웹서버 주소를 로컬 -> cafe24로 변경

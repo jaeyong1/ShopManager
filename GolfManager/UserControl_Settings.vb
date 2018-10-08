@@ -52,6 +52,12 @@
         txtTopbanner.Text = My.Settings.Text2ndScreenTopBanner
         txtTopbannerFontsize.Text = My.Settings.Text2ndScreenTopBannerFontSize
 
+        If My.Settings.Text2ndScreenTopBannerFontColor = "White" Then
+            rbtnTopbannerColorWhite.Checked = True
+        ElseIf My.Settings.Text2ndScreenTopBannerFontColor = "Black" Then
+            rbtnTopbannerColorBlack.Checked = True
+        End If
+
         '타석스크린 배경화면설정
         txtBackgroundimgPath.Text = My.Settings.BackgroundimgPath
         If Not txtBackgroundimgPath.Text.Equals("") Then
@@ -133,6 +139,7 @@
             txtBackgroundimgPath.Text = ""
             My.Settings.BackgroundimgPath = ""
             My.Settings.Save()
+            MsgBox("타석모니터창 재시작시 적용됩니다.")
         Else '체크
             If txtBackgroundimgPath.Text.Equals("") Then
                 MsgBox("좌측 ...버튼을 사용하여 지정해주세요")
@@ -144,12 +151,23 @@
 
     '타석스크린 하단배너 경로 설정
     Private Sub btnBottomBannerPath_Click(sender As Object, e As EventArgs) Handles btnBottomBannerPath.Click
-        If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
-            txtBottomImgPath.Text = FolderBrowserDialog1.SelectedPath
+        Dim yn = MsgBox("기본경로 '" + G_BottomBannerImgDir + "'로 설정할까요?", MsgBoxStyle.YesNo)
+        If yn = vbYes Then
+            txtBottomImgPath.Text = G_BottomBannerImgDir
             chkbottomimg.Checked = True
-            My.Settings.BottomImgPath = FolderBrowserDialog1.SelectedPath
-
+            My.Settings.BottomImgPath = G_BottomBannerImgDir
+            MsgBox("타석모니터창 재시작시 적용됩니다.")
+        Else
+            FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
+            FolderBrowserDialog1.SelectedPath = G_BottomBannerImgDir
+            If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
+                txtBottomImgPath.Text = FolderBrowserDialog1.SelectedPath
+                chkbottomimg.Checked = True
+                My.Settings.BottomImgPath = FolderBrowserDialog1.SelectedPath
+                MsgBox("타석모니터창 재시작시 적용됩니다.")
+            End If
         End If
+
     End Sub
 
     '타석스크린 하단배너 체크박스 변경
@@ -159,6 +177,7 @@
             txtBottomImgPath.Text = ""
             My.Settings.BottomImgPath = ""
             My.Settings.Save()
+            MsgBox("타석모니터창 재시작시 적용됩니다.")
         Else '체크
             If txtBottomImgPath.Text.Equals("") Then
                 MsgBox("좌측 ...버튼을 사용하여 지정해주세요")
@@ -209,5 +228,20 @@
                 e.Handled = True
             End If
         End If
+    End Sub
+
+    Private Sub rbtnTopbannerColorBlack_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTopbannerColorBlack.CheckedChanged
+        If rbtnTopbannerColorBlack.Checked = True Then
+            rbtnTopbannerColorWhite.Checked = False
+            My.Settings.Text2ndScreenTopBannerFontColor = "Black"
+        End If
+    End Sub
+
+    Private Sub rbtnTopbannerColorWhite_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTopbannerColorWhite.CheckedChanged
+        If rbtnTopbannerColorWhite.Checked = True Then
+            rbtnTopbannerColorBlack.Checked = False
+            My.Settings.Text2ndScreenTopBannerFontColor = "White"
+        End If
+
     End Sub
 End Class

@@ -31,13 +31,15 @@ Partial Class Form2ndMonitor
         '
         'lblTopBannerText
         '
+        Me.lblTopBannerText.BackColor = System.Drawing.Color.Transparent
+        Me.lblTopBannerText.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblTopBannerText.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.lblTopBannerText.ForeColor = System.Drawing.Color.White
         Me.lblTopBannerText.Location = New System.Drawing.Point(0, 0)
         Me.lblTopBannerText.Name = "lblTopBannerText"
-        Me.lblTopBannerText.Size = New System.Drawing.Size(573, 34)
+        Me.lblTopBannerText.Size = New System.Drawing.Size(1032, 105)
         Me.lblTopBannerText.TabIndex = 0
-        Me.lblTopBannerText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblTopBannerText.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Timer1
         '
@@ -59,6 +61,7 @@ Partial Class Form2ndMonitor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1032, 632)
         Me.Controls.Add(Me.picboxBottomBanner)
         Me.Controls.Add(Me.lblTopBannerText)

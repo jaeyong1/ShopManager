@@ -24,6 +24,8 @@ Partial Class UserControl_Settings
     Private Sub InitializeComponent()
         Me.btn2ndScrDragEnable = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.rbtnTopbannerColorBlack = New System.Windows.Forms.RadioButton()
+        Me.rbtnTopbannerColorWhite = New System.Windows.Forms.RadioButton()
         Me.chkbottomimg = New System.Windows.Forms.CheckBox()
         Me.chkBgimg = New System.Windows.Forms.CheckBox()
         Me.btnBottomBannerPath = New System.Windows.Forms.Button()
@@ -76,6 +78,8 @@ Partial Class UserControl_Settings
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.rbtnTopbannerColorBlack)
+        Me.GroupBox1.Controls.Add(Me.rbtnTopbannerColorWhite)
         Me.GroupBox1.Controls.Add(Me.chkbottomimg)
         Me.GroupBox1.Controls.Add(Me.chkBgimg)
         Me.GroupBox1.Controls.Add(Me.btnBottomBannerPath)
@@ -116,6 +120,28 @@ Partial Class UserControl_Settings
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " 타석표시 화면설정 "
+        '
+        'rbtnTopbannerColorBlack
+        '
+        Me.rbtnTopbannerColorBlack.AutoSize = True
+        Me.rbtnTopbannerColorBlack.Location = New System.Drawing.Point(247, 216)
+        Me.rbtnTopbannerColorBlack.Name = "rbtnTopbannerColorBlack"
+        Me.rbtnTopbannerColorBlack.Size = New System.Drawing.Size(56, 19)
+        Me.rbtnTopbannerColorBlack.TabIndex = 28
+        Me.rbtnTopbannerColorBlack.TabStop = True
+        Me.rbtnTopbannerColorBlack.Text = "Black"
+        Me.rbtnTopbannerColorBlack.UseVisualStyleBackColor = True
+        '
+        'rbtnTopbannerColorWhite
+        '
+        Me.rbtnTopbannerColorWhite.AutoSize = True
+        Me.rbtnTopbannerColorWhite.Location = New System.Drawing.Point(180, 216)
+        Me.rbtnTopbannerColorWhite.Name = "rbtnTopbannerColorWhite"
+        Me.rbtnTopbannerColorWhite.Size = New System.Drawing.Size(61, 19)
+        Me.rbtnTopbannerColorWhite.TabIndex = 28
+        Me.rbtnTopbannerColorWhite.TabStop = True
+        Me.rbtnTopbannerColorWhite.Text = "White"
+        Me.rbtnTopbannerColorWhite.UseVisualStyleBackColor = True
         '
         'chkbottomimg
         '
@@ -230,7 +256,7 @@ Partial Class UserControl_Settings
         Me.btnApplyUISetting.Name = "btnApplyUISetting"
         Me.btnApplyUISetting.Size = New System.Drawing.Size(137, 23)
         Me.btnApplyUISetting.TabIndex = 19
-        Me.btnApplyUISetting.Text = "타석화면에 적용"
+        Me.btnApplyUISetting.Text = "좌표적용 미리보기"
         Me.btnApplyUISetting.UseVisualStyleBackColor = True
         '
         'btnBoxDefaultPosition
@@ -457,4 +483,6 @@ Partial Class UserControl_Settings
     Friend WithEvents chkbottomimg As CheckBox
     Friend WithEvents chkBgimg As CheckBox
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents rbtnTopbannerColorBlack As RadioButton
+    Friend WithEvents rbtnTopbannerColorWhite As RadioButton
 End Class
