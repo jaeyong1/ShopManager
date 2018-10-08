@@ -58,6 +58,15 @@ Public Class Form2ndMonitor
                     dynamicBoxList.Item(i).refreshWithLocalVal() 'XML -> UI 적용
 
                 Next
+
+                If numOfRooms > 0 Then
+                    'Public변수 업데이트
+                    CommonTopicFontSize = dynamicBoxList.Item(0).TopicFontSize '토픽 폰트크기(디폴트)
+                    CommonTopicGap = dynamicBoxList.Item(0).TopicGap '토픽~박스상단 간격(디폴트)
+                    CommonBoxHeight = dynamicBoxList.Item(0).BoxHeight '박스높이(디폴트)
+                    CommonBoxWidth = dynamicBoxList.Item(0).BoxWidth '박스넓이(디폴트)
+                    CommonBoxFontSize = dynamicBoxList.Item(0).BoxFontSize '박스글자 폰트크기(디폴트)
+                End If
             Else
                 MessageBox.Show("타석개수가 변경되어서 기존설정으로 모두 표시할 수 없습니다. 설정메뉴에서 위치와 모양을 변경하세요. 현재설정은 삭제합니다.")
                 Call deleteXYSettingFile()
