@@ -18,6 +18,10 @@ Public Class Form2ndMonitor
     Public CommonBoxWidth As Integer = 150 '박스넓이(디폴트)
     Public CommonBoxFontSize As Integer = 20 '박스글자 폰트크기(디폴트)
 
+    Private Sub deleteXYSettingFile()
+        MsgBox(SecondScreenDesignXMLFileName + "파일을 삭제합니다.")
+        My.Computer.FileSystem.DeleteFile(SecondScreenDesignXMLFileName)
+    End Sub
 
     Private Sub Form2ndMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -42,23 +46,28 @@ Public Class Form2ndMonitor
 
         Else
             '파일에서 화면구성 불러옴
-            Console.WriteLine("타석표시기 파일에서 불러옴 {0}개", numOfRooms)
-            For i = 0 To numOfRooms - 1
-                Console.WriteLine("Loaded (" & i & ") " &
+            Console.WriteLine("타석표시기 파일에서 불러옴. 설정:{0}개, 파일로딩{1}개", numOfRooms, dynamicBoxList.Count)
+            If (numOfRooms <= dynamicBoxList.Count) Then
+                For i = 0 To numOfRooms - 1
+                    Console.WriteLine("Loaded (" & i & ") " &
                 dynamicBoxList.Item(i).PosX & ", " &
                 dynamicBoxList.Item(i).PosY)
-                Me.Controls.Add(dynamicBoxList.Item(i).getLabelReference()) '토픽
-                Me.Controls.Add(dynamicBoxList.Item(i).getTextBoxReferece()) '박스
-                dynamicBoxList.Item(i).setPosXY(dynamicBoxList.Item(i).PosX, dynamicBoxList.Item(i).PosY)
-                dynamicBoxList.Item(i).refreshWithLocalVal() 'XML -> UI 적용
+                    Me.Controls.Add(dynamicBoxList.Item(i).getLabelReference()) '토픽
+                    Me.Controls.Add(dynamicBoxList.Item(i).getTextBoxReferece()) '박스
+                    dynamicBoxList.Item(i).setPosXY(dynamicBoxList.Item(i).PosX, dynamicBoxList.Item(i).PosY)
+                    dynamicBoxList.Item(i).refreshWithLocalVal() 'XML -> UI 적용
 
-            Next
-
+                Next
+            Else
+                MessageBox.Show("타석개수가 변경되어서 기존설정으로 모두 표시할 수 없습니다. 설정메뉴에서 위치와 모양을 변경하세요. 현재설정은 삭제합니다.")
+                Call deleteXYSettingFile()
+                Exit Sub
+            End If
 
         End If
 
-        '주기적으로 배너 변경(1초)
-        Timer1.Enabled = True
+            '주기적으로 배너 변경(1초)
+            Timer1.Enabled = True
 
 
     End Sub
