@@ -1,4 +1,5 @@
-﻿Imports System.IO 'xml로 직렬화
+﻿Imports System.ComponentModel
+Imports System.IO 'xml로 직렬화
 Imports System.Runtime.Serialization.Formatters.Binary 'xml로 직렬화
 
 
@@ -56,6 +57,8 @@ Public Class Form2ndMonitor
 
         End If
 
+        '주기적으로 배너 변경(1초)
+        Timer1.Enabled = True
 
 
     End Sub
@@ -116,6 +119,7 @@ Public Class Form2ndMonitor
 
     '타이머에 따라 탑배너 바뀜
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+
         '탑배너 설정없으면 종료
         If txtTopBanners.Count = 0 Then
             Exit Sub
@@ -142,6 +146,13 @@ Public Class Form2ndMonitor
         Console.WriteLine("resize")
         lblTopBannerText.Width = Me.Size.Width
 
+    End Sub
+
+    '창 닫을때
+    Private Sub Form2ndMonitor_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+        '주기적으로 배너 변경(1초)
+        Timer1.Enabled = False
     End Sub
 
 

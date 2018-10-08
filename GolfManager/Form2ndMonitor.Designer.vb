@@ -41,7 +41,6 @@ Partial Class Form2ndMonitor
         '
         'Timer1
         '
-        Me.Timer1.Enabled = True
         Me.Timer1.Interval = 5000
         '
         'picboxBottomBanner

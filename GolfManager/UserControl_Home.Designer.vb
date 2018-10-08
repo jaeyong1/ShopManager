@@ -22,7 +22,7 @@ Partial Class UserControl_Home
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblHellowithToday = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -31,48 +31,48 @@ Partial Class UserControl_Home
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.lbltoday = New System.Windows.Forms.Label()
+        Me.lblnow = New System.Windows.Forms.Label()
         Me.listboxToday = New System.Windows.Forms.ListBox()
         Me.listboxCurrentCustomer = New System.Windows.Forms.ListBox()
         Me.lblaaaa = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.lblnow = New System.Windows.Forms.Label()
-        Me.lbltoday = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.listboxCurrentEmp = New System.Windows.Forms.ListBox()
-        Me.lblcurem = New System.Windows.Forms.Label()
-        Me.txtEmpMemo = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.txtEmpMemo = New System.Windows.Forms.TextBox()
+        Me.listboxCurrentEmp = New System.Windows.Forms.ListBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblcurem = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Label1
+        'lblHellowithToday
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Label1.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label1.Location = New System.Drawing.Point(57, 20)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(337, 19)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "안녕하세요.  오늘은 2018년 00월 00일 입니다. "
+        Me.lblHellowithToday.AutoSize = True
+        Me.lblHellowithToday.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.lblHellowithToday.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lblHellowithToday.Location = New System.Drawing.Point(57, 20)
+        Me.lblHellowithToday.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblHellowithToday.Name = "lblHellowithToday"
+        Me.lblHellowithToday.Size = New System.Drawing.Size(337, 19)
+        Me.lblHellowithToday.TabIndex = 0
+        Me.lblHellowithToday.Text = "안녕하세요.  오늘은 2018년 00월 00일 입니다. "
         '
         'GroupBox1
         '
@@ -84,9 +84,9 @@ Partial Class UserControl_Home
         Me.GroupBox1.Controls.Add(Me.Label20)
         Me.GroupBox1.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(530, 20)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(688, 111)
         Me.GroupBox1.TabIndex = 18
         Me.GroupBox1.TabStop = False
@@ -102,7 +102,7 @@ Partial Class UserControl_Home
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(35, 16)
         Me.Label15.TabIndex = 23
-        Me.Label15.Text = "123"
+        Me.Label15.Text = "000"
         Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label16
@@ -127,7 +127,7 @@ Partial Class UserControl_Home
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(35, 16)
         Me.Label17.TabIndex = 21
-        Me.Label17.Text = "123"
+        Me.Label17.Text = "000"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label18
@@ -152,7 +152,7 @@ Partial Class UserControl_Home
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(35, 16)
         Me.Label19.TabIndex = 19
-        Me.Label19.Text = "123"
+        Me.Label19.Text = "000"
         Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label20
@@ -191,81 +191,6 @@ Partial Class UserControl_Home
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "패키지현황"
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Blue
-        Me.Label3.Location = New System.Drawing.Point(586, 50)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(35, 16)
-        Me.Label3.TabIndex = 23
-        Me.Label3.Text = "123"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label4
-        '
-        Me.Label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label4.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label4.Location = New System.Drawing.Point(442, 33)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(214, 50)
-        Me.Label4.TabIndex = 22
-        Me.Label4.Text = "  재등록"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Blue
-        Me.Label5.Location = New System.Drawing.Point(375, 50)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(35, 16)
-        Me.Label5.TabIndex = 21
-        Me.Label5.Text = "123"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label6
-        '
-        Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label6.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label6.Location = New System.Drawing.Point(231, 33)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(214, 50)
-        Me.Label6.TabIndex = 20
-        Me.Label6.Text = "  이번달신규"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Blue
-        Me.Label7.Location = New System.Drawing.Point(165, 50)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(35, 16)
-        Me.Label7.TabIndex = 19
-        Me.Label7.Text = "123"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label8
-        '
-        Me.Label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label8.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label8.Location = New System.Drawing.Point(21, 33)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(214, 50)
-        Me.Label8.TabIndex = 18
-        Me.Label8.Text = "  사용중"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -276,7 +201,7 @@ Partial Class UserControl_Home
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(35, 16)
         Me.Label9.TabIndex = 29
-        Me.Label9.Text = "123"
+        Me.Label9.Text = "000"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label10
@@ -301,7 +226,7 @@ Partial Class UserControl_Home
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(35, 16)
         Me.Label11.TabIndex = 27
-        Me.Label11.Text = "123"
+        Me.Label11.Text = "000"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label12
@@ -326,7 +251,7 @@ Partial Class UserControl_Home
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(35, 16)
         Me.Label13.TabIndex = 25
-        Me.Label13.Text = "123"
+        Me.Label13.Text = "000"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label14
@@ -340,6 +265,81 @@ Partial Class UserControl_Home
         Me.Label14.TabIndex = 24
         Me.Label14.Text = "  만기예정"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Blue
+        Me.Label3.Location = New System.Drawing.Point(586, 50)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(35, 16)
+        Me.Label3.TabIndex = 23
+        Me.Label3.Text = "000"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label4
+        '
+        Me.Label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label4.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label4.Location = New System.Drawing.Point(442, 33)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(214, 50)
+        Me.Label4.TabIndex = 22
+        Me.Label4.Text = "  재등록"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Blue
+        Me.Label5.Location = New System.Drawing.Point(375, 50)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(35, 16)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "000"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label6
+        '
+        Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label6.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label6.Location = New System.Drawing.Point(231, 33)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(214, 50)
+        Me.Label6.TabIndex = 20
+        Me.Label6.Text = "  이번달신규"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.Blue
+        Me.Label7.Location = New System.Drawing.Point(165, 50)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(35, 16)
+        Me.Label7.TabIndex = 19
+        Me.Label7.Text = "000"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label8
+        '
+        Me.Label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label8.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label8.Location = New System.Drawing.Point(21, 33)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(214, 50)
+        Me.Label8.TabIndex = 18
+        Me.Label8.Text = "  사용중"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'GroupBox3
         '
@@ -358,6 +358,32 @@ Partial Class UserControl_Home
         Me.GroupBox3.TabIndex = 24
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "방문현황"
+        '
+        'lbltoday
+        '
+        Me.lbltoday.AutoSize = True
+        Me.lbltoday.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lbltoday.ForeColor = System.Drawing.Color.Blue
+        Me.lbltoday.Location = New System.Drawing.Point(121, 294)
+        Me.lbltoday.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbltoday.Name = "lbltoday"
+        Me.lbltoday.Size = New System.Drawing.Size(34, 16)
+        Me.lbltoday.TabIndex = 20
+        Me.lbltoday.Text = "0명"
+        Me.lbltoday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblnow
+        '
+        Me.lblnow.AutoSize = True
+        Me.lblnow.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lblnow.ForeColor = System.Drawing.Color.Blue
+        Me.lblnow.Location = New System.Drawing.Point(121, 33)
+        Me.lblnow.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblnow.Name = "lblnow"
+        Me.lblnow.Size = New System.Drawing.Size(34, 16)
+        Me.lblnow.TabIndex = 20
+        Me.lblnow.Text = "0명"
+        Me.lblnow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'listboxToday
         '
@@ -405,32 +431,6 @@ Partial Class UserControl_Home
         Me.Label21.TabIndex = 3
         Me.Label21.Text = "현재레슨중"
         '
-        'lblnow
-        '
-        Me.lblnow.AutoSize = True
-        Me.lblnow.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.lblnow.ForeColor = System.Drawing.Color.Blue
-        Me.lblnow.Location = New System.Drawing.Point(121, 33)
-        Me.lblnow.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblnow.Name = "lblnow"
-        Me.lblnow.Size = New System.Drawing.Size(34, 16)
-        Me.lblnow.TabIndex = 20
-        Me.lblnow.Text = "3명"
-        Me.lblnow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lbltoday
-        '
-        Me.lbltoday.AutoSize = True
-        Me.lbltoday.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.lbltoday.ForeColor = System.Drawing.Color.Blue
-        Me.lbltoday.Location = New System.Drawing.Point(121, 294)
-        Me.lbltoday.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbltoday.Name = "lbltoday"
-        Me.lbltoday.Size = New System.Drawing.Size(34, 16)
-        Me.lbltoday.TabIndex = 20
-        Me.lbltoday.Text = "5명"
-        Me.lbltoday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.CheckBox1)
@@ -448,6 +448,26 @@ Partial Class UserControl_Home
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "직원근무현황"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Font = New System.Drawing.Font("Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.CheckBox1.Location = New System.Drawing.Point(612, 26)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(52, 17)
+        Me.CheckBox1.TabIndex = 7
+        Me.CheckBox1.Text = "수정"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'txtEmpMemo
+        '
+        Me.txtEmpMemo.Location = New System.Drawing.Point(162, 46)
+        Me.txtEmpMemo.Multiline = True
+        Me.txtEmpMemo.Name = "txtEmpMemo"
+        Me.txtEmpMemo.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtEmpMemo.Size = New System.Drawing.Size(502, 156)
+        Me.txtEmpMemo.TabIndex = 6
+        '
         'listboxCurrentEmp
         '
         Me.listboxCurrentEmp.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
@@ -458,27 +478,6 @@ Partial Class UserControl_Home
         Me.listboxCurrentEmp.Name = "listboxCurrentEmp"
         Me.listboxCurrentEmp.Size = New System.Drawing.Size(134, 156)
         Me.listboxCurrentEmp.TabIndex = 5
-        '
-        'lblcurem
-        '
-        Me.lblcurem.AutoSize = True
-        Me.lblcurem.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.lblcurem.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.lblcurem.Location = New System.Drawing.Point(17, 23)
-        Me.lblcurem.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblcurem.Name = "lblcurem"
-        Me.lblcurem.Size = New System.Drawing.Size(99, 19)
-        Me.lblcurem.TabIndex = 3
-        Me.lblcurem.Text = "오늘근무직원"
-        '
-        'txtEmpMemo
-        '
-        Me.txtEmpMemo.Location = New System.Drawing.Point(162, 46)
-        Me.txtEmpMemo.Multiline = True
-        Me.txtEmpMemo.Name = "txtEmpMemo"
-        Me.txtEmpMemo.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtEmpMemo.Size = New System.Drawing.Size(502, 156)
-        Me.txtEmpMemo.TabIndex = 6
         '
         'Label2
         '
@@ -492,16 +491,17 @@ Partial Class UserControl_Home
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "직원알림판"
         '
-        'CheckBox1
+        'lblcurem
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Font = New System.Drawing.Font("Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(612, 26)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(52, 17)
-        Me.CheckBox1.TabIndex = 7
-        Me.CheckBox1.Text = "수정"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.lblcurem.AutoSize = True
+        Me.lblcurem.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.lblcurem.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lblcurem.Location = New System.Drawing.Point(17, 23)
+        Me.lblcurem.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblcurem.Name = "lblcurem"
+        Me.lblcurem.Size = New System.Drawing.Size(99, 19)
+        Me.lblcurem.TabIndex = 3
+        Me.lblcurem.Text = "오늘근무직원"
         '
         'UserControl_Home
         '
@@ -512,9 +512,9 @@ Partial Class UserControl_Home
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblHellowithToday)
         Me.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "UserControl_Home"
         Me.Size = New System.Drawing.Size(1641, 923)
         Me.GroupBox1.ResumeLayout(False)
@@ -530,7 +530,7 @@ Partial Class UserControl_Home
 
     End Sub
 
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblHellowithToday As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Label16 As Label
