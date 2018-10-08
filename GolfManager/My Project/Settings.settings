@@ -17,5 +17,8 @@
     <Setting Name="Text2ndScreenTopBannerFontColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
+    <Setting Name="Text2ndScreenTopicFontColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

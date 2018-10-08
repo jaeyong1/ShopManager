@@ -91,13 +91,16 @@
         Dim tempHeightGap As Integer
         Dim tempCnt As Integer = 0
 
-        tempWidthGap = Form2ndMonitor.CommonBoxWidth + (Form2ndMonitor.CommonBoxWidth * 0.3)
+        'tempWidthGap = Form2ndMonitor.CommonBoxWidth + (Form2ndMonitor.CommonBoxWidth * 0.3)
+        tempWidthGap = txtBoxWidth.Text + (txtBoxWidth.Text * 0.3)
+
         tempHeightGap = 100
 
 
         For i = 0 To (Form2ndMonitor.numOfRooms - 1)
             If ((i Mod 5) = 0 And (i <> 0)) Then
-                tempHeightGap = tempHeightGap + Form2ndMonitor.CommonBoxHeight + (Form2ndMonitor.CommonBoxHeight * 0.6)
+                'tempHeightGap = tempHeightGap + Form2ndMonitor.CommonBoxHeight + (Form2ndMonitor.CommonBoxHeight * 0.6)
+                tempHeightGap = tempHeightGap + txtBoxHeight.Text + (txtBoxHeight.Text * 0.6)
             End If
 
             Form2ndMonitor.dynamicBoxList.Item(i).setPosXY(tempWidthGap * (i Mod 5) + 100, tempHeightGap)
@@ -229,6 +232,7 @@
         End If
     End Sub
 
+    '상단배너 검은색
     Private Sub rbtnTopbannerColorBlack_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTopbannerColorBlack.CheckedChanged
         If rbtnTopbannerColorBlack.Checked = True Then
             rbtnTopbannerColorWhite.Checked = False
@@ -236,6 +240,7 @@
         End If
     End Sub
 
+    '상단배너 흰색
     Private Sub rbtnTopbannerColorWhite_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTopbannerColorWhite.CheckedChanged
         If rbtnTopbannerColorWhite.Checked = True Then
             rbtnTopbannerColorBlack.Checked = False
@@ -243,4 +248,21 @@
         End If
 
     End Sub
+
+    '타석 토픽색깔 검은색
+    Private Sub rbtnTopicBlack_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTopicBlack.CheckedChanged
+        If rbtnTopicBlack.Checked = True Then
+            rbtnTopicWhite.Checked = False
+            My.Settings.Text2ndScreenTopicFontColor = "Black"
+        End If
+    End Sub
+
+    '타석 토픽색깔 흰색
+    Private Sub rbtnTopicWhite_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTopicWhite.CheckedChanged
+        If rbtnTopicWhite.Checked = True Then
+            rbtnTopicBlack.Checked = False
+            My.Settings.Text2ndScreenTopicFontColor = "White"
+        End If
+    End Sub
+
 End Class
