@@ -124,6 +124,7 @@ Partial Class Form1
         Me.Button11.Text = "    시스템관리자"
         Me.Button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button11.UseVisualStyleBackColor = True
+        Me.Button11.Visible = False
         '
         'btnSettings
         '
@@ -152,6 +153,7 @@ Partial Class Form1
         Me.Button10.Text = "    관리자메뉴"
         Me.Button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button10.UseVisualStyleBackColor = True
+        Me.Button10.Visible = False
         '
         'Button9
         '
@@ -167,6 +169,7 @@ Partial Class Form1
         Me.Button9.Text = "    계약만료알리미"
         Me.Button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button9.UseVisualStyleBackColor = True
+        Me.Button9.Visible = False
         '
         'Button8
         '
@@ -182,6 +185,7 @@ Partial Class Form1
         Me.Button8.Text = "    프로레슨스케쥴조회"
         Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button8.UseVisualStyleBackColor = True
+        Me.Button8.Visible = False
         '
         'Button7
         '
@@ -197,6 +201,7 @@ Partial Class Form1
         Me.Button7.Text = "    프로레슨일관리"
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button7.UseVisualStyleBackColor = True
+        Me.Button7.Visible = False
         '
         'Button6
         '
@@ -212,6 +217,7 @@ Partial Class Form1
         Me.Button6.Text = "    사물함관리"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
         '
         'Button5
         '
@@ -227,6 +233,7 @@ Partial Class Form1
         Me.Button5.Text = "    고객정보관리"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Button4
         '
@@ -242,6 +249,7 @@ Partial Class Form1
         Me.Button4.Text = "    패키지관리"
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button4.UseVisualStyleBackColor = True
+        Me.Button4.Visible = False
         '
         'Button3
         '
@@ -257,6 +265,7 @@ Partial Class Form1
         Me.Button3.Text = "    레슨예약관리"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.Visible = False
         '
         'Button2
         '
