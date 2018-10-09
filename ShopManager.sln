@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GolfManager", "GolfManager\GolfManager.vbproj", "{3C64F6F1-B83D-4A3A-975A-DC5F7E5350BC}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ShopManager", "GolfManager\ShopManager.vbproj", "{3C64F6F1-B83D-4A3A-975A-DC5F7E5350BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
