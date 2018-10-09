@@ -27,6 +27,7 @@ Partial Class Form1
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.menubar = New System.Windows.Forms.Panel()
         Me.Button11 = New System.Windows.Forms.Button()
+        Me.btnSettings = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -37,35 +38,34 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnLocalWebserverIP = New System.Windows.Forms.Button()
         Me.btnShowInstagram = New System.Windows.Forms.Button()
         Me.btnShowFacebook = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.btnSettings = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.UserControl_Home1 = New GolfManager.UserControl_Home()
         Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
         Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
         Me.UserControl_customer_main1 = New GolfManager.UserControl_customer_main()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.btnSettings)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Panel4)
         Me.Panel1.Controls.Add(Me.menubar)
         Me.Panel1.Controls.Add(Me.Button11)
-        Me.Panel1.Controls.Add(Me.btnSettings)
         Me.Panel1.Controls.Add(Me.Button10)
         Me.Panel1.Controls.Add(Me.Button9)
         Me.Panel1.Controls.Add(Me.Button8)
@@ -88,11 +88,11 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Gulim", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Gray
-        Me.Label2.Location = New System.Drawing.Point(72, 764)
+        Me.Label2.Location = New System.Drawing.Point(35, 765)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(69, 15)
+        Me.Label2.Size = New System.Drawing.Size(139, 15)
         Me.Label2.TabIndex = 10
-        Me.Label2.Text = "Ver 0.51"
+        Me.Label2.Text = "나이스샷 Ver 0.51"
         '
         'Panel4
         '
@@ -124,6 +124,19 @@ Partial Class Form1
         Me.Button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button11.UseVisualStyleBackColor = True
         Me.Button11.Visible = False
+        '
+        'btnSettings
+        '
+        Me.btnSettings.BackgroundImage = Global.GolfManager.My.Resources.Resources.settings
+        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnSettings.FlatAppearance.BorderSize = 0
+        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnSettings.Location = New System.Drawing.Point(178, 684)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
+        Me.btnSettings.TabIndex = 3
+        Me.btnSettings.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -283,6 +296,16 @@ Partial Class Form1
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.GolfManager.My.Resources.Resources.logo_01
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 12)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(215, 97)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 3
+        Me.PictureBox2.TabStop = False
+        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(8, Byte), Integer), CType(CType(55, Byte), Integer))
@@ -302,16 +325,15 @@ Partial Class Form1
         Me.Panel3.Size = New System.Drawing.Size(108, 97)
         Me.Panel3.TabIndex = 0
         '
-        'Label1
+        'PictureBox1
         '
-        Me.Label1.Font = New System.Drawing.Font("GulimChe", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(3, 57)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(102, 33)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "NiceShot"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.PictureBox1.Image = Global.GolfManager.My.Resources.Resources.logo_golficon
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(108, 51)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
         '
         'Label3
         '
@@ -380,38 +402,16 @@ Partial Class Form1
         Me.btnExit.TabIndex = 4
         Me.btnExit.UseVisualStyleBackColor = False
         '
-        'PictureBox1
+        'Label1
         '
-        Me.PictureBox1.Image = Global.GolfManager.My.Resources.Resources.logo_golficon
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(108, 51)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
-        '
-        'btnSettings
-        '
-        Me.btnSettings.BackgroundImage = Global.GolfManager.My.Resources.Resources.settings
-        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnSettings.FlatAppearance.BorderSize = 0
-        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(169, 69)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
-        Me.btnSettings.TabIndex = 3
-        Me.btnSettings.UseVisualStyleBackColor = True
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.GolfManager.My.Resources.Resources.logo_01
-        Me.PictureBox2.Location = New System.Drawing.Point(11, 3)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(209, 103)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 3
-        Me.PictureBox2.TabStop = False
+        Me.Label1.Font = New System.Drawing.Font("GulimChe", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Label1.Location = New System.Drawing.Point(3, 57)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(102, 33)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Niceshot"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'UserControl_Home1
         '
@@ -472,12 +472,11 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = " "
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -487,7 +486,6 @@ Partial Class Form1
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Button4 As Button
@@ -513,4 +511,5 @@ Partial Class Form1
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btnLocalWebserverIP As Button
+    Friend WithEvents Label1 As Label
 End Class
