@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnSettings = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.menubar = New System.Windows.Forms.Panel()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.btnSettings = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -41,13 +41,13 @@ Partial Class Form1
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnLocalWebserverIP = New System.Windows.Forms.Button()
         Me.btnShowInstagram = New System.Windows.Forms.Button()
         Me.btnShowFacebook = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.UserControl_Home1 = New GolfManager.UserControl_Home()
         Me.UserControl_Settings1 = New GolfManager.UserControl_Settings()
         Me.UserControl_RoomReservation1 = New GolfManager.UserControl_RoomReservation()
@@ -82,6 +82,19 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(224, 800)
         Me.Panel1.TabIndex = 0
+        '
+        'btnSettings
+        '
+        Me.btnSettings.BackgroundImage = Global.GolfManager.My.Resources.Resources.settings
+        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnSettings.FlatAppearance.BorderSize = 0
+        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnSettings.Location = New System.Drawing.Point(178, 684)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
+        Me.btnSettings.TabIndex = 3
+        Me.btnSettings.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -123,20 +136,6 @@ Partial Class Form1
         Me.Button11.Text = "    시스템관리자"
         Me.Button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button11.UseVisualStyleBackColor = True
-        Me.Button11.Visible = False
-        '
-        'btnSettings
-        '
-        Me.btnSettings.BackgroundImage = Global.GolfManager.My.Resources.Resources.settings
-        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnSettings.FlatAppearance.BorderSize = 0
-        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSettings.Font = New System.Drawing.Font("Gulim", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(178, 684)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(39, 33)
-        Me.btnSettings.TabIndex = 3
-        Me.btnSettings.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -152,7 +151,6 @@ Partial Class Form1
         Me.Button10.Text = "    관리자메뉴"
         Me.Button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button10.UseVisualStyleBackColor = True
-        Me.Button10.Visible = False
         '
         'Button9
         '
@@ -168,7 +166,6 @@ Partial Class Form1
         Me.Button9.Text = "    계약만료알리미"
         Me.Button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button9.UseVisualStyleBackColor = True
-        Me.Button9.Visible = False
         '
         'Button8
         '
@@ -184,7 +181,6 @@ Partial Class Form1
         Me.Button8.Text = "    프로레슨스케쥴조회"
         Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button8.UseVisualStyleBackColor = True
-        Me.Button8.Visible = False
         '
         'Button7
         '
@@ -200,7 +196,6 @@ Partial Class Form1
         Me.Button7.Text = "    프로레슨일관리"
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button7.UseVisualStyleBackColor = True
-        Me.Button7.Visible = False
         '
         'Button6
         '
@@ -216,7 +211,6 @@ Partial Class Form1
         Me.Button6.Text = "    사물함관리"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button6.UseVisualStyleBackColor = True
-        Me.Button6.Visible = False
         '
         'Button5
         '
@@ -232,7 +226,6 @@ Partial Class Form1
         Me.Button5.Text = "    고객정보관리"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button5.UseVisualStyleBackColor = True
-        Me.Button5.Visible = False
         '
         'Button4
         '
@@ -248,7 +241,6 @@ Partial Class Form1
         Me.Button4.Text = "    패키지관리"
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button4.UseVisualStyleBackColor = True
-        Me.Button4.Visible = False
         '
         'Button3
         '
@@ -264,7 +256,6 @@ Partial Class Form1
         Me.Button3.Text = "    레슨예약관리"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button3.UseVisualStyleBackColor = True
-        Me.Button3.Visible = False
         '
         'Button2
         '
@@ -324,6 +315,17 @@ Partial Class Form1
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(108, 97)
         Me.Panel3.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("GulimChe", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Label1.Location = New System.Drawing.Point(3, 57)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(102, 33)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Niceshot"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox1
         '
@@ -401,17 +403,6 @@ Partial Class Form1
         Me.btnExit.Size = New System.Drawing.Size(39, 33)
         Me.btnExit.TabIndex = 4
         Me.btnExit.UseVisualStyleBackColor = False
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("GulimChe", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label1.Location = New System.Drawing.Point(3, 57)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(102, 33)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Niceshot"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'UserControl_Home1
         '

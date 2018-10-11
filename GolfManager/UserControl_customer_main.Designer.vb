@@ -22,10 +22,10 @@ Partial Class UserControl_customer_main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -65,6 +65,7 @@ Partial Class UserControl_customer_main
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
@@ -78,7 +79,10 @@ Partial Class UserControl_customer_main
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Panel12 = New System.Windows.Forms.Panel()
@@ -113,10 +117,6 @@ Partial Class UserControl_customer_main
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -125,6 +125,7 @@ Partial Class UserControl_customer_main
         Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel8.SuspendLayout()
         Me.Panel11.SuspendLayout()
@@ -133,7 +134,6 @@ Partial Class UserControl_customer_main
         Me.Panel18.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel9.SuspendLayout()
-        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -608,6 +608,20 @@ Partial Class UserControl_customer_main
         Me.Panel7.Size = New System.Drawing.Size(603, 299)
         Me.Panel7.TabIndex = 22
         '
+        'Chart2
+        '
+        Me.Chart2.BorderlineWidth = 0
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart2.ChartAreas.Add(ChartArea1)
+        Me.Chart2.Location = New System.Drawing.Point(296, 124)
+        Me.Chart2.Name = "Chart2"
+        Me.Chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel
+        Series1.ChartArea = "ChartArea1"
+        Series1.Name = "Series1"
+        Me.Chart2.Series.Add(Series1)
+        Me.Chart2.Size = New System.Drawing.Size(287, 164)
+        Me.Chart2.TabIndex = 23
+        '
         'Chart1
         '
         Me.Chart1.BorderlineWidth = 0
@@ -752,6 +766,15 @@ Partial Class UserControl_customer_main
         Me.TextBox9.TabIndex = 22
         Me.TextBox9.Text = "2000-01-01"
         '
+        'TextBox10
+        '
+        Me.TextBox10.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.TextBox10.Location = New System.Drawing.Point(107, 33)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(36, 26)
+        Me.TextBox10.TabIndex = 22
+        Me.TextBox10.Text = "25"
+        '
         'TextBox11
         '
         Me.TextBox11.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
@@ -760,6 +783,31 @@ Partial Class UserControl_customer_main
         Me.TextBox11.Size = New System.Drawing.Size(93, 26)
         Me.TextBox11.TabIndex = 22
         Me.TextBox11.Text = "2000-01-01"
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.Silver
+        Me.Label44.Location = New System.Drawing.Point(102, 96)
+        Me.Label44.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(21, 16)
+        Me.Label44.TabIndex = 21
+        Me.Label44.Text = "~"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label42
+        '
+        Me.Label42.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label42.ForeColor = System.Drawing.Color.Silver
+        Me.Label42.Location = New System.Drawing.Point(143, 34)
+        Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(34, 23)
+        Me.Label42.TabIndex = 21
+        Me.Label42.Text = "번"
+        Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label26
         '
@@ -1168,54 +1216,6 @@ Partial Class UserControl_customer_main
         Me.ListBox2.Size = New System.Drawing.Size(591, 64)
         Me.ListBox2.TabIndex = 24
         '
-        'TextBox10
-        '
-        Me.TextBox10.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.TextBox10.Location = New System.Drawing.Point(107, 33)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(36, 26)
-        Me.TextBox10.TabIndex = 22
-        Me.TextBox10.Text = "25"
-        '
-        'Label42
-        '
-        Me.Label42.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label42.ForeColor = System.Drawing.Color.Silver
-        Me.Label42.Location = New System.Drawing.Point(143, 34)
-        Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(34, 23)
-        Me.Label42.TabIndex = 21
-        Me.Label42.Text = "번"
-        Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label44
-        '
-        Me.Label44.AutoSize = True
-        Me.Label44.Font = New System.Drawing.Font("Gulim", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.Silver
-        Me.Label44.Location = New System.Drawing.Point(102, 96)
-        Me.Label44.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(21, 16)
-        Me.Label44.TabIndex = 21
-        Me.Label44.Text = "~"
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Chart2
-        '
-        Me.Chart2.BorderlineWidth = 0
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart2.ChartAreas.Add(ChartArea1)
-        Me.Chart2.Location = New System.Drawing.Point(296, 124)
-        Me.Chart2.Name = "Chart2"
-        Me.Chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel
-        Series1.ChartArea = "ChartArea1"
-        Series1.Name = "Series1"
-        Me.Chart2.Series.Add(Series1)
-        Me.Chart2.Size = New System.Drawing.Size(287, 164)
-        Me.Chart2.TabIndex = 23
-        '
         'UserControl_customer_main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
@@ -1248,6 +1248,7 @@ Partial Class UserControl_customer_main
         Me.Panel6.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel8.ResumeLayout(False)
         Me.Panel11.ResumeLayout(False)
@@ -1258,7 +1259,6 @@ Partial Class UserControl_customer_main
         Me.Panel10.ResumeLayout(False)
         Me.Panel9.ResumeLayout(False)
         Me.Panel9.PerformLayout()
-        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
