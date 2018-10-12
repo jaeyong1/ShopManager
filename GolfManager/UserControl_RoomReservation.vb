@@ -519,7 +519,7 @@ Public Class UserControl_RoomReservation
                     Dim timediff As TimeSpan = endTime - DateTime.Now
                     contents = Format(timediff.Hours, "0").Replace("-", "") &
                         Format(timediff.Minutes, ":00").Replace("-", "") _
-                    ' & Format(timediff.Seconds, ":00").Replace("-", "")  '초 표시 생략
+                    '  & Format(timediff.Seconds, ":00").Replace("-", "")  '초 표시 생략
 
 
                     '5분이하 : [끝나감] 색깔
