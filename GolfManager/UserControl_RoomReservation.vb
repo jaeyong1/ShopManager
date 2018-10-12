@@ -120,11 +120,20 @@ Public Class UserControl_RoomReservation
         '종료시간 변환
         Dim usageTime_1 As String = comboUsageTime.Text.Replace(" 시간", "").Trim()
         Dim usageTime_num As Integer = Integer.Parse(usageTime_1)
-        Dim endTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+        Dim endTime As DateTime
+        Try
+            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
                                                  starthour_num + usageTime_num,  'hours 
                                                  0, 'minutes
                                                  0, 'seconds
                                                  0) 'milliseconds
+        Catch ex As System.ArgumentOutOfRangeException
+            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                 23,  'hours 
+                                                 59, 'minutes
+                                                 0, 'seconds
+                                                 0) 'milliseconds
+        End Try
 
 
         'DB Update  < 서버
@@ -220,14 +229,21 @@ Public Class UserControl_RoomReservation
         '종료시간 변환
         Dim usageTime_1 As String = comboUsageTime.Text.Replace(" 시간", "").Trim()
         Dim usageTime_num As Integer = Integer.Parse(usageTime_1)
-        Dim endTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+        Dim endTime As DateTime        '타석예약 가능한지 DB 확인
+        Try
+            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
                                                  starthour_num + usageTime_num,  'hours 
                                                  0, 'minutes
                                                  0, 'seconds
                                                  0) 'milliseconds
+        Catch ex As System.ArgumentOutOfRangeException
+            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                 23,  'hours 
+                                                 59, 'minutes
+                                                 0, 'seconds
+                                                 0) 'milliseconds
+        End Try
 
-
-        '타석예약 가능한지 DB 확인
         Dim isValid As Boolean = True
         For i = 0 To lstRoomReservation.Count - 1
             If lstRoomReservation.Item(i).isValidNewReservation(
@@ -502,8 +518,9 @@ Public Class UserControl_RoomReservation
                     endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
                     Dim timediff As TimeSpan = endTime - DateTime.Now
                     contents = Format(timediff.Hours, "0").Replace("-", "") &
-                        Format(timediff.Minutes, ":00").Replace("-", "") &
-                        Format(timediff.Seconds, ":00").Replace("-", "")
+                        Format(timediff.Minutes, ":00").Replace("-", "") _
+                    ' & Format(timediff.Seconds, ":00").Replace("-", "")  '초 표시 생략
+
 
                     '5분이하 : [끝나감] 색깔
                     If timediff.TotalMinutes >= 0 And timediff.TotalMinutes <= 5.0 Then
@@ -694,7 +711,9 @@ Public Class UserControl_RoomReservation
         Console.WriteLine("selectStartTimeUI>" & startTime)
 
         For k = 0 To (lstStartTime.Items.Count - 1)
-            If startTime.Equals("07:00") And lstStartTime.Items(k).Equals("오전 7:00") Then
+            If startTime.Equals("06:00") And lstStartTime.Items(k).Equals("오전 6:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("07:00") And lstStartTime.Items(k).Equals("오전 7:00") Then
                 lstStartTime.SetSelected(k, True) : Exit Sub
             ElseIf startTime.Equals("08:00") And lstStartTime.Items(k).Equals("오전 8:00") Then
                 lstStartTime.SetSelected(k, True) : Exit Sub
@@ -723,6 +742,10 @@ Public Class UserControl_RoomReservation
             ElseIf startTime.Equals("20:00") And lstStartTime.Items(k).Equals("오후 8:00") Then
                 lstStartTime.SetSelected(k, True) : Exit Sub
             ElseIf startTime.Equals("21:00") And lstStartTime.Items(k).Equals("오후 9:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("22:00") And lstStartTime.Items(k).Equals("오후 10:00") Then
+                lstStartTime.SetSelected(k, True) : Exit Sub
+            ElseIf startTime.Equals("23:00") And lstStartTime.Items(k).Equals("오후 11:00") Then
                 lstStartTime.SetSelected(k, True) : Exit Sub
             ElseIf startTime.Equals(lstStartTime.Items(k)) Then
                 '입력이랑이름같으면
