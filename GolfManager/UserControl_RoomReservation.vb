@@ -41,7 +41,14 @@ Public Class UserControl_RoomReservation
 
         refreshRoomReservationWithServer()
 
+        '시작시간/종료시간 포맷
+        timepickerStartTime.Format = DateTimePickerFormat.Custom
+        timepickerStartTime.CustomFormat = "tt hh:mm"
+        timepickerEndTime.Format = DateTimePickerFormat.Custom
+        timepickerEndTime.CustomFormat = "tt hh:mm"
+
     End Sub
+
 
     'UI 입력확인
     Private Function checkReservationUI() As Boolean

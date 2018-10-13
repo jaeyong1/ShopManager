@@ -26,26 +26,35 @@ Partial Class UserControl_RoomReservation
         Me.btnShow = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.groupNewRoomReserv = New System.Windows.Forms.GroupBox()
+        Me.timepickerEndTime = New System.Windows.Forms.DateTimePicker()
+        Me.timepickerStartTime = New System.Windows.Forms.DateTimePicker()
+        Me.btn_SetStartTime12oclock = New System.Windows.Forms.Button()
+        Me.btn_SetStartTimeAfter5Min = New System.Windows.Forms.Button()
+        Me.btn_EndTimeIncrease70min = New System.Windows.Forms.Button()
+        Me.btn_EndTimeIncrease60min = New System.Windows.Forms.Button()
+        Me.btn_EndTimeIncrease10min = New System.Windows.Forms.Button()
         Me.btnInitUI = New System.Windows.Forms.Button()
-        Me.lblRoomReservIndex = New System.Windows.Forms.Label()
+        Me.btn_EndTimeIncrease30min = New System.Windows.Forms.Button()
+        Me.btn_SetStartTimeNow = New System.Windows.Forms.Button()
+        Me.btnAddReserv = New System.Windows.Forms.Button()
         Me.btnSetRoomEnd = New System.Windows.Forms.Button()
         Me.btnSetRoomStart = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtRoomState = New System.Windows.Forms.TextBox()
         Me.btnAddWaiting = New System.Windows.Forms.Button()
-        Me.btnAddReserv = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtCustomerID = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtEmployeeId = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCustomerName = New System.Windows.Forms.TextBox()
-        Me.comboUsageTime = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lstStartTime = New System.Windows.Forms.ListBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboRoomNumber = New System.Windows.Forms.ComboBox()
+        Me.lblRoomReservIndex = New System.Windows.Forms.Label()
+        Me.comboUsageTime = New System.Windows.Forms.ComboBox()
+        Me.lstStartTime = New System.Windows.Forms.ListBox()
         Me.groupWaitings = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.lstWaitingCust = New System.Windows.Forms.ListBox()
@@ -88,24 +97,30 @@ Partial Class UserControl_RoomReservation
         '
         'groupNewRoomReserv
         '
+        Me.groupNewRoomReserv.Controls.Add(Me.timepickerEndTime)
+        Me.groupNewRoomReserv.Controls.Add(Me.timepickerStartTime)
+        Me.groupNewRoomReserv.Controls.Add(Me.btn_SetStartTime12oclock)
+        Me.groupNewRoomReserv.Controls.Add(Me.btn_SetStartTimeAfter5Min)
+        Me.groupNewRoomReserv.Controls.Add(Me.btn_EndTimeIncrease70min)
+        Me.groupNewRoomReserv.Controls.Add(Me.btn_EndTimeIncrease60min)
+        Me.groupNewRoomReserv.Controls.Add(Me.btn_EndTimeIncrease10min)
         Me.groupNewRoomReserv.Controls.Add(Me.btnInitUI)
-        Me.groupNewRoomReserv.Controls.Add(Me.lblRoomReservIndex)
+        Me.groupNewRoomReserv.Controls.Add(Me.btn_EndTimeIncrease30min)
+        Me.groupNewRoomReserv.Controls.Add(Me.btn_SetStartTimeNow)
+        Me.groupNewRoomReserv.Controls.Add(Me.btnAddReserv)
         Me.groupNewRoomReserv.Controls.Add(Me.btnSetRoomEnd)
         Me.groupNewRoomReserv.Controls.Add(Me.btnSetRoomStart)
         Me.groupNewRoomReserv.Controls.Add(Me.Label7)
         Me.groupNewRoomReserv.Controls.Add(Me.txtRoomState)
         Me.groupNewRoomReserv.Controls.Add(Me.btnAddWaiting)
-        Me.groupNewRoomReserv.Controls.Add(Me.btnAddReserv)
         Me.groupNewRoomReserv.Controls.Add(Me.Label1)
         Me.groupNewRoomReserv.Controls.Add(Me.txtCustomerID)
         Me.groupNewRoomReserv.Controls.Add(Me.Label6)
         Me.groupNewRoomReserv.Controls.Add(Me.txtEmployeeId)
         Me.groupNewRoomReserv.Controls.Add(Me.Label5)
         Me.groupNewRoomReserv.Controls.Add(Me.txtCustomerName)
-        Me.groupNewRoomReserv.Controls.Add(Me.comboUsageTime)
         Me.groupNewRoomReserv.Controls.Add(Me.Label4)
         Me.groupNewRoomReserv.Controls.Add(Me.Label3)
-        Me.groupNewRoomReserv.Controls.Add(Me.lstStartTime)
         Me.groupNewRoomReserv.Controls.Add(Me.Label2)
         Me.groupNewRoomReserv.Controls.Add(Me.ComboRoomNumber)
         Me.groupNewRoomReserv.Font = New System.Drawing.Font("GulimChe", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
@@ -116,27 +131,142 @@ Partial Class UserControl_RoomReservation
         Me.groupNewRoomReserv.TabStop = False
         Me.groupNewRoomReserv.Text = "타석예약"
         '
+        'timepickerEndTime
+        '
+        Me.timepickerEndTime.Font = New System.Drawing.Font("New Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.timepickerEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.timepickerEndTime.Location = New System.Drawing.Point(94, 163)
+        Me.timepickerEndTime.Name = "timepickerEndTime"
+        Me.timepickerEndTime.ShowUpDown = True
+        Me.timepickerEndTime.Size = New System.Drawing.Size(120, 26)
+        Me.timepickerEndTime.TabIndex = 8
+        '
+        'timepickerStartTime
+        '
+        Me.timepickerStartTime.Font = New System.Drawing.Font("New Gulim", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.timepickerStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.timepickerStartTime.Location = New System.Drawing.Point(94, 122)
+        Me.timepickerStartTime.Name = "timepickerStartTime"
+        Me.timepickerStartTime.ShowUpDown = True
+        Me.timepickerStartTime.Size = New System.Drawing.Size(120, 26)
+        Me.timepickerStartTime.TabIndex = 8
+        '
+        'btn_SetStartTime12oclock
+        '
+        Me.btn_SetStartTime12oclock.BackColor = System.Drawing.Color.Gray
+        Me.btn_SetStartTime12oclock.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_SetStartTime12oclock.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btn_SetStartTime12oclock.ForeColor = System.Drawing.Color.White
+        Me.btn_SetStartTime12oclock.Location = New System.Drawing.Point(360, 122)
+        Me.btn_SetStartTime12oclock.Name = "btn_SetStartTime12oclock"
+        Me.btn_SetStartTime12oclock.Size = New System.Drawing.Size(69, 26)
+        Me.btn_SetStartTime12oclock.TabIndex = 22
+        Me.btn_SetStartTime12oclock.Text = "낮12시"
+        Me.btn_SetStartTime12oclock.UseVisualStyleBackColor = False
+        '
+        'btn_SetStartTimeAfter5Min
+        '
+        Me.btn_SetStartTimeAfter5Min.BackColor = System.Drawing.Color.Gray
+        Me.btn_SetStartTimeAfter5Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_SetStartTimeAfter5Min.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btn_SetStartTimeAfter5Min.ForeColor = System.Drawing.Color.White
+        Me.btn_SetStartTimeAfter5Min.Location = New System.Drawing.Point(290, 122)
+        Me.btn_SetStartTimeAfter5Min.Name = "btn_SetStartTimeAfter5Min"
+        Me.btn_SetStartTimeAfter5Min.Size = New System.Drawing.Size(69, 26)
+        Me.btn_SetStartTimeAfter5Min.TabIndex = 22
+        Me.btn_SetStartTimeAfter5Min.Text = "5분후"
+        Me.btn_SetStartTimeAfter5Min.UseVisualStyleBackColor = False
+        '
+        'btn_EndTimeIncrease70min
+        '
+        Me.btn_EndTimeIncrease70min.BackColor = System.Drawing.Color.Gray
+        Me.btn_EndTimeIncrease70min.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_EndTimeIncrease70min.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btn_EndTimeIncrease70min.ForeColor = System.Drawing.Color.White
+        Me.btn_EndTimeIncrease70min.Location = New System.Drawing.Point(382, 163)
+        Me.btn_EndTimeIncrease70min.Name = "btn_EndTimeIncrease70min"
+        Me.btn_EndTimeIncrease70min.Size = New System.Drawing.Size(47, 26)
+        Me.btn_EndTimeIncrease70min.TabIndex = 22
+        Me.btn_EndTimeIncrease70min.Text = "+70'"
+        Me.btn_EndTimeIncrease70min.UseVisualStyleBackColor = False
+        '
+        'btn_EndTimeIncrease60min
+        '
+        Me.btn_EndTimeIncrease60min.BackColor = System.Drawing.Color.Gray
+        Me.btn_EndTimeIncrease60min.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_EndTimeIncrease60min.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btn_EndTimeIncrease60min.ForeColor = System.Drawing.Color.White
+        Me.btn_EndTimeIncrease60min.Location = New System.Drawing.Point(328, 163)
+        Me.btn_EndTimeIncrease60min.Name = "btn_EndTimeIncrease60min"
+        Me.btn_EndTimeIncrease60min.Size = New System.Drawing.Size(47, 26)
+        Me.btn_EndTimeIncrease60min.TabIndex = 22
+        Me.btn_EndTimeIncrease60min.Text = "+60'"
+        Me.btn_EndTimeIncrease60min.UseVisualStyleBackColor = False
+        '
+        'btn_EndTimeIncrease10min
+        '
+        Me.btn_EndTimeIncrease10min.BackColor = System.Drawing.Color.Gray
+        Me.btn_EndTimeIncrease10min.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_EndTimeIncrease10min.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btn_EndTimeIncrease10min.ForeColor = System.Drawing.Color.White
+        Me.btn_EndTimeIncrease10min.Location = New System.Drawing.Point(220, 163)
+        Me.btn_EndTimeIncrease10min.Name = "btn_EndTimeIncrease10min"
+        Me.btn_EndTimeIncrease10min.Size = New System.Drawing.Size(47, 26)
+        Me.btn_EndTimeIncrease10min.TabIndex = 22
+        Me.btn_EndTimeIncrease10min.Text = "+10'"
+        Me.btn_EndTimeIncrease10min.UseVisualStyleBackColor = False
+        '
         'btnInitUI
         '
         Me.btnInitUI.BackColor = System.Drawing.Color.Gray
         Me.btnInitUI.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnInitUI.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.btnInitUI.ForeColor = System.Drawing.Color.White
-        Me.btnInitUI.Location = New System.Drawing.Point(238, 119)
+        Me.btnInitUI.Location = New System.Drawing.Point(237, 251)
         Me.btnInitUI.Name = "btnInitUI"
         Me.btnInitUI.Size = New System.Drawing.Size(191, 37)
         Me.btnInitUI.TabIndex = 20
         Me.btnInitUI.Text = "입력화면초기화"
         Me.btnInitUI.UseVisualStyleBackColor = False
         '
-        'lblRoomReservIndex
+        'btn_EndTimeIncrease30min
         '
-        Me.lblRoomReservIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblRoomReservIndex.Location = New System.Drawing.Point(6, 146)
-        Me.lblRoomReservIndex.Name = "lblRoomReservIndex"
-        Me.lblRoomReservIndex.Size = New System.Drawing.Size(65, 23)
-        Me.lblRoomReservIndex.TabIndex = 19
-        Me.lblRoomReservIndex.Visible = False
+        Me.btn_EndTimeIncrease30min.BackColor = System.Drawing.Color.Gray
+        Me.btn_EndTimeIncrease30min.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_EndTimeIncrease30min.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btn_EndTimeIncrease30min.ForeColor = System.Drawing.Color.White
+        Me.btn_EndTimeIncrease30min.Location = New System.Drawing.Point(274, 163)
+        Me.btn_EndTimeIncrease30min.Name = "btn_EndTimeIncrease30min"
+        Me.btn_EndTimeIncrease30min.Size = New System.Drawing.Size(47, 26)
+        Me.btn_EndTimeIncrease30min.TabIndex = 22
+        Me.btn_EndTimeIncrease30min.Text = "+30'"
+        Me.btn_EndTimeIncrease30min.UseVisualStyleBackColor = False
+        '
+        'btn_SetStartTimeNow
+        '
+        Me.btn_SetStartTimeNow.BackColor = System.Drawing.Color.Gray
+        Me.btn_SetStartTimeNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_SetStartTimeNow.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btn_SetStartTimeNow.ForeColor = System.Drawing.Color.White
+        Me.btn_SetStartTimeNow.Location = New System.Drawing.Point(220, 122)
+        Me.btn_SetStartTimeNow.Name = "btn_SetStartTimeNow"
+        Me.btn_SetStartTimeNow.Size = New System.Drawing.Size(69, 26)
+        Me.btn_SetStartTimeNow.TabIndex = 22
+        Me.btn_SetStartTimeNow.Text = "지금"
+        Me.btn_SetStartTimeNow.UseVisualStyleBackColor = False
+        '
+        'btnAddReserv
+        '
+        Me.btnAddReserv.BackColor = System.Drawing.Color.Gray
+        Me.btnAddReserv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAddReserv.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnAddReserv.ForeColor = System.Drawing.Color.White
+        Me.btnAddReserv.Location = New System.Drawing.Point(23, 208)
+        Me.btnAddReserv.Name = "btnAddReserv"
+        Me.btnAddReserv.Size = New System.Drawing.Size(204, 37)
+        Me.btnAddReserv.TabIndex = 6
+        Me.btnAddReserv.Text = "타석예약추가"
+        Me.btnAddReserv.UseVisualStyleBackColor = False
         '
         'btnSetRoomEnd
         '
@@ -144,7 +274,7 @@ Partial Class UserControl_RoomReservation
         Me.btnSetRoomEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSetRoomEnd.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.btnSetRoomEnd.ForeColor = System.Drawing.Color.White
-        Me.btnSetRoomEnd.Location = New System.Drawing.Point(335, 251)
+        Me.btnSetRoomEnd.Location = New System.Drawing.Point(132, 251)
         Me.btnSetRoomEnd.Name = "btnSetRoomEnd"
         Me.btnSetRoomEnd.Size = New System.Drawing.Size(95, 37)
         Me.btnSetRoomEnd.TabIndex = 18
@@ -157,9 +287,9 @@ Partial Class UserControl_RoomReservation
         Me.btnSetRoomStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSetRoomStart.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.btnSetRoomStart.ForeColor = System.Drawing.Color.White
-        Me.btnSetRoomStart.Location = New System.Drawing.Point(239, 251)
+        Me.btnSetRoomStart.Location = New System.Drawing.Point(23, 251)
         Me.btnSetRoomStart.Name = "btnSetRoomStart"
-        Me.btnSetRoomStart.Size = New System.Drawing.Size(95, 37)
+        Me.btnSetRoomStart.Size = New System.Drawing.Size(99, 37)
         Me.btnSetRoomStart.TabIndex = 18
         Me.btnSetRoomStart.Text = "사용시작"
         Me.btnSetRoomStart.UseVisualStyleBackColor = False
@@ -190,25 +320,12 @@ Partial Class UserControl_RoomReservation
         Me.btnAddWaiting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddWaiting.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.btnAddWaiting.ForeColor = System.Drawing.Color.White
-        Me.btnAddWaiting.Location = New System.Drawing.Point(239, 208)
+        Me.btnAddWaiting.Location = New System.Drawing.Point(238, 208)
         Me.btnAddWaiting.Name = "btnAddWaiting"
         Me.btnAddWaiting.Size = New System.Drawing.Size(191, 37)
         Me.btnAddWaiting.TabIndex = 6
         Me.btnAddWaiting.Text = "(시간선택없이)대기추가"
         Me.btnAddWaiting.UseVisualStyleBackColor = False
-        '
-        'btnAddReserv
-        '
-        Me.btnAddReserv.BackColor = System.Drawing.Color.Gray
-        Me.btnAddReserv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddReserv.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.btnAddReserv.ForeColor = System.Drawing.Color.White
-        Me.btnAddReserv.Location = New System.Drawing.Point(238, 165)
-        Me.btnAddReserv.Name = "btnAddReserv"
-        Me.btnAddReserv.Size = New System.Drawing.Size(191, 37)
-        Me.btnAddReserv.TabIndex = 6
-        Me.btnAddReserv.Text = "타석예약추가"
-        Me.btnAddReserv.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -266,48 +383,25 @@ Partial Class UserControl_RoomReservation
         Me.txtCustomerName.TabIndex = 9
         Me.txtCustomerName.TabStop = False
         '
-        'comboUsageTime
-        '
-        Me.comboUsageTime.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.comboUsageTime.FormattingEnabled = True
-        Me.comboUsageTime.Items.AddRange(New Object() {"1 시간", "2 시간", "3 시간", "4 시간"})
-        Me.comboUsageTime.Location = New System.Drawing.Point(309, 88)
-        Me.comboUsageTime.Name = "comboUsageTime"
-        Me.comboUsageTime.Size = New System.Drawing.Size(120, 23)
-        Me.comboUsageTime.TabIndex = 5
-        Me.comboUsageTime.Text = "1 시간"
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label4.Location = New System.Drawing.Point(236, 90)
+        Me.Label4.Location = New System.Drawing.Point(6, 171)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(67, 15)
         Me.Label4.TabIndex = 7
-        Me.Label4.Text = "사용시간"
+        Me.Label4.Text = "종료시간"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 119)
+        Me.Label3.Location = New System.Drawing.Point(6, 130)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 15)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "시작시간"
-        '
-        'lstStartTime
-        '
-        Me.lstStartTime.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.lstStartTime.FormattingEnabled = True
-        Me.lstStartTime.ItemHeight = 15
-        Me.lstStartTime.Items.AddRange(New Object() {"오전 6:00", "오전 7:00", "오전 8:00", "오전 9:00", "오전 10:00", "오전 11:00", "오전 12:00", "오후 1:00", "오후 2:00", "오후 3:00", "오후 4:00", "오후 5:00", "오후 6:00", "오후 7:00", "오후 8:00", "오후 9:00", "오후 10:00", "오후 11:00"})
-        Me.lstStartTime.Location = New System.Drawing.Point(94, 119)
-        Me.lstStartTime.Name = "lstStartTime"
-        Me.lstStartTime.ScrollAlwaysVisible = True
-        Me.lstStartTime.Size = New System.Drawing.Size(120, 169)
-        Me.lstStartTime.TabIndex = 4
         '
         'Label2
         '
@@ -327,6 +421,39 @@ Partial Class UserControl_RoomReservation
         Me.ComboRoomNumber.Name = "ComboRoomNumber"
         Me.ComboRoomNumber.Size = New System.Drawing.Size(120, 23)
         Me.ComboRoomNumber.TabIndex = 1
+        '
+        'lblRoomReservIndex
+        '
+        Me.lblRoomReservIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblRoomReservIndex.Location = New System.Drawing.Point(30, 186)
+        Me.lblRoomReservIndex.Name = "lblRoomReservIndex"
+        Me.lblRoomReservIndex.Size = New System.Drawing.Size(65, 23)
+        Me.lblRoomReservIndex.TabIndex = 19
+        '
+        'comboUsageTime
+        '
+        Me.comboUsageTime.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.comboUsageTime.FormattingEnabled = True
+        Me.comboUsageTime.Items.AddRange(New Object() {"1 시간", "2 시간", "3 시간", "4 시간"})
+        Me.comboUsageTime.Location = New System.Drawing.Point(30, 156)
+        Me.comboUsageTime.Name = "comboUsageTime"
+        Me.comboUsageTime.Size = New System.Drawing.Size(120, 23)
+        Me.comboUsageTime.TabIndex = 5
+        Me.comboUsageTime.Text = "1 시간"
+        Me.comboUsageTime.Visible = False
+        '
+        'lstStartTime
+        '
+        Me.lstStartTime.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lstStartTime.FormattingEnabled = True
+        Me.lstStartTime.ItemHeight = 15
+        Me.lstStartTime.Items.AddRange(New Object() {"오전 6:00", "오전 7:00", "오전 8:00", "오전 9:00", "오전 10:00", "오전 11:00", "오전 12:00", "오후 1:00", "오후 2:00", "오후 3:00", "오후 4:00", "오후 5:00", "오후 6:00", "오후 7:00", "오후 8:00", "오후 9:00", "오후 10:00", "오후 11:00"})
+        Me.lstStartTime.Location = New System.Drawing.Point(30, 84)
+        Me.lstStartTime.Name = "lstStartTime"
+        Me.lstStartTime.ScrollAlwaysVisible = True
+        Me.lstStartTime.Size = New System.Drawing.Size(120, 64)
+        Me.lstStartTime.TabIndex = 4
+        Me.lstStartTime.Visible = False
         '
         'groupWaitings
         '
@@ -405,6 +532,9 @@ Partial Class UserControl_RoomReservation
         Me.Controls.Add(Me.groupNewRoomReserv)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.btnShow)
+        Me.Controls.Add(Me.lstStartTime)
+        Me.Controls.Add(Me.comboUsageTime)
+        Me.Controls.Add(Me.lblRoomReservIndex)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "UserControl_RoomReservation"
@@ -450,4 +580,13 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents btnSetRoomStart As Button
     Friend WithEvents lblRoomReservIndex As Label
     Friend WithEvents btnInitUI As Button
+    Friend WithEvents btn_SetStartTimeAfter5Min As Button
+    Friend WithEvents btn_EndTimeIncrease70min As Button
+    Friend WithEvents btn_EndTimeIncrease60min As Button
+    Friend WithEvents btn_EndTimeIncrease10min As Button
+    Friend WithEvents btn_EndTimeIncrease30min As Button
+    Friend WithEvents btn_SetStartTimeNow As Button
+    Friend WithEvents timepickerStartTime As DateTimePicker
+    Friend WithEvents timepickerEndTime As DateTimePicker
+    Friend WithEvents btn_SetStartTime12oclock As Button
 End Class
