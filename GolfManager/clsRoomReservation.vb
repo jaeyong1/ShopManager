@@ -58,28 +58,37 @@ Public Class clsRoomReservation
 
     '소팅함수
     Public Function CompareTo(other As clsRoomReservation) As Integer Implements IComparable(Of clsRoomReservation).CompareTo
-        '1순위 타석번호
-        If 타석번호 > other.타석번호 Then
+        '1순위 타석번호의 문자열길이(3은 20보다 앞)
+        If 타석번호.Length > other.타석번호.Length Then
             Return 1
-        ElseIf 타석번호 < other.타석번호 Then
+        ElseIf 타석번호.Length < other.타석번호.Length Then
             Return -1
         Else
-            '2순위 시작시간
-            If 시작시간 > other.시작시간 Then
+
+            '2순위 타석번호
+            If 타석번호 > other.타석번호 Then
                 Return 1
-            ElseIf 시작시간 < other.시작시간 Then
+            ElseIf 타석번호 < other.타석번호 Then
                 Return -1
             Else
-                '3순위 입력순서
-                If 고유Index > other.고유Index Then
+                '3순위 시작시간
+                If 시작시간 > other.시작시간 Then
                     Return 1
-                ElseIf 고유Index < other.고유Index Then
+                ElseIf 시작시간 < other.시작시간 Then
                     Return -1
                 Else
-                    Return 0
+                    '4순위 입력순서
+                    If 고유Index > other.고유Index Then
+                        Return 1
+                    ElseIf 고유Index < other.고유Index Then
+                        Return -1
+                    Else
+                        Return 0
+                    End If
                 End If
             End If
         End If
+
     End Function
 
     Public Property 고유Index() As String

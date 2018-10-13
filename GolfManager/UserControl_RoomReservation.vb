@@ -15,6 +15,12 @@ Public Class UserControl_RoomReservation
     Dim BindingSource1 As New BindingSource() '리스트 <-> 데이터그리드.소스
 
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
+        '화면막고있는 안내문구 삭제
+        lbl2ndopennotify.Visible = False
+        lstWaitingCust.Enabled = True
+        lst5min.Enabled = True
+
+        '타석모니터 그리기시작
         Form2ndMonitor.numOfRooms = G_NumberOfRooms
         Form2ndMonitor.Show()
 
@@ -82,7 +88,8 @@ Public Class UserControl_RoomReservation
         ComboRoomNumber.Text = ""
         txtCustomerID.Text = ""
         txtEmployeeId.Text = ""
-        lstStartTime.SelectedIndex = -1
+        timepickerStartTime.Value = Date.Now
+        timepickerEndTime.Value = Date.Now
         txtCustomerName.Text = ""
         txtRoomState.Text = ""
         lblRoomReservIndex.Text = ""
@@ -96,52 +103,18 @@ Public Class UserControl_RoomReservation
             Exit Sub
         End If
 
-        If lstStartTime.SelectedIndex = -1 Then
-            MsgBox("시작시간을 선택해 주세요")
+        '시작시간 < 종료시간
+        Dim startTime As DateTime = timepickerStartTime.Value '시작시간
+        Dim endTime As DateTime = timepickerEndTime.Value '종료시간
+        Console.WriteLine("starttime:" + startTime + ", endtime:" + endTime)
+        If startTime >= endTime Then
+            MsgBox("종료시간은 시작시간 이후여야 합니다.")
             Exit Sub
         End If
-
-        If comboUsageTime.Items.Contains(comboUsageTime.Text & "") = False Then
-            MsgBox("사용시간이 존재하지 않는 값입니다.")
-            comboUsageTime.Select()
+        If (startTime.Hour = endTime.Hour) And (startTime.Minute = endTime.Minute) Then
+            MsgBox("종료시간은 시작시간 이후여야 합니다.")
             Exit Sub
         End If
-
-        '시작시간 변환
-        Dim starthour_1 As String = lstStartTime.Items(lstStartTime.SelectedIndex).replace(":00", "")
-        Dim starthour_num As Integer = 0
-        If lstStartTime.Items(lstStartTime.SelectedIndex).Contains("오전") Then
-            starthour_1 = starthour_1.Replace("오전 ", "").Trim()
-            starthour_num = Integer.Parse(starthour_1)
-        Else
-            starthour_1 = starthour_1.Replace("오후 ", "").Trim()
-            starthour_num = Integer.Parse(starthour_1) + 12 '오후면 12시간 추가
-        End If
-
-        Dim startTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
-                                                 starthour_num,  'hours 
-                                                 0, 'minutes
-                                                 0, 'seconds
-                                                 0) 'milliseconds
-
-        '종료시간 변환
-        Dim usageTime_1 As String = comboUsageTime.Text.Replace(" 시간", "").Trim()
-        Dim usageTime_num As Integer = Integer.Parse(usageTime_1)
-        Dim endTime As DateTime
-        Try
-            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
-                                                 starthour_num + usageTime_num,  'hours 
-                                                 0, 'minutes
-                                                 0, 'seconds
-                                                 0) 'milliseconds
-        Catch ex As System.ArgumentOutOfRangeException
-            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
-                                                 23,  'hours 
-                                                 59, 'minutes
-                                                 0, 'seconds
-                                                 0) 'milliseconds
-        End Try
-
 
         'DB Update  < 서버
         If refreshRoomReservationWithServer() = False Then
@@ -197,14 +170,16 @@ Public Class UserControl_RoomReservation
             Exit Sub
         End If
 
-        If lstStartTime.SelectedIndex = -1 Then
-            MsgBox("시작시간을 선택해 주세요")
+        '시작시간 < 종료시간
+        Dim startTime As DateTime = timepickerStartTime.Value '시작시간
+        Dim endTime As DateTime = timepickerEndTime.Value '종료시간
+        Console.WriteLine("starttime:" + startTime + ", endtime:" + endTime)
+        If startTime >= endTime Then
+            MsgBox("종료시간은 시작시간 이후여야 합니다.")
             Exit Sub
         End If
-
-        If comboUsageTime.Items.Contains(comboUsageTime.Text & "") = False Then
-            MsgBox("사용시간이 존재하지 않는 값입니다.")
-            comboUsageTime.Select()
+        If (startTime.Hour = endTime.Hour) And (startTime.Minute = endTime.Minute) Then
+            MsgBox("종료시간은 시작시간 이후여야 합니다.")
             Exit Sub
         End If
 
@@ -213,43 +188,6 @@ Public Class UserControl_RoomReservation
         If refreshRoomReservationWithServer() = False Then
             Exit Sub
         End If
-
-
-
-        '시작시간 변환
-        Dim starthour_1 As String = lstStartTime.Items(lstStartTime.SelectedIndex).replace(":00", "")
-        Dim starthour_num As Integer = 0
-        If lstStartTime.Items(lstStartTime.SelectedIndex).Contains("오전") Then
-            starthour_1 = starthour_1.Replace("오전 ", "").Trim()
-            starthour_num = Integer.Parse(starthour_1)
-        Else
-            starthour_1 = starthour_1.Replace("오후 ", "").Trim()
-            starthour_num = Integer.Parse(starthour_1) + 12 '오후면 12시간 추가
-        End If
-
-        Dim startTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
-                                                 starthour_num,  'hours 
-                                                 0, 'minutes
-                                                 0, 'seconds
-                                                 0) 'milliseconds
-
-        '종료시간 변환
-        Dim usageTime_1 As String = comboUsageTime.Text.Replace(" 시간", "").Trim()
-        Dim usageTime_num As Integer = Integer.Parse(usageTime_1)
-        Dim endTime As DateTime        '타석예약 가능한지 DB 확인
-        Try
-            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
-                                                 starthour_num + usageTime_num,  'hours 
-                                                 0, 'minutes
-                                                 0, 'seconds
-                                                 0) 'milliseconds
-        Catch ex As System.ArgumentOutOfRangeException
-            endTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
-                                                 23,  'hours 
-                                                 59, 'minutes
-                                                 0, 'seconds
-                                                 0) 'milliseconds
-        End Try
 
         Dim isValid As Boolean = True
         For i = 0 To lstRoomReservation.Count - 1
@@ -669,7 +607,6 @@ Public Class UserControl_RoomReservation
 
                 displayReservationInfo(lstRoomReservation.Item(j).고유Index)
                 gridCellSelect(lstRoomReservation.Item(j).고유Index)
-                comboUsageTime.Text = ""
                 Exit Sub
             End If
         Next j
@@ -713,59 +650,6 @@ Public Class UserControl_RoomReservation
         Next j
     End Sub
 
-    '시작시간 선택함수
-    Private Sub selectStartTimeUI(startTime As String)
-        Console.WriteLine("selectStartTimeUI>" & startTime)
-
-        For k = 0 To (lstStartTime.Items.Count - 1)
-            If startTime.Equals("06:00") And lstStartTime.Items(k).Equals("오전 6:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("07:00") And lstStartTime.Items(k).Equals("오전 7:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("08:00") And lstStartTime.Items(k).Equals("오전 8:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("09:00") And lstStartTime.Items(k).Equals("오전 9:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("10:00") And lstStartTime.Items(k).Equals("오전 10:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("11:00") And lstStartTime.Items(k).Equals("오전 11:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("12:00") And lstStartTime.Items(k).Equals("오전 12:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("13:00") And lstStartTime.Items(k).Equals("오후 1:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("14:00") And lstStartTime.Items(k).Equals("오후 2:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("15:00") And lstStartTime.Items(k).Equals("오후 3:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("16:00") And lstStartTime.Items(k).Equals("오후 4:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("17:00") And lstStartTime.Items(k).Equals("오후 5:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("18:00") And lstStartTime.Items(k).Equals("오후 6:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("19:00") And lstStartTime.Items(k).Equals("오후 7:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("20:00") And lstStartTime.Items(k).Equals("오후 8:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("21:00") And lstStartTime.Items(k).Equals("오후 9:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("22:00") And lstStartTime.Items(k).Equals("오후 10:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals("23:00") And lstStartTime.Items(k).Equals("오후 11:00") Then
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            ElseIf startTime.Equals(lstStartTime.Items(k)) Then
-                '입력이랑이름같으면
-                lstStartTime.SetSelected(k, True) : Exit Sub
-            End If
-
-
-        Next
-
-        '못찾으면
-        lstStartTime.SelectedIndex = -1
-    End Sub
-
     '화면입력초기화 버튼클릭
     Private Sub btnInitUI_Click(sender As Object, e As EventArgs) Handles btnInitUI.Click
         '입력화면정리
@@ -786,22 +670,24 @@ Public Class UserControl_RoomReservation
 
 
                 If lstRoomReservation.Item(j).시작시간.Equals("00:00") Then
-                    lstStartTime.SelectedIndex = -1
+                    Dim zeroTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                              0,  'hours 
+                                                              0, 'minutes
+                                                              0, 'seconds
+                                                              0) 'milliseconds
+                    timepickerStartTime.Value = zeroTime
+                    timepickerEndTime.Value = zeroTime
                 Else
                     '시작시간
-                    selectStartTimeUI(lstRoomReservation.Item(j).시작시간)
-
-                    '사용시간
                     Dim startTime As DateTime : startTime = DateTime.Parse(lstRoomReservation.Item(j).시작시간)
+                    timepickerStartTime.Value = startTime
+
+                    '종료시간
                     Dim endTime As DateTime : endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
-                    Dim timediff As TimeSpan = endTime - startTime
-                    comboUsageTime.Text = timediff.Hours & " 시간"
+                    timepickerEndTime.Value = endTime
                 End If
 
-
-
                 txtRoomState.Text = ""
-
                 Exit Sub
             End If
         Next j
@@ -841,4 +727,84 @@ Public Class UserControl_RoomReservation
 
     End Sub
 
+    '시작시간 지금 버튼
+    Private Sub btn_SetStartTimeNow_Click(sender As Object, e As EventArgs) Handles btn_SetStartTimeNow.Click
+        timepickerStartTime.Value = Date.Now
+        timepickerEndTime.Value = Date.Now
+    End Sub
+
+    '시작시간 5분후 버튼
+    Private Sub btn_SetStartTimeAfter5Min_Click(sender As Object, e As EventArgs) Handles btn_SetStartTimeAfter5Min.Click
+        Dim newDate As Date = Date.Now.AddMinutes(5)
+        timepickerStartTime.Value = newDate
+        timepickerEndTime.Value = newDate
+    End Sub
+
+    '시작시간 낮 12시(오전오후헷갈림)
+    Private Sub btn_SetStartTime12oclock_Click(sender As Object, e As EventArgs) Handles btn_SetStartTime12oclock.Click
+        Dim lunchTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                  12,  'hours 
+                                                  00, 'minutes
+                                                  0, 'seconds
+                                                  0) 'milliseconds
+
+        timepickerStartTime.Value = lunchTime
+        timepickerEndTime.Value = lunchTime
+    End Sub
+
+    '시작시간 변경 -> 종료시간 업데이트
+    Private Sub timepickerStartTime_ValueChanged(sender As Object, e As EventArgs) Handles timepickerStartTime.ValueChanged
+        timepickerEndTime.Value = timepickerStartTime.Value
+
+    End Sub
+
+    Private Sub increaseEndTimeMinutes(_min As Integer)
+        Dim newtime As DateTime = timepickerEndTime.Value
+        newtime = newtime.AddMinutes(_min)
+        timepickerEndTime.Value = newtime
+    End Sub
+    '종료시간 10분추가
+    Private Sub btn_EndTimeIncrease10min_Click(sender As Object, e As EventArgs) Handles btn_EndTimeIncrease10min.Click
+        increaseEndTimeMinutes(10)
+    End Sub
+    '종료시간 30분추가
+    Private Sub btn_EndTimeIncrease30min_Click(sender As Object, e As EventArgs) Handles btn_EndTimeIncrease30min.Click
+        increaseEndTimeMinutes(30)
+    End Sub
+    '종료시간 60분추가
+    Private Sub btn_EndTimeIncrease60min_Click(sender As Object, e As EventArgs) Handles btn_EndTimeIncrease60min.Click
+        increaseEndTimeMinutes(60)
+    End Sub
+    '종료시간 70분추가
+    Private Sub btn_EndTimeIncrease70min_Click(sender As Object, e As EventArgs) Handles btn_EndTimeIncrease70min.Click
+        increaseEndTimeMinutes(70)
+    End Sub
+
+    '종료시간 변경됨
+    Private Sub timepickerEndTime_ValueChanged(sender As Object, e As EventArgs) Handles timepickerEndTime.ValueChanged
+        If (timepickerStartTime.Value.Hour = 0) And (timepickerStartTime.Value.Minute = 0) And
+                (timepickerEndTime.Value.Hour = 0) And (timepickerEndTime.Value.Minute = 0) Then
+            Console.WriteLine("시간 미설정 상태. 에러SKIP")
+            Exit Sub
+        End If
+
+        If (timepickerEndTime.Value.Hour >= 0) And (timepickerEndTime.Value.Hour < 6) Then
+            Dim closeTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                              23,  'hours 
+                                                              59, 'minutes
+                                                              0, 'seconds
+                                                              0) 'milliseconds
+
+            timepickerEndTime.Value = closeTime
+            MsgBox("종료시간을 재 설정 바랍니다. (~23시59분)")
+        End If
+
+
+        If (timepickerStartTime.Value.Year <> timepickerEndTime.Value.Year) Or
+            (timepickerStartTime.Value.Month <> timepickerEndTime.Value.Month) Or
+            (timepickerStartTime.Value.Day <> timepickerEndTime.Value.Day) Then
+            MsgBox("종료시간을 재 설정 바랍니다.")
+            timepickerEndTime.Value = timepickerStartTime.Value
+        End If
+    End Sub
 End Class

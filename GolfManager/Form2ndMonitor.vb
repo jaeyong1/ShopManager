@@ -241,6 +241,9 @@ Public Class Form2ndMonitor
 
         '주기적으로 배너 변경(1초)
         Timer1.Enabled = False
+
+        '화면막고있는 안내문구 다시표시
+        Form1.UserControl_RoomReservation1.lbl2ndopennotify.Visible = True
     End Sub
 
 
