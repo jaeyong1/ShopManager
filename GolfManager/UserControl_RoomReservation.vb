@@ -666,7 +666,7 @@ Public Class UserControl_RoomReservation
                 ComboRoomNumber.Text = lstRoomReservation.Item(j).타석번호
                 txtCustomerID.Text = lstRoomReservation.Item(j).회원
                 txtCustomerName.Text = "-"
-                txtEmployeeId.Text = "-"
+                txtEmployeeId.Text = lstRoomReservation.Item(j).담당직원
 
 
                 If lstRoomReservation.Item(j).시작시간.Equals("00:00") Then
@@ -807,4 +807,5 @@ Public Class UserControl_RoomReservation
             timepickerEndTime.Value = timepickerStartTime.Value
         End If
     End Sub
+
 End Class
