@@ -93,6 +93,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="clsRoomReservationJSON.vb" />
+    <Compile Include="FormLogin.Designer.vb">
+      <DependentUpon>FormLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module1_GlobalVariables.vb" />
     <Compile Include="Module2_JSONPostGetResponse.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2ndMonitor.resx">
       <DependentUpon>Form2ndMonitor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

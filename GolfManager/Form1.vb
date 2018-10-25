@@ -103,4 +103,11 @@
 
     End Sub
 
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
+        Dim frmLoginDialogue As New FormLogin1
+
+        frmLoginDialogue.ShowDialog()
+
+    End Sub
 End Class
