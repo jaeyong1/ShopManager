@@ -440,7 +440,7 @@ Public Class UserControl_RoomReservation
             Dim waiting As Integer = 0
 
             '타석상태 결정순서
-            '미사용 > 사용중 > 곧끝남 > 종료지연(시간고려 추가)
+            '미사용 > 사용중 > 곧끝남 > 정리중(시간고려 추가)
 
             For j = 0 To (lstRoomReservation.Count - 1)
                 '대기인원 카운트
@@ -473,9 +473,9 @@ Public Class UserControl_RoomReservation
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("끝나감" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         Me.lst5min.Items.Add("타석 " & lstRoomReservation.Item(j).타석번호 & " / " & Format(timediff.Minutes, "0") & "분남음")
 
-                    ElseIf timediff.TotalMinutes < 0 Then '시간초과/종료지연
+                    ElseIf timediff.TotalMinutes < 0 Then '시간초과/정리중
                         Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
-                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("종료지연" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("정리중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         Me.lst5min.Items.Add("타석 " & lstRoomReservation.Item(j).타석번호 & " / " & Format(-timediff.TotalMinutes, "0") & "분 시간초과")
 
                     Else '[사용중]색깔

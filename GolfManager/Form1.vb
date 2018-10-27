@@ -50,8 +50,8 @@
 
     '웹서버 주소를 로컬 -> cafe24로 변경
     Private Sub btnLocalWebserverIP_Click(sender As Object, e As EventArgs) Handles btnLocalWebserverIP.Click
-        G_WebServerURL = "http://puttingone.cafe24.com/"
-        btnLocalWebserverIP.Text = "puttingone.cafe24로 변경됨"
+        G_WebServerURL = "http://puttingonetest.cafe24.com/"
+        btnLocalWebserverIP.Text = "puttingonetest.cafe24로 변경됨"
     End Sub
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
 

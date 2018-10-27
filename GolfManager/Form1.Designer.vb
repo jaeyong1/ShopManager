@@ -363,7 +363,7 @@ Partial Class Form1
         Me.btnLocalWebserverIP.Name = "btnLocalWebserverIP"
         Me.btnLocalWebserverIP.Size = New System.Drawing.Size(283, 29)
         Me.btnLocalWebserverIP.TabIndex = 10
-        Me.btnLocalWebserverIP.Text = "puttingone 서버사용"
+        Me.btnLocalWebserverIP.Text = "puttingonetest 서버사용"
         Me.btnLocalWebserverIP.UseVisualStyleBackColor = True
         Me.btnLocalWebserverIP.Visible = False
         '
