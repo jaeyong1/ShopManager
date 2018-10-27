@@ -70,15 +70,19 @@ Public Class UserControl_RoomReservation
         End If
 
         If txtCustomerID.Text = "" Then
-            MsgBox("회원정보를 확인해 주세요")
-            txtCustomerID.Select()
-            Return False
+            'MsgBox("회원정보를 확인해 주세요")
+            'txtCustomerID.Select()
+            'Return False
+            '[요구사항 변경] -> Geust자동입력
+            txtCustomerID.Text = "Guest"
         End If
 
         If txtEmployeeId.Text = "" Then
-            MsgBox("담당직원을 확인해 주세요")
-            txtEmployeeId.Select()
-            Return False
+            'MsgBox("담당직원을 확인해 주세요")
+            'txtEmployeeId.Select()
+            'Return False
+            '[요구사항 변경] -> Geust자동입력
+            txtEmployeeId.Text = "Guest"
         End If
         Return True
     End Function

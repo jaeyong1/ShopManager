@@ -105,7 +105,7 @@ Partial Class Form1
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(139, 15)
         Me.Label2.TabIndex = 10
-        Me.Label2.Text = "나이스샷 Ver 0.54"
+        Me.Label2.Text = "나이스샷 Ver 0.55"
         '
         'Panel4
         '
