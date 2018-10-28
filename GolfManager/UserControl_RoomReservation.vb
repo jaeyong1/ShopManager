@@ -36,6 +36,7 @@ Public Class UserControl_RoomReservation
     Private Sub UserControl_RoomReservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Console.WriteLine("타석예약화면 초기화")
 
+
         '타석번호 콤보박스 초기화
         ComboRoomNumber.Items.Clear()
         For i = 1 To (G_NumberOfRooms)
@@ -201,8 +202,29 @@ Public Class UserControl_RoomReservation
                 endTime.ToString) = False Then
 
                 If lstRoomReservation.Item(i).회원.Equals(txtCustomerID.Text) Then
-                    Console.WriteLine("스케쥴겹치지만 내스케쥴이므로 무시")
-                    Exit For
+
+                    Dim edityn = MsgBox("예약수정이 맞습니까? [예]예약변경, [아니요]신규추가, [취소]작업취소:", MsgBoxStyle.YesNoCancel)
+                    If edityn = vbYes Then
+                        '[예약변경] =현재예약건지움, 추가
+                        deleteRoomReservationToServer(
+                        New clsRoomReservation(lstRoomReservation.Item(i).고유Index,
+                                               lstRoomReservation.Item(i).타석번호,
+                                               lstRoomReservation.Item(i).상태,
+                                               lstRoomReservation.Item(i).회원,
+                                               lstRoomReservation.Item(i).담당직원,
+                                               lstRoomReservation.Item(i).시작시간,
+                                               lstRoomReservation.Item(i).종료시간)
+                                               )
+                        Exit For
+                    ElseIf edityn = vbNo Then
+                        '[신규추가]
+                        Console.WriteLine("스케쥴겹치지만 (내스케쥴이므로) 무시")
+                        Exit For
+                    Else 'cancel
+                        '[작업취소]
+                        Exit Sub
+                    End If
+
                 End If
                 isValid = False
 
@@ -366,6 +388,7 @@ Public Class UserControl_RoomReservation
     Private Function refreshRoomReservationWithServer()
 
         Dim JsonData As String = "{""type"":""Point""}" '보낼JSON데이터(Dummy)
+        Console.WriteLine("Update [" & G_WebServerURL & "]")
         Dim myRequest As HttpWebRequest = PostJSON(G_WebServerURL & "testver_getroomreservation", JsonData)
         Dim response As String = GetResponse(myRequest)
         Console.WriteLine("Response of Request:{0}", response)
@@ -427,11 +450,16 @@ Public Class UserControl_RoomReservation
         End If
 
         '주기적으로 서버로부터 테이블 업데이트
-        update2ndScreen()
+        If (update2ndScreen() = True) Then
+            Console.WriteLine("Retry update2ndScreen")
+            update2ndScreen() ' 한번더 실행
+        End If
     End Sub
 
-    '타석스크린 업데이트
-    Private Sub update2ndScreen()
+    '타석스크린 업데이트 
+    Private Function update2ndScreen()
+        Dim requestRetry As Boolean = False '다시 실행필요?를 리턴
+
         Me.lst5min.Items.Clear()
         lstWaitingCust.Items.Clear()
         For i = 0 To (Form2ndMonitor.dynamicBoxList.Count - 1)
@@ -450,7 +478,7 @@ Public Class UserControl_RoomReservation
                 '대기인원 카운트
                 If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("대기중") Then
                     '시간미정인경우만 세컨드스크린 숫자표시
-                    If lstRoomReservation.Item(j).시작시간 = "00:00" Then
+                    If lstRoomReservation.Item(j).시작시간 = "00: 00" Then
                         waiting = waiting + 1
                     End If
                     '시간정해져있어도 관리화면에는 표시
@@ -482,14 +510,26 @@ Public Class UserControl_RoomReservation
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("정리중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         Me.lst5min.Items.Add("타석 " & lstRoomReservation.Item(j).타석번호 & " / " & Format(-timediff.TotalMinutes, "0") & "분 시간초과")
 
+                        '10분이상 초과
+                        If ((-timediff.TotalMinutes) >= 10) Then
+                            requestRetry = True
+                            Dim realEndTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                  DateTime.Now.Hour,  'hours 
+                                                  DateTime.Now.Minute, 'minutes
+                                                  0, 'seconds
+                                                  0) 'milliseconds
+                            Dim strRealEndTime As String = realEndTime.ToString("HH:mm")
+                            lstRoomReservation.Item(j).종료시간 = strRealEndTime
+                            lstRoomReservation.Item(j).상태 = "사용완료"
+                            updateRoomReservationToServer(lstRoomReservation.Item(j))
+                        End If
+
                     Else '[사용중]색깔
                         Form2ndMonitor.dynamicBoxList.Item(i).setRoomUsing()
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("사용중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                     End If
 
-
-
-                    isSetted = True '뭔가 변경함
+                    isSetted = True '위에서 무엇인가 업데이트함
                 End If
 
 
@@ -500,7 +540,9 @@ Public Class UserControl_RoomReservation
                 Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
             End If
         Next
-    End Sub
+
+        Return requestRetry
+    End Function
 
 
     '대기회원 클릭 -> 예약화면으로 복사
