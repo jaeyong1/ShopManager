@@ -78,7 +78,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsRoomReservation.vb" />
+    <Compile Include="clsRoomReservationRawinfo.vb" />
+    <Compile Include="clsRoomReservationSummary.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>

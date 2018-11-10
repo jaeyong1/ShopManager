@@ -13,6 +13,7 @@ Imports Newtonsoft.Json.Linq '수동설치 > Tools > NuGet Package Manager > Con
 Public Class UserControl_RoomReservation
 
     Dim BindingSource1 As New BindingSource() '리스트 <-> 데이터그리드.소스
+    Dim BindingSource2 As New BindingSource() '리스트 <-> 데이터그리드.소스
 
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
         '화면막고있는 안내문구 삭제
@@ -32,6 +33,21 @@ Public Class UserControl_RoomReservation
 
     End Sub
 
+    '요약테이블 표시순서 지정
+    Private Sub AdjustSummaryTableColumnOrder()
+        With DataGridViewSummary
+            .Columns("고유Index").Visible = False
+            .Columns("타석번호").DisplayIndex = 0
+            .Columns("상태").DisplayIndex = 1
+            .Columns("회원").DisplayIndex = 2
+            .Columns("담당직원").DisplayIndex = 3
+            .Columns("시작시간").DisplayIndex = 4
+            .Columns("종료시간").DisplayIndex = 5
+            .Columns("남은시간").DisplayIndex = 6
+            .Columns("대기회원").DisplayIndex = 7
+        End With
+
+    End Sub
     '시작할때
     Private Sub UserControl_RoomReservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Console.WriteLine("타석예약화면 초기화")
@@ -43,9 +59,22 @@ Public Class UserControl_RoomReservation
             ComboRoomNumber.Items.Add(i & "") '타석번호를 문자열로 생성
         Next
 
-        BindingSource1.DataSource = lstRoomReservation
+        '예약요약리스트 초기화
+        lstRoomReservationSummary = New List(Of clsRoomReservationSummary)
+        For i = 1 To (G_NumberOfRooms)
+            lstRoomReservationSummary.Add(New clsRoomReservationSummary(i & ""))
+        Next
+
+        '예약Raw테이블-리스트연결
+        BindingSource1.DataSource = lstRoomReservationRaw
         DataGridView1.DataSource = BindingSource1
 
+        '예약요약테이블-리스트연결
+        BindingSource2.DataSource = lstRoomReservationSummary
+        DataGridViewSummary.DataSource = BindingSource2
+        AdjustSummaryTableColumnOrder() '요약테이블 표시순서
+
+        '서버로부터 DB정보 업데이트
         refreshRoomReservationWithServer()
 
         '시작시간/종료시간 포맷
@@ -128,16 +157,16 @@ Public Class UserControl_RoomReservation
 
         '타석예약 가능한지 DB 확인
         Dim isValid As Boolean = True
-        For i = 0 To lstRoomReservation.Count - 1
-            If lstRoomReservation.Item(i).isValidNewReservation(
+        For i = 0 To lstRoomReservationRaw.Count - 1
+            If lstRoomReservationRaw.Item(i).isValidNewReservation(
                 ComboRoomNumber.Text,
                 startTime.ToString,
                 endTime.ToString) = False Then
                 isValid = False
 
                 '예약불가할 경우 에러팝업
-                MsgBox("가용한 시간이 아닙니다. 예약상태를 확인해주세요." & lstRoomReservation.Item(i).회원 & "님의 " &
-                    lstRoomReservation.Item(i).타석번호 & "번방 예약과 겹칩니다.")
+                MsgBox("가용한 시간이 아닙니다. 예약상태를 확인해주세요." & lstRoomReservationRaw.Item(i).회원 & "님의 " &
+                    lstRoomReservationRaw.Item(i).타석번호 & "번방 예약과 겹칩니다.")
                 Exit Sub
 
             End If
@@ -148,7 +177,7 @@ Public Class UserControl_RoomReservation
 
         '예약추가 > 서버
         addRoomReservationToServer(
-            New clsRoomReservation(lstRoomReservation.Count & "",
+            New clsRoomReservationRawinfo(lstRoomReservationRaw.Count & "",
                                                        ComboRoomNumber.Text,
                                                       "대기중",
                                                       txtCustomerID.Text,
@@ -195,25 +224,25 @@ Public Class UserControl_RoomReservation
         End If
 
         Dim isValid As Boolean = True
-        For i = 0 To lstRoomReservation.Count - 1
-            If lstRoomReservation.Item(i).isValidNewReservation(
+        For i = 0 To lstRoomReservationRaw.Count - 1
+            If lstRoomReservationRaw.Item(i).isValidNewReservation(
                 ComboRoomNumber.Text,
                 startTime.ToString,
                 endTime.ToString) = False Then
 
-                If lstRoomReservation.Item(i).회원.Equals(txtCustomerID.Text) Then
+                If lstRoomReservationRaw.Item(i).회원.Equals(txtCustomerID.Text) Then
 
                     Dim edityn = MsgBox("예약수정이 맞습니까? [예]예약변경, [아니요]신규추가, [취소]작업취소:", MsgBoxStyle.YesNoCancel)
                     If edityn = vbYes Then
                         '[예약변경] =현재예약건지움, 추가
                         deleteRoomReservationToServer(
-                        New clsRoomReservation(lstRoomReservation.Item(i).고유Index,
-                                               lstRoomReservation.Item(i).타석번호,
-                                               lstRoomReservation.Item(i).상태,
-                                               lstRoomReservation.Item(i).회원,
-                                               lstRoomReservation.Item(i).담당직원,
-                                               lstRoomReservation.Item(i).시작시간,
-                                               lstRoomReservation.Item(i).종료시간)
+                        New clsRoomReservationRawinfo(lstRoomReservationRaw.Item(i).고유Index,
+                                               lstRoomReservationRaw.Item(i).타석번호,
+                                               lstRoomReservationRaw.Item(i).상태,
+                                               lstRoomReservationRaw.Item(i).회원,
+                                               lstRoomReservationRaw.Item(i).담당직원,
+                                               lstRoomReservationRaw.Item(i).시작시간,
+                                               lstRoomReservationRaw.Item(i).종료시간)
                                                )
                         Exit For
                     ElseIf edityn = vbNo Then
@@ -229,8 +258,8 @@ Public Class UserControl_RoomReservation
                 isValid = False
 
                 '예약불가할 경우 에러팝업
-                MsgBox("가용한 시간이 아닙니다. 예약상태를 확인해주세요." & lstRoomReservation.Item(i).회원 & "님의 " &
-                    lstRoomReservation.Item(i).타석번호 & "번방 예약과 겹칩니다.")
+                MsgBox("가용한 시간이 아닙니다. 예약상태를 확인해주세요." & lstRoomReservationRaw.Item(i).회원 & "님의 " &
+                    lstRoomReservationRaw.Item(i).타석번호 & "번방 예약과 겹칩니다.")
                 Exit Sub
 
             End If
@@ -244,18 +273,18 @@ Public Class UserControl_RoomReservation
 
         '대기회원에서 선택했으면 지움(옵션)
         If lblRoomReservIndex.Text <> "" Then
-            For j = 0 To (lstRoomReservation.Count - 1)
-                If lstRoomReservation.Item(j).상태.Equals("대기중") And
-                    lstRoomReservation.Item(j).고유Index.Equals(lblRoomReservIndex.Text) Then
+            For j = 0 To (lstRoomReservationRaw.Count - 1)
+                If lstRoomReservationRaw.Item(j).상태.Equals("대기중") And
+                    lstRoomReservationRaw.Item(j).고유Index.Equals(lblRoomReservIndex.Text) Then
                     '서버에서 예약삭제
                     deleteRoomReservationToServer(
-                        New clsRoomReservation(lstRoomReservation.Item(j).고유Index,
-                                               lstRoomReservation.Item(j).타석번호,
-                                               lstRoomReservation.Item(j).상태,
-                                               lstRoomReservation.Item(j).회원,
-                                               lstRoomReservation.Item(j).담당직원,
-                                               lstRoomReservation.Item(j).시작시간,
-                                               lstRoomReservation.Item(j).종료시간)
+                        New clsRoomReservationRawinfo(lstRoomReservationRaw.Item(j).고유Index,
+                                               lstRoomReservationRaw.Item(j).타석번호,
+                                               lstRoomReservationRaw.Item(j).상태,
+                                               lstRoomReservationRaw.Item(j).회원,
+                                               lstRoomReservationRaw.Item(j).담당직원,
+                                               lstRoomReservationRaw.Item(j).시작시간,
+                                               lstRoomReservationRaw.Item(j).종료시간)
                                                )
 
                     '삭제후 업데이트
@@ -272,7 +301,7 @@ Public Class UserControl_RoomReservation
 
         '예약추가 > 서버
         addRoomReservationToServer(
-            New clsRoomReservation(lstRoomReservation.Count & "",
+            New clsRoomReservationRawinfo(lstRoomReservationRaw.Count & "",
                                                        ComboRoomNumber.Text,
                                                       "사용중",
                                                       txtCustomerID.Text,
@@ -301,7 +330,7 @@ Public Class UserControl_RoomReservation
 
         '예약추가 > 서버
         addRoomReservationToServer(
-            New clsRoomReservation(lstRoomReservation.Count & "",
+            New clsRoomReservationRawinfo(lstRoomReservationRaw.Count & "",
                                    ComboRoomNumber.Text,
                                    "대기중",
                                    txtCustomerID.Text,
@@ -322,7 +351,7 @@ Public Class UserControl_RoomReservation
     End Sub
 
     '서버에 타석예약 추가
-    Private Sub addRoomReservationToServer(rr As clsRoomReservation)
+    Private Sub addRoomReservationToServer(rr As clsRoomReservationRawinfo)
 
         Dim clsRoomReservationJSON1 = New clsRoomReservationJSON()
         clsRoomReservationJSON1.reservedSchduleId = 0
@@ -342,7 +371,7 @@ Public Class UserControl_RoomReservation
     End Sub
 
     '서버에 타석예약 삭제
-    Private Sub deleteRoomReservationToServer(rr As clsRoomReservation)
+    Private Sub deleteRoomReservationToServer(rr As clsRoomReservationRawinfo)
 
         Dim clsRoomReservationJSON1 = New clsRoomReservationJSON()
         clsRoomReservationJSON1.reservedSchduleId = rr.고유Index
@@ -363,7 +392,7 @@ Public Class UserControl_RoomReservation
 
 
     '서버에 타석예약 변경(PK유지)
-    Private Sub updateRoomReservationToServer(rr As clsRoomReservation)
+    Private Sub updateRoomReservationToServer(rr As clsRoomReservationRawinfo)
 
         Dim clsRoomReservationJSON1 = New clsRoomReservationJSON()
         clsRoomReservationJSON1.reservedSchduleId = rr.고유Index
@@ -420,15 +449,17 @@ Public Class UserControl_RoomReservation
             'Console.WriteLine("list:" & jsonListstr)
 
             Dim list_deserializedRoomReservations As List(Of clsRoomReservationJSON) = JsonConvert.DeserializeObject(Of List(Of clsRoomReservationJSON))(jsonListstr)
-            lstRoomReservation.Clear()
+            lstRoomReservationRaw.Clear()
             For Each oneRRitem As clsRoomReservationJSON In list_deserializedRoomReservations
                 'Console.WriteLine("id:" & oneRRitem.reservedSchduleId & ", room:" & oneRRitem.reservedRoomNumber)
-                lstRoomReservation.Add(New clsRoomReservation(oneRRitem.reservedSchduleId, oneRRitem.reservedRoomNumber, oneRRitem.reservedState, oneRRitem.custCode, oneRRitem.emCode, oneRRitem.reservedStartTime, oneRRitem.reservedEndTime))
+                lstRoomReservationRaw.Add(New clsRoomReservationRawinfo(oneRRitem.reservedSchduleId, oneRRitem.reservedRoomNumber, oneRRitem.reservedState, oneRRitem.custCode, oneRRitem.emCode, oneRRitem.reservedStartTime, oneRRitem.reservedEndTime))
             Next
             'sort 
-            lstRoomReservation.Sort()
+            lstRoomReservationRaw.Sort()
             Me.DataGridView1.Columns("고유index").Visible = False
             BindingSource1.ResetBindings(False)
+            BindingSource2.ResetBindings(False)
+
         End If
         timer_cnt = 61 'force reset cnt
         Return True
@@ -474,25 +505,25 @@ Public Class UserControl_RoomReservation
             '타석상태 결정순서
             '미사용 > 사용중 > 곧끝남 > 정리중(시간고려 추가)
 
-            For j = 0 To (lstRoomReservation.Count - 1)
+            For j = 0 To (lstRoomReservationRaw.Count - 1)
                 '대기인원 카운트
-                If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("대기중") Then
+                If lstRoomReservationRaw.Item(j).타석번호 = (i + 1) And lstRoomReservationRaw.Item(j).상태.Equals("대기중") Then
                     '시간미정인경우만 세컨드스크린 숫자표시
-                    If lstRoomReservation.Item(j).시작시간 = "00: 00" Then
+                    If lstRoomReservationRaw.Item(j).시작시간 = "00:00" Then
                         waiting = waiting + 1
                     End If
                     '시간정해져있어도 관리화면에는 표시
-                    lstWaitingCust.Items.Add("타석 " & lstRoomReservation.Item(j).타석번호 & " / " &
-                                             lstRoomReservation.Item(j).시작시간 & " / " &
-                                             lstRoomReservation.Item(j).회원 & "님 대기중")
+                    lstWaitingCust.Items.Add("타석 " & lstRoomReservationRaw.Item(j).타석번호 & " / " &
+                                             lstRoomReservationRaw.Item(j).시작시간 & " / " &
+                                             lstRoomReservationRaw.Item(j).회원 & "님 대기중")
                 End If
             Next j
 
-            For j = 0 To (lstRoomReservation.Count - 1)
+            For j = 0 To (lstRoomReservationRaw.Count - 1)
                 '[사용중] 남은시간 표시
-                If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("사용중") Then
+                If lstRoomReservationRaw.Item(j).타석번호 = (i + 1) And lstRoomReservationRaw.Item(j).상태.Equals("사용중") Then
                     Dim endTime As DateTime
-                    endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
+                    endTime = DateTime.Parse(lstRoomReservationRaw.Item(j).종료시간)
                     Dim timediff As TimeSpan = endTime - DateTime.Now
                     contents = Format(timediff.Hours, "0").Replace("-", "") &
                         Format(timediff.Minutes, ":00").Replace("-", "") _
@@ -503,12 +534,12 @@ Public Class UserControl_RoomReservation
                     If timediff.TotalMinutes >= 0 And timediff.TotalMinutes <= 5.0 Then
                         Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("끝나감" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
-                        Me.lst5min.Items.Add("타석 " & lstRoomReservation.Item(j).타석번호 & " / " & Format(timediff.Minutes, "0") & "분남음")
+                        Me.lst5min.Items.Add("타석 " & lstRoomReservationRaw.Item(j).타석번호 & " / " & Format(timediff.Minutes, "0") & "분남음")
 
                     ElseIf timediff.TotalMinutes < 0 Then '시간초과/정리중
                         Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("정리중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
-                        Me.lst5min.Items.Add("타석 " & lstRoomReservation.Item(j).타석번호 & " / " & Format(-timediff.TotalMinutes, "0") & "분 시간초과")
+                        Me.lst5min.Items.Add("타석 " & lstRoomReservationRaw.Item(j).타석번호 & " / " & Format(-timediff.TotalMinutes, "0") & "분 시간초과")
 
                         '10분이상 초과
                         If ((-timediff.TotalMinutes) >= 10) Then
@@ -519,9 +550,9 @@ Public Class UserControl_RoomReservation
                                                   0, 'seconds
                                                   0) 'milliseconds
                             Dim strRealEndTime As String = realEndTime.ToString("HH:mm")
-                            lstRoomReservation.Item(j).종료시간 = strRealEndTime
-                            lstRoomReservation.Item(j).상태 = "사용완료"
-                            updateRoomReservationToServer(lstRoomReservation.Item(j))
+                            lstRoomReservationRaw.Item(j).종료시간 = strRealEndTime
+                            lstRoomReservationRaw.Item(j).상태 = "사용완료"
+                            updateRoomReservationToServer(lstRoomReservationRaw.Item(j))
                         End If
 
                     Else '[사용중]색깔
@@ -564,13 +595,13 @@ Public Class UserControl_RoomReservation
         Dim selectedStartTime As String = words.ToList.Item(2).Trim()
         Dim selectedCustName As String = words.ToList.Item(4).Trim()
 
-        For j = 0 To (lstRoomReservation.Count - 1)
-            If lstRoomReservation.Item(j).타석번호 = selectedRoomNum And
-                    lstRoomReservation.Item(j).시작시간 = selectedStartTime And
-                    lstRoomReservation.Item(j).회원 = selectedCustName Then
+        For j = 0 To (lstRoomReservationRaw.Count - 1)
+            If lstRoomReservationRaw.Item(j).타석번호 = selectedRoomNum And
+                    lstRoomReservationRaw.Item(j).시작시간 = selectedStartTime And
+                    lstRoomReservationRaw.Item(j).회원 = selectedCustName Then
 
-                displayReservationInfo(lstRoomReservation.Item(j).고유Index)
-                gridCellSelect(lstRoomReservation.Item(j).고유Index)
+                displayReservationInfo(lstRoomReservationRaw.Item(j).고유Index)
+                gridCellSelect(lstRoomReservationRaw.Item(j).고유Index)
 
             End If
         Next j
@@ -602,21 +633,21 @@ Public Class UserControl_RoomReservation
 
         If yesno = MsgBoxResult.Yes Then
             '정보검색
-            For j = 0 To (lstRoomReservation.Count - 1)
-                If lstRoomReservation.Item(j).타석번호 = selectedRoomNum And
-                        lstRoomReservation.Item(j).시작시간 = selectedStartTime And
-                        lstRoomReservation.Item(j).회원 = selectedCustName Then
+            For j = 0 To (lstRoomReservationRaw.Count - 1)
+                If lstRoomReservationRaw.Item(j).타석번호 = selectedRoomNum And
+                        lstRoomReservationRaw.Item(j).시작시간 = selectedStartTime And
+                        lstRoomReservationRaw.Item(j).회원 = selectedCustName Then
 
 
                     '서버에서 예약삭제
                     deleteRoomReservationToServer(
-                        New clsRoomReservation(lstRoomReservation.Item(j).고유Index,
-                                               lstRoomReservation.Item(j).타석번호,
-                                               lstRoomReservation.Item(j).상태,
-                                               lstRoomReservation.Item(j).회원,
-                                               lstRoomReservation.Item(j).담당직원,
-                                               lstRoomReservation.Item(j).시작시간,
-                                               lstRoomReservation.Item(j).종료시간)
+                        New clsRoomReservationRawinfo(lstRoomReservationRaw.Item(j).고유Index,
+                                               lstRoomReservationRaw.Item(j).타석번호,
+                                               lstRoomReservationRaw.Item(j).상태,
+                                               lstRoomReservationRaw.Item(j).회원,
+                                               lstRoomReservationRaw.Item(j).담당직원,
+                                               lstRoomReservationRaw.Item(j).시작시간,
+                                               lstRoomReservationRaw.Item(j).종료시간)
                                                )
 
                     '삭제후 업데이트
@@ -647,12 +678,12 @@ Public Class UserControl_RoomReservation
         End If
 
         '정보검색
-        For j = 0 To (lstRoomReservation.Count - 1)
-            If lstRoomReservation.Item(j).타석번호 = selectedRoomNum And
-                lstRoomReservation.Item(j).상태.Equals("사용중") Then
+        For j = 0 To (lstRoomReservationRaw.Count - 1)
+            If lstRoomReservationRaw.Item(j).타석번호 = selectedRoomNum And
+                lstRoomReservationRaw.Item(j).상태.Equals("사용중") Then
 
-                displayReservationInfo(lstRoomReservation.Item(j).고유Index)
-                gridCellSelect(lstRoomReservation.Item(j).고유Index)
+                displayReservationInfo(lstRoomReservationRaw.Item(j).고유Index)
+                gridCellSelect(lstRoomReservationRaw.Item(j).고유Index)
                 Exit Sub
             End If
         Next j
@@ -678,13 +709,13 @@ Public Class UserControl_RoomReservation
 
 
         '정보검색
-        For j = 0 To (lstRoomReservation.Count - 1)
-            If lstRoomReservation.Item(j).고유Index.Equals(end고유Index) Then
-                lstRoomReservation.Item(j).종료시간 = strRealEndTime
-                lstRoomReservation.Item(j).상태 = "사용완료"
+        For j = 0 To (lstRoomReservationRaw.Count - 1)
+            If lstRoomReservationRaw.Item(j).고유Index.Equals(end고유Index) Then
+                lstRoomReservationRaw.Item(j).종료시간 = strRealEndTime
+                lstRoomReservationRaw.Item(j).상태 = "사용완료"
 
                 '서버에서 예약 업데이트(종료로)
-                updateRoomReservationToServer(lstRoomReservation.Item(j))
+                updateRoomReservationToServer(lstRoomReservationRaw.Item(j))
 
                 '입력화면정리
                 clearRoomReservUI()
@@ -705,17 +736,17 @@ Public Class UserControl_RoomReservation
     '예약의 고유index(PK)로 예약상황 표시
     Private Sub displayReservationInfo(_예약고유index As String)
         '정보검색
-        For j = 0 To (lstRoomReservation.Count - 1)
-            If lstRoomReservation.Item(j).고유Index.Equals(_예약고유index) Then
+        For j = 0 To (lstRoomReservationRaw.Count - 1)
+            If lstRoomReservationRaw.Item(j).고유Index.Equals(_예약고유index) Then
 
                 lblRoomReservIndex.Text = _예약고유index
-                ComboRoomNumber.Text = lstRoomReservation.Item(j).타석번호
-                txtCustomerID.Text = lstRoomReservation.Item(j).회원
+                ComboRoomNumber.Text = lstRoomReservationRaw.Item(j).타석번호
+                txtCustomerID.Text = lstRoomReservationRaw.Item(j).회원
                 txtCustomerName.Text = "-"
-                txtEmployeeId.Text = lstRoomReservation.Item(j).담당직원
+                txtEmployeeId.Text = lstRoomReservationRaw.Item(j).담당직원
 
 
-                If lstRoomReservation.Item(j).시작시간.Equals("00:00") Then
+                If lstRoomReservationRaw.Item(j).시작시간.Equals("00:00") Then
                     Dim zeroTime As DateTime = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
                                                               0,  'hours 
                                                               0, 'minutes
@@ -725,11 +756,11 @@ Public Class UserControl_RoomReservation
                     timepickerEndTime.Value = zeroTime
                 Else
                     '시작시간
-                    Dim startTime As DateTime : startTime = DateTime.Parse(lstRoomReservation.Item(j).시작시간)
+                    Dim startTime As DateTime : startTime = DateTime.Parse(lstRoomReservationRaw.Item(j).시작시간)
                     timepickerStartTime.Value = startTime
 
                     '종료시간
-                    Dim endTime As DateTime : endTime = DateTime.Parse(lstRoomReservation.Item(j).종료시간)
+                    Dim endTime As DateTime : endTime = DateTime.Parse(lstRoomReservationRaw.Item(j).종료시간)
                     timepickerEndTime.Value = endTime
                 End If
 

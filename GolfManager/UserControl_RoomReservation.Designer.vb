@@ -27,6 +27,10 @@ Partial Class UserControl_RoomReservation
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.groupNewRoomReserv = New System.Windows.Forms.GroupBox()
@@ -66,10 +70,12 @@ Partial Class UserControl_RoomReservation
         Me.btnRoomReservRefresh = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.lbl2ndopennotify = New System.Windows.Forms.Label()
+        Me.DataGridViewSummary = New System.Windows.Forms.DataGridView()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupNewRoomReserv.SuspendLayout()
         Me.groupWaitings.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DataGridViewSummary, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnShow
@@ -108,7 +114,7 @@ Partial Class UserControl_RoomReservation
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridView1.Location = New System.Drawing.Point(30, 357)
+        Me.DataGridView1.Location = New System.Drawing.Point(640, 357)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -123,7 +129,7 @@ Partial Class UserControl_RoomReservation
         DataGridViewCellStyle4.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(1098, 292)
+        Me.DataGridView1.Size = New System.Drawing.Size(488, 292)
         Me.DataGridView1.TabIndex = 1
         '
         'groupNewRoomReserv
@@ -540,11 +546,53 @@ Partial Class UserControl_RoomReservation
         Me.lbl2ndopennotify.Text = "<타석모니터 활성화 필요>"
         Me.lbl2ndopennotify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'DataGridViewSummary
+        '
+        Me.DataGridViewSummary.AllowUserToAddRows = False
+        Me.DataGridViewSummary.AllowUserToDeleteRows = False
+        Me.DataGridViewSummary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridViewSummary.BackgroundColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewSummary.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridViewSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("New Gulim", 11.25!)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewSummary.DefaultCellStyle = DataGridViewCellStyle6
+        Me.DataGridViewSummary.Location = New System.Drawing.Point(30, 357)
+        Me.DataGridViewSummary.MultiSelect = False
+        Me.DataGridViewSummary.Name = "DataGridViewSummary"
+        Me.DataGridViewSummary.ReadOnly = True
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("New Gulim", 11.25!)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewSummary.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.DataGridViewSummary.RowsDefaultCellStyle = DataGridViewCellStyle8
+        Me.DataGridViewSummary.RowTemplate.Height = 23
+        Me.DataGridViewSummary.Size = New System.Drawing.Size(592, 292)
+        Me.DataGridViewSummary.TabIndex = 20
+        '
         'UserControl_RoomReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.Controls.Add(Me.DataGridViewSummary)
         Me.Controls.Add(Me.lbl2ndopennotify)
         Me.Controls.Add(Me.btnRoomReservRefresh)
         Me.Controls.Add(Me.GroupBox1)
@@ -563,6 +611,7 @@ Partial Class UserControl_RoomReservation
         Me.groupWaitings.ResumeLayout(False)
         Me.groupWaitings.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.DataGridViewSummary, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -606,4 +655,5 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents timepickerEndTime As DateTimePicker
     Friend WithEvents btn_SetStartTime12oclock As Button
     Friend WithEvents lbl2ndopennotify As Label
+    Friend WithEvents DataGridViewSummary As DataGridView
 End Class

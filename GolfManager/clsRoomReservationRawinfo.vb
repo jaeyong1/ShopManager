@@ -1,8 +1,8 @@
 ﻿'타석예약 클래스
 Imports GolfManager
 
-Public Class clsRoomReservation
-    Implements IComparable(Of clsRoomReservation)
+Public Class clsRoomReservationRawinfo
+    Implements IComparable(Of clsRoomReservationRawinfo)
 
     Private _index As String '고유index(pk)
     Private _RoomNumber As String '타석번호
@@ -57,7 +57,7 @@ Public Class clsRoomReservation
     End Function
 
     '소팅함수
-    Public Function CompareTo(other As clsRoomReservation) As Integer Implements IComparable(Of clsRoomReservation).CompareTo
+    Public Function CompareTo(other As clsRoomReservationRawinfo) As Integer Implements IComparable(Of clsRoomReservationRawinfo).CompareTo
         '1순위 타석번호의 문자열길이(3은 20보다 앞)
         If 타석번호.Length > other.타석번호.Length Then
             Return 1

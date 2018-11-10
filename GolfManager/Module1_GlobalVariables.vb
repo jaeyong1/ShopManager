@@ -4,7 +4,8 @@
     Public G_LoginID As String '앱로그인 아이디
     Public G_LoginName As String '앱로그인 이름
 
-    Public lstRoomReservation As New List(Of clsRoomReservation) '타석예약 리스트 (=데이터그리드 화면과 동기화)
+    Public lstRoomReservationRaw As New List(Of clsRoomReservationRawinfo) '타석예약 리스트 Raw데이터 (=데이터그리드 화면과 동기화)
+    Public lstRoomReservationSummary As New List(Of clsRoomReservationSummary) '타석예약 리스트 요약데이터 (=데이터그리드 화면과 동기화)
 
 
     Public G_WebServerURL As String = "http://puttingone.cafe24.com/"
