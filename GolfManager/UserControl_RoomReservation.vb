@@ -478,7 +478,7 @@ Public Class UserControl_RoomReservation
                 '대기인원 카운트
                 If lstRoomReservation.Item(j).타석번호 = (i + 1) And lstRoomReservation.Item(j).상태.Equals("대기중") Then
                     '시간미정인경우만 세컨드스크린 숫자표시
-                    If lstRoomReservation.Item(j).시작시간 = "00: 00" Then
+                    If lstRoomReservation.Item(j).시작시간 = "00:00" Then
                         waiting = waiting + 1
                     End If
                     '시간정해져있어도 관리화면에는 표시
