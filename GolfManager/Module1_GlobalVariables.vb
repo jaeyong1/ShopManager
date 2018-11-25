@@ -14,5 +14,8 @@
     Public G_SettingsDir As String = "C:\매장관리\Settings\"
     Public G_BottomBannerImgDir As String = "C:\매장관리\BottomBanner\"
 
+    '''''''''''''''''''''
+    Public Local_RoomReservation_SummaryTable_Sort_ASC As Boolean = True
+    Public Local_RoomReservation_SummaryTable_Sort_by As String = "타석번호"
 
 End Module

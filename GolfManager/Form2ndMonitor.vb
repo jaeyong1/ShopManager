@@ -244,6 +244,7 @@ Public Class Form2ndMonitor
 
         '화면막고있는 안내문구 다시표시
         Form1.UserControl_RoomReservation1.lbl2ndopennotify.Visible = True
+        Form1.UserControl_RoomReservation1.lbl2ndopennotify2.Visible = True
     End Sub
 
 

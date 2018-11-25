@@ -30,7 +30,6 @@ Partial Class UserControl_RoomReservation
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.groupNewRoomReserv = New System.Windows.Forms.GroupBox()
@@ -71,11 +70,22 @@ Partial Class UserControl_RoomReservation
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.lbl2ndopennotify = New System.Windows.Forms.Label()
         Me.DataGridViewSummary = New System.Windows.Forms.DataGridView()
+        Me.lbl2ndopennotify2 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.radio소팅대기회원 = New System.Windows.Forms.RadioButton()
+        Me.radio소팅종료시간 = New System.Windows.Forms.RadioButton()
+        Me.radio소팅시작시간 = New System.Windows.Forms.RadioButton()
+        Me.radio소팅담당직원 = New System.Windows.Forms.RadioButton()
+        Me.radio소팅회원 = New System.Windows.Forms.RadioButton()
+        Me.radio소팅상태 = New System.Windows.Forms.RadioButton()
+        Me.radio소팅타석번호 = New System.Windows.Forms.RadioButton()
+        Me.ChkboxSummaryTableAscDesc = New System.Windows.Forms.CheckBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupNewRoomReserv.SuspendLayout()
         Me.groupWaitings.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewSummary, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnShow
@@ -97,40 +107,25 @@ Partial Class UserControl_RoomReservation
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridView1.Location = New System.Drawing.Point(640, 357)
+        Me.DataGridView1.Location = New System.Drawing.Point(1042, 357)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(488, 292)
+        Me.DataGridView1.Size = New System.Drawing.Size(86, 292)
         Me.DataGridView1.TabIndex = 1
+        Me.DataGridView1.Visible = False
         '
         'groupNewRoomReserv
         '
@@ -462,7 +457,7 @@ Partial Class UserControl_RoomReservation
         'lblRoomReservIndex
         '
         Me.lblRoomReservIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblRoomReservIndex.Location = New System.Drawing.Point(30, 186)
+        Me.lblRoomReservIndex.Location = New System.Drawing.Point(30, 75)
         Me.lblRoomReservIndex.Name = "lblRoomReservIndex"
         Me.lblRoomReservIndex.Size = New System.Drawing.Size(65, 23)
         Me.lblRoomReservIndex.TabIndex = 19
@@ -550,48 +545,168 @@ Partial Class UserControl_RoomReservation
         '
         Me.DataGridViewSummary.AllowUserToAddRows = False
         Me.DataGridViewSummary.AllowUserToDeleteRows = False
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("New Gulim", 11.25!)
+        Me.DataGridViewSummary.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewSummary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewSummary.BackgroundColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("New Gulim", 11.25!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewSummary.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridViewSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("New Gulim", 11.25!)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewSummary.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.DataGridViewSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("New Gulim", 11.25!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewSummary.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewSummary.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewSummary.Location = New System.Drawing.Point(30, 357)
         Me.DataGridViewSummary.MultiSelect = False
         Me.DataGridViewSummary.Name = "DataGridViewSummary"
         Me.DataGridViewSummary.ReadOnly = True
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("New Gulim", 11.25!)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewSummary.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.DataGridViewSummary.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("New Gulim", 11.25!)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewSummary.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.DataGridViewSummary.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewSummary.RowTemplate.Height = 23
-        Me.DataGridViewSummary.Size = New System.Drawing.Size(592, 292)
+        Me.DataGridViewSummary.Size = New System.Drawing.Size(887, 292)
         Me.DataGridViewSummary.TabIndex = 20
+        '
+        'lbl2ndopennotify2
+        '
+        Me.lbl2ndopennotify2.Font = New System.Drawing.Font("New Gulim", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.lbl2ndopennotify2.Location = New System.Drawing.Point(288, 451)
+        Me.lbl2ndopennotify2.Name = "lbl2ndopennotify2"
+        Me.lbl2ndopennotify2.Size = New System.Drawing.Size(300, 93)
+        Me.lbl2ndopennotify2.TabIndex = 22
+        Me.lbl2ndopennotify2.Text = "<타석모니터 활성화 필요>"
+        Me.lbl2ndopennotify2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.radio소팅대기회원)
+        Me.GroupBox3.Controls.Add(Me.radio소팅종료시간)
+        Me.GroupBox3.Controls.Add(Me.radio소팅시작시간)
+        Me.GroupBox3.Controls.Add(Me.radio소팅담당직원)
+        Me.GroupBox3.Controls.Add(Me.radio소팅회원)
+        Me.GroupBox3.Controls.Add(Me.radio소팅상태)
+        Me.GroupBox3.Controls.Add(Me.radio소팅타석번호)
+        Me.GroupBox3.Font = New System.Drawing.Font("New Gulim", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(26, 130)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(145, 164)
+        Me.GroupBox3.TabIndex = 24
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "정렬기준"
+        Me.GroupBox3.Visible = False
+        '
+        'radio소팅대기회원
+        '
+        Me.radio소팅대기회원.AutoSize = True
+        Me.radio소팅대기회원.Location = New System.Drawing.Point(6, 126)
+        Me.radio소팅대기회원.Name = "radio소팅대기회원"
+        Me.radio소팅대기회원.Size = New System.Drawing.Size(77, 17)
+        Me.radio소팅대기회원.TabIndex = 6
+        Me.radio소팅대기회원.Text = "대기회원"
+        Me.radio소팅대기회원.UseVisualStyleBackColor = True
+        '
+        'radio소팅종료시간
+        '
+        Me.radio소팅종료시간.AutoSize = True
+        Me.radio소팅종료시간.Location = New System.Drawing.Point(6, 110)
+        Me.radio소팅종료시간.Name = "radio소팅종료시간"
+        Me.radio소팅종료시간.Size = New System.Drawing.Size(135, 17)
+        Me.radio소팅종료시간.TabIndex = 5
+        Me.radio소팅종료시간.Text = "종료시간/남은시간"
+        Me.radio소팅종료시간.UseVisualStyleBackColor = True
+        '
+        'radio소팅시작시간
+        '
+        Me.radio소팅시작시간.AutoSize = True
+        Me.radio소팅시작시간.Location = New System.Drawing.Point(6, 92)
+        Me.radio소팅시작시간.Name = "radio소팅시작시간"
+        Me.radio소팅시작시간.Size = New System.Drawing.Size(77, 17)
+        Me.radio소팅시작시간.TabIndex = 4
+        Me.radio소팅시작시간.Text = "시작시간"
+        Me.radio소팅시작시간.UseVisualStyleBackColor = True
+        '
+        'radio소팅담당직원
+        '
+        Me.radio소팅담당직원.AutoSize = True
+        Me.radio소팅담당직원.Location = New System.Drawing.Point(6, 73)
+        Me.radio소팅담당직원.Name = "radio소팅담당직원"
+        Me.radio소팅담당직원.Size = New System.Drawing.Size(77, 17)
+        Me.radio소팅담당직원.TabIndex = 3
+        Me.radio소팅담당직원.Text = "담당직원"
+        Me.radio소팅담당직원.UseVisualStyleBackColor = True
+        '
+        'radio소팅회원
+        '
+        Me.radio소팅회원.AutoSize = True
+        Me.radio소팅회원.Location = New System.Drawing.Point(6, 55)
+        Me.radio소팅회원.Name = "radio소팅회원"
+        Me.radio소팅회원.Size = New System.Drawing.Size(51, 17)
+        Me.radio소팅회원.TabIndex = 2
+        Me.radio소팅회원.Text = "회원"
+        Me.radio소팅회원.UseVisualStyleBackColor = True
+        '
+        'radio소팅상태
+        '
+        Me.radio소팅상태.AutoSize = True
+        Me.radio소팅상태.Location = New System.Drawing.Point(6, 39)
+        Me.radio소팅상태.Name = "radio소팅상태"
+        Me.radio소팅상태.Size = New System.Drawing.Size(51, 17)
+        Me.radio소팅상태.TabIndex = 1
+        Me.radio소팅상태.TabStop = True
+        Me.radio소팅상태.Text = "상태"
+        Me.radio소팅상태.UseVisualStyleBackColor = True
+        '
+        'radio소팅타석번호
+        '
+        Me.radio소팅타석번호.AutoSize = True
+        Me.radio소팅타석번호.Checked = True
+        Me.radio소팅타석번호.Location = New System.Drawing.Point(6, 21)
+        Me.radio소팅타석번호.Name = "radio소팅타석번호"
+        Me.radio소팅타석번호.Size = New System.Drawing.Size(77, 17)
+        Me.radio소팅타석번호.TabIndex = 0
+        Me.radio소팅타석번호.TabStop = True
+        Me.radio소팅타석번호.Text = "타석번호"
+        Me.radio소팅타석번호.UseVisualStyleBackColor = True
+        '
+        'ChkboxSummaryTableAscDesc
+        '
+        Me.ChkboxSummaryTableAscDesc.AutoSize = True
+        Me.ChkboxSummaryTableAscDesc.Checked = True
+        Me.ChkboxSummaryTableAscDesc.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ChkboxSummaryTableAscDesc.Font = New System.Drawing.Font("New Gulim", 9.75!)
+        Me.ChkboxSummaryTableAscDesc.Location = New System.Drawing.Point(35, 107)
+        Me.ChkboxSummaryTableAscDesc.Name = "ChkboxSummaryTableAscDesc"
+        Me.ChkboxSummaryTableAscDesc.Size = New System.Drawing.Size(136, 17)
+        Me.ChkboxSummaryTableAscDesc.TabIndex = 25
+        Me.ChkboxSummaryTableAscDesc.Text = "오름차순/내림차순"
+        Me.ChkboxSummaryTableAscDesc.UseVisualStyleBackColor = True
+        Me.ChkboxSummaryTableAscDesc.Visible = False
         '
         'UserControl_RoomReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.Controls.Add(Me.ChkboxSummaryTableAscDesc)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.lbl2ndopennotify2)
         Me.Controls.Add(Me.DataGridViewSummary)
         Me.Controls.Add(Me.lbl2ndopennotify)
         Me.Controls.Add(Me.btnRoomReservRefresh)
@@ -612,7 +727,10 @@ Partial Class UserControl_RoomReservation
         Me.groupWaitings.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DataGridViewSummary, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -656,4 +774,14 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents btn_SetStartTime12oclock As Button
     Friend WithEvents lbl2ndopennotify As Label
     Friend WithEvents DataGridViewSummary As DataGridView
+    Friend WithEvents lbl2ndopennotify2 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents radio소팅상태 As RadioButton
+    Friend WithEvents radio소팅타석번호 As RadioButton
+    Friend WithEvents radio소팅대기회원 As RadioButton
+    Friend WithEvents radio소팅종료시간 As RadioButton
+    Friend WithEvents radio소팅시작시간 As RadioButton
+    Friend WithEvents radio소팅담당직원 As RadioButton
+    Friend WithEvents radio소팅회원 As RadioButton
+    Friend WithEvents ChkboxSummaryTableAscDesc As CheckBox
 End Class

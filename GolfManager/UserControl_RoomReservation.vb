@@ -15,9 +15,13 @@ Public Class UserControl_RoomReservation
     Dim BindingSource1 As New BindingSource() '리스트 <-> 데이터그리드.소스
     Dim BindingSource2 As New BindingSource() '리스트 <-> 데이터그리드.소스
 
+    Public asdf As Integer
+
+
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
         '화면막고있는 안내문구 삭제
         lbl2ndopennotify.Visible = False
+        lbl2ndopennotify2.Visible = False
         lstWaitingCust.Enabled = True
         lst5min.Enabled = True
 
@@ -36,15 +40,16 @@ Public Class UserControl_RoomReservation
     '요약테이블 표시순서 지정
     Private Sub AdjustSummaryTableColumnOrder()
         With DataGridViewSummary
+            .Columns("고유Index").DisplayIndex = 0
             .Columns("고유Index").Visible = False
-            .Columns("타석번호").DisplayIndex = 0
-            .Columns("상태").DisplayIndex = 1
-            .Columns("회원").DisplayIndex = 2
-            .Columns("담당직원").DisplayIndex = 3
-            .Columns("시작시간").DisplayIndex = 4
-            .Columns("종료시간").DisplayIndex = 5
-            .Columns("남은시간").DisplayIndex = 6
-            .Columns("대기회원").DisplayIndex = 7
+            .Columns("타석번호").DisplayIndex = 1
+            .Columns("상태").DisplayIndex = 2
+            .Columns("회원").DisplayIndex = 3
+            .Columns("담당직원").DisplayIndex = 4
+            .Columns("시작시간").DisplayIndex = 5
+            .Columns("종료시간").DisplayIndex = 6
+            .Columns("남은시간").DisplayIndex = 7
+            .Columns("대기회원").DisplayIndex = 8
         End With
 
     End Sub
@@ -127,6 +132,9 @@ Public Class UserControl_RoomReservation
         txtCustomerName.Text = ""
         txtRoomState.Text = ""
         lblRoomReservIndex.Text = ""
+
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
     End Sub
 
     '타석예약 추가버튼 클릭
@@ -458,6 +466,8 @@ Public Class UserControl_RoomReservation
             lstRoomReservationRaw.Sort()
             Me.DataGridView1.Columns("고유index").Visible = False
             BindingSource1.ResetBindings(False)
+
+            lstRoomReservationSummary.Sort()
             BindingSource2.ResetBindings(False)
 
         End If
@@ -485,6 +495,7 @@ Public Class UserControl_RoomReservation
             Console.WriteLine("Retry update2ndScreen")
             update2ndScreen() ' 한번더 실행
         End If
+
     End Sub
 
     '타석스크린 업데이트 
@@ -535,11 +546,20 @@ Public Class UserControl_RoomReservation
                         Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("끝나감" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         Me.lst5min.Items.Add("타석 " & lstRoomReservationRaw.Item(j).타석번호 & " / " & Format(timediff.Minutes, "0") & "분남음")
+                        lstRoomReservationSummary.Item(i).BaseCopy(lstRoomReservationRaw.Item(j))
+                        lstRoomReservationSummary.Item(i).상태 = "끝나감"
+                        lstRoomReservationSummary.Item(i).남은시간 = contents
+                        lstRoomReservationSummary.Item(i).대기회원 = Format(waiting, "0 명")
+
 
                     ElseIf timediff.TotalMinutes < 0 Then '시간초과/정리중
                         Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("정리중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         Me.lst5min.Items.Add("타석 " & lstRoomReservationRaw.Item(j).타석번호 & " / " & Format(-timediff.TotalMinutes, "0") & "분 시간초과")
+                        lstRoomReservationSummary.Item(i).BaseCopy(lstRoomReservationRaw.Item(j))
+                        lstRoomReservationSummary.Item(i).상태 = "정리중"
+                        lstRoomReservationSummary.Item(i).남은시간 = contents
+                        lstRoomReservationSummary.Item(i).대기회원 = Format(waiting, "0 명")
 
                         '10분이상 초과
                         If ((-timediff.TotalMinutes) >= 10) Then
@@ -558,6 +578,10 @@ Public Class UserControl_RoomReservation
                     Else '[사용중]색깔
                         Form2ndMonitor.dynamicBoxList.Item(i).setRoomUsing()
                         Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("사용중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                        lstRoomReservationSummary.Item(i).BaseCopy(lstRoomReservationRaw.Item(j))
+                        lstRoomReservationSummary.Item(i).상태 = "사용중"
+                        lstRoomReservationSummary.Item(i).남은시간 = contents
+                        lstRoomReservationSummary.Item(i).대기회원 = Format(waiting, "0 명")
                     End If
 
                     isSetted = True '위에서 무엇인가 업데이트함
@@ -569,9 +593,11 @@ Public Class UserControl_RoomReservation
             If isSetted = False Then
                 Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
                 Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
+                lstRoomReservationSummary.Item(i).SetFree(i)
             End If
         Next
 
+        lstRoomReservationSummary.Sort()
         Return requestRetry
     End Function
 
@@ -725,6 +751,9 @@ Public Class UserControl_RoomReservation
                 Exit Sub
             End If
         Next j
+
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
     End Sub
 
     '화면입력초기화 버튼클릭
@@ -772,7 +801,7 @@ Public Class UserControl_RoomReservation
     End Sub
 
 
-    '테이블클릭 -> UI로 띄움
+    '로그테이블클릭 -> UI로 띄움
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         If (e.RowIndex < 0 Or e.ColumnIndex < 0) Then
             '헤더나 열전체 선택시 무시
@@ -792,6 +821,77 @@ Public Class UserControl_RoomReservation
         Console.WriteLine("{0}", data0_index)
 
         displayReservationInfo(data0_index)
+    End Sub
+
+    '요약테이블클릭 -> UI로 띄움
+    Private Sub DataGridViewSummary_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewSummary.CellClick
+        If lbl2ndopennotify2.Visible = True Then
+            '차단 레이블 표시 중. 무시.
+            Exit Sub
+        End If
+
+        Console.WriteLine("summary table click. " & e.RowIndex & "," & e.ColumnIndex)
+
+        If (e.ColumnIndex < 0) Then
+            '열전체 선택. 무시.
+            '좌측상단모서리선택시(-1, -1) 입력됨. 무시.
+            Exit Sub
+        End If
+
+        If (e.RowIndex < 0) Then
+            '헤더선택시 정렬기준
+            If e.ColumnIndex = 3 Then 'e.ColumnIndex = 3 (타석소팅)
+                If Local_RoomReservation_SummaryTable_Sort_by = "타석번호" Then : Local_RoomReservation_SummaryTable_Sort_ASC = Not Local_RoomReservation_SummaryTable_Sort_ASC
+                Else : Local_RoomReservation_SummaryTable_Sort_by = "타석번호"
+                End If
+            ElseIf e.ColumnIndex = 4 Then 'e.ColumnIndex = 4 (상태소팅)
+                If Local_RoomReservation_SummaryTable_Sort_by = "상태" Then : Local_RoomReservation_SummaryTable_Sort_ASC = Not Local_RoomReservation_SummaryTable_Sort_ASC
+                Else : Local_RoomReservation_SummaryTable_Sort_by = "상태"
+                End If
+            ElseIf e.ColumnIndex = 5 Then 'e.ColumnIndex = 5 (회원소팅)
+                If Local_RoomReservation_SummaryTable_Sort_by = "회원" Then : Local_RoomReservation_SummaryTable_Sort_ASC = Not Local_RoomReservation_SummaryTable_Sort_ASC
+                Else : Local_RoomReservation_SummaryTable_Sort_by = "회원"
+                End If
+            ElseIf e.ColumnIndex = 6 Then 'e.ColumnIndex = 6 (담당직원소팅)
+                If Local_RoomReservation_SummaryTable_Sort_by = "담당직원" Then : Local_RoomReservation_SummaryTable_Sort_ASC = Not Local_RoomReservation_SummaryTable_Sort_ASC
+                Else : Local_RoomReservation_SummaryTable_Sort_by = "담당직원"
+                End If
+            ElseIf e.ColumnIndex = 7 Then 'e.ColumnIndex = 7 (시작시간소팅)
+                If Local_RoomReservation_SummaryTable_Sort_by = "시작시간" Then : Local_RoomReservation_SummaryTable_Sort_ASC = Not Local_RoomReservation_SummaryTable_Sort_ASC
+                Else : Local_RoomReservation_SummaryTable_Sort_by = "시작시간"
+                End If
+            ElseIf (e.ColumnIndex = 8) Or (e.ColumnIndex = 0) Then 'e.ColumnIndex = 8 (종료시간소팅), 'e.ColumnIndex = 0 (남은시간소팅)
+                If Local_RoomReservation_SummaryTable_Sort_by = "종료시간" Then : Local_RoomReservation_SummaryTable_Sort_ASC = Not Local_RoomReservation_SummaryTable_Sort_ASC
+                Else : Local_RoomReservation_SummaryTable_Sort_by = "종료시간"
+                End If
+            ElseIf e.ColumnIndex = 1 Then 'e.ColumnIndex = 1 (대기회원소팅)
+                If Local_RoomReservation_SummaryTable_Sort_by = "대기회원" Then : Local_RoomReservation_SummaryTable_Sort_ASC = Not Local_RoomReservation_SummaryTable_Sort_ASC
+                Else : Local_RoomReservation_SummaryTable_Sort_by = "대기회원"
+                End If
+            End If
+            lstRoomReservationSummary.Sort()
+            BindingSource2.ResetBindings(False)
+            Exit Sub
+        End If
+
+
+        Dim data As String = DataGridViewSummary.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+
+        Dim data0_remaintime As String = DataGridViewSummary.Rows(e.RowIndex).Cells(0).Value '남은시간
+        Dim data1_waitings As String = DataGridViewSummary.Rows(e.RowIndex).Cells(1).Value '대기인원
+        Dim data2_index As String = DataGridViewSummary.Rows(e.RowIndex).Cells(2).Value '고유Index
+        Dim data3_roomnum As String = DataGridViewSummary.Rows(e.RowIndex).Cells(3).Value '타석번호
+        Dim data4_roomstate As String = DataGridViewSummary.Rows(e.RowIndex).Cells(4).Value '상태
+
+        Console.WriteLine("summary table click. pk : {0}", data2_index)
+
+        displayReservationInfo(data2_index)
+
+        If data2_index = "" Then
+            '입력화면정리
+            clearRoomReservUI()
+            ComboRoomNumber.Text = data3_roomnum
+        End If
     End Sub
 
     '예약PK -> 테이블셀이동
@@ -883,6 +983,60 @@ Public Class UserControl_RoomReservation
             MsgBox("종료시간을 재 설정 바랍니다.")
             timepickerEndTime.Value = timepickerStartTime.Value
         End If
+    End Sub
+
+
+    '오름/내림차순 변경. 클래스에서 소팅할때 가져갈 수 있도록 전역변수에 넣어줌
+    Private Sub ChkboxSummaryTableAscDesc_CheckedChanged(sender As Object, e As EventArgs) Handles ChkboxSummaryTableAscDesc.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_ASC = ChkboxSummaryTableAscDesc.Checked
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
+    End Sub
+
+    '정렬기준 변경
+    Private Sub radio소팅타석번호_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅타석번호.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_by = "타석번호"
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
+    End Sub
+
+    '정렬기준 변경
+    Private Sub radio소팅상태_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅상태.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_by = "상태"
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
+    End Sub
+
+    '정렬기준 변경
+    Private Sub radio소팅회원_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅회원.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_by = "회원"
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
+    End Sub
+
+    '정렬기준 변경
+    Private Sub radio소팅담당직원_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅담당직원.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_by = "담당직원"
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
+    End Sub
+
+    Private Sub radio소팅시작시간_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅시작시간.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_by = "시작시간"
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
+    End Sub
+
+    Private Sub radio소팅종료시간_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅종료시간.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_by = "종료시간"
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
+    End Sub
+
+    Private Sub radio소팅대기회원_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅대기회원.CheckedChanged
+        Local_RoomReservation_SummaryTable_Sort_by = "대기회원"
+        lstRoomReservationSummary.Sort()
+        BindingSource2.ResetBindings(False)
     End Sub
 
 End Class
