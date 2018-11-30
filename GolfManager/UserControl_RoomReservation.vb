@@ -1,11 +1,4 @@
-﻿Imports System.Windows.Forms
-Imports System.Collections.Generic
-Imports System.Globalization
-
-Imports System.Linq
-Imports System.Text
-Imports System.Net
-Imports System.IO
+﻿Imports System.Net
 Imports Newtonsoft.Json '수동설치 > Tools > NuGet Package Manager > Console > "PM> install-package Newtonsoft.json"
 Imports Newtonsoft.Json.Linq '수동설치 > Tools > NuGet Package Manager > Console > "PM> install-package Newtonsoft.json"
 
@@ -491,22 +484,23 @@ Public Class UserControl_RoomReservation
         End If
 
         '주기적으로 서버로부터 테이블 업데이트
-        If (update2ndScreen() = True) Then
-            Console.WriteLine("Retry update2ndScreen")
-            update2ndScreen() ' 한번더 실행
+        If (updateSummaryTable() = True) Then
+            Console.WriteLine("Retry updateSummaryTable")
+            updateSummaryTable() ' 한번더 실행
         End If
 
+        update2ndScreen()
     End Sub
 
-    '타석스크린 업데이트 
-    Private Function update2ndScreen()
+    '타석별 요약정보 업데이트 
+    Private Function updateSummaryTable()
         Dim requestRetry As Boolean = False '다시 실행필요?를 리턴
 
         Me.lst5min.Items.Clear()
         lstWaitingCust.Items.Clear()
-        For i = 0 To (Form2ndMonitor.dynamicBoxList.Count - 1)
+        For i = 0 To G_NumberOfRooms - 1 '(Form2ndMonitor.dynamicBoxList.Count - 1)
             '토픽
-            Form2ndMonitor.dynamicBoxList.Item(i).setTopicText((i + 1) & "번")
+            'Form2ndMonitor.dynamicBoxList.Item(i).setTopicText((i + 1) & "번")
 
             '내용 
             Dim contents As String = "내용" & (i + 1)
@@ -543,8 +537,8 @@ Public Class UserControl_RoomReservation
 
                     '5분이하 : [끝나감] 색깔
                     If timediff.TotalMinutes >= 0 And timediff.TotalMinutes <= 5.0 Then
-                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
-                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("끝나감" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                        'Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
+                        'Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("끝나감" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         Me.lst5min.Items.Add("타석 " & lstRoomReservationRaw.Item(j).타석번호 & " / " & Format(timediff.Minutes, "0") & "분남음")
                         lstRoomReservationSummary.Item(i).BaseCopy(lstRoomReservationRaw.Item(j))
                         lstRoomReservationSummary.Item(i).상태 = "끝나감"
@@ -553,8 +547,8 @@ Public Class UserControl_RoomReservation
 
 
                     ElseIf timediff.TotalMinutes < 0 Then '시간초과/정리중
-                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
-                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("정리중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                        'Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
+                        'Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("정리중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         Me.lst5min.Items.Add("타석 " & lstRoomReservationRaw.Item(j).타석번호 & " / " & Format(-timediff.TotalMinutes, "0") & "분 시간초과")
                         lstRoomReservationSummary.Item(i).BaseCopy(lstRoomReservationRaw.Item(j))
                         lstRoomReservationSummary.Item(i).상태 = "정리중"
@@ -576,8 +570,8 @@ Public Class UserControl_RoomReservation
                         End If
 
                     Else '[사용중]색깔
-                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomUsing()
-                        Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("사용중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
+                        'Form2ndMonitor.dynamicBoxList.Item(i).setRoomUsing()
+                        'Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("사용중" + vbCrLf + contents + vbCrLf + Format(waiting, "대기 0명"))
                         lstRoomReservationSummary.Item(i).BaseCopy(lstRoomReservationRaw.Item(j))
                         lstRoomReservationSummary.Item(i).상태 = "사용중"
                         lstRoomReservationSummary.Item(i).남은시간 = contents
@@ -591,8 +585,8 @@ Public Class UserControl_RoomReservation
             Next
             '[사용중] 아닌경우
             If isSetted = False Then
-                Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
-                Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
+                'Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
+                'Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
                 lstRoomReservationSummary.Item(i).SetFree(i)
             End If
         Next
@@ -601,6 +595,49 @@ Public Class UserControl_RoomReservation
         Return requestRetry
     End Function
 
+    '요약테이블 --> 실제2nd스크린으로 뿌리기
+    Private Sub update2ndScreen()
+
+        For i = 0 To (Form2ndMonitor.dynamicBoxList.Count - 1)
+            '토픽
+            Form2ndMonitor.dynamicBoxList.Item(i).setTopicText((i + 1) & "번")
+            '내용 
+            Dim contents As String = "내용" & (i + 1)
+            Dim isSetted As Boolean = False
+            Dim waiting As Integer = 0
+
+            '타석상태 결정순서
+            '미사용 > 사용중 > 곧끝남 > 정리중(시간고려 추가)
+
+            For j = 0 To (lstRoomReservationRaw.Count - 1)
+                If lstRoomReservationRaw.Item(j).타석번호 = (i + 1) Then
+                    If lstRoomReservationSummary.Item(i).상태 = "끝나감" Then
+                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
+                    ElseIf lstRoomReservationSummary.Item(i).상태 = "정리중" Then
+                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomFreeSoon()
+                    ElseIf lstRoomReservationSummary.Item(i).상태 = "사용중" Then
+                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomUsing()
+                    Else '미사용
+                        Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
+                    End If
+                    Form2ndMonitor.dynamicBoxList.Item(i).setBoxText(lstRoomReservationSummary.Item(i).상태 + '"끝나감
+                         vbCrLf +
+                          lstRoomReservationSummary.Item(i).남은시간 + '잔여시간
+                         vbCrLf +
+                         lstRoomReservationSummary.Item(i).대기회원 '"0 명"
+                         )
+                    isSetted = True '위에서 무엇인가 업데이트함
+                End If
+
+            Next
+            '[사용중] 아닌경우
+            If isSetted = False Then
+                Form2ndMonitor.dynamicBoxList.Item(i).setRoomFree()
+                Form2ndMonitor.dynamicBoxList.Item(i).setBoxText("미사용")
+            End If
+        Next
+
+    End Sub
 
     '대기회원 클릭 -> 예약화면으로 복사
     Private Sub lstWaitingCust_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstWaitingCust.SelectedIndexChanged
@@ -1021,18 +1058,21 @@ Public Class UserControl_RoomReservation
         BindingSource2.ResetBindings(False)
     End Sub
 
+    '정렬기준 변경
     Private Sub radio소팅시작시간_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅시작시간.CheckedChanged
         Local_RoomReservation_SummaryTable_Sort_by = "시작시간"
         lstRoomReservationSummary.Sort()
         BindingSource2.ResetBindings(False)
     End Sub
 
+    '정렬기준 변경
     Private Sub radio소팅종료시간_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅종료시간.CheckedChanged
         Local_RoomReservation_SummaryTable_Sort_by = "종료시간"
         lstRoomReservationSummary.Sort()
         BindingSource2.ResetBindings(False)
     End Sub
 
+    '정렬기준 변경
     Private Sub radio소팅대기회원_CheckedChanged(sender As Object, e As EventArgs) Handles radio소팅대기회원.CheckedChanged
         Local_RoomReservation_SummaryTable_Sort_by = "대기회원"
         lstRoomReservationSummary.Sort()
