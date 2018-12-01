@@ -282,6 +282,7 @@
         '그룹박스 켜져 있으면 끄기
         If GroupBox2.Enabled = True Then
             GroupBox2.Enabled = False
+            btnEnableLockScreenFeature.BackColor = Color.Gray
             Exit Sub
         End If
         'ELSE~ 그룹박스 꺼져 있으면 켜기
@@ -294,19 +295,33 @@
             TxtLockscrMyRoomNumber.Text = "0"
 
         End If
+
+        If My.Settings.TextRoomComputerLockComment.Equals("") Then
+            TxtLockScreenComment.Text = "이용해 주셔서 감사합니다."
+        Else
+            TxtLockScreenComment.Text = My.Settings.TextRoomComputerLockComment
+        End If
+
         GroupBox2.Enabled = True
+        btnEnableLockScreenFeature.BackColor = Color.LightBlue
     End Sub
 
     Private Sub btnLockScrnSettingSave_Click(sender As Object, e As EventArgs) Handles btnLockScrnSettingSave.Click
         '검증
         If CheckBoxEnableLockScreen.Checked = True And IsNumeric(TxtLockscrMyRoomNumber.Text) = False Then
-            MsgBox("숫자가 입력되지 않았습니다.")
+            MsgBox("타석번호가 숫자로 입력되지 않았습니다.")
+            TxtLockscrMyRoomNumber.Focus()
+            Exit Sub
+        End If
+
+        If CheckBoxEnableLockScreen.Checked = True And TxtLockscrMyRoomNumber.Text.Equals("0") Then
+            MsgBox("타석번호를 확인해 주세요(1이상 입력가능)")
             TxtLockscrMyRoomNumber.Focus()
             Exit Sub
         End If
 
 
-        '저장
+        '사용여부
         If CheckBoxEnableLockScreen.Checked = True Then
             My.Settings.IsRoomComputer = True
             My.Settings.MyRoomNumber = TxtLockscrMyRoomNumber.Text
@@ -315,7 +330,17 @@
             My.Settings.MyRoomNumber = 0
         End If
 
+        '종료안내멘트
+        My.Settings.TextRoomComputerLockComment = TxtLockScreenComment.Text
+
+        '저장
         My.Settings.Save()
         MsgBox("저장되었습니다. 프로그램 재시작부터 적용됩니다.")
+    End Sub
+
+    Private Sub btnLocscreenPreview_Click(sender As Object, e As EventArgs) Handles btnLocscreenPreview.Click
+        My.Settings.TextRoomComputerLockComment = TxtLockScreenComment.Text
+        Form3Lockscreen.Show()
+
     End Sub
 End Class

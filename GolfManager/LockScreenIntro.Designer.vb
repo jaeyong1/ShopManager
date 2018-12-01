@@ -42,22 +42,25 @@ Partial Class LockScreenIntro
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Button1.Font = New System.Drawing.Font("Gulim", 20.0!)
-        Me.Button1.Location = New System.Drawing.Point(25, 132)
+        Me.Button1.Location = New System.Drawing.Point(25, 121)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(338, 89)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "타석용 프로그램 취소"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Gulim", 20.0!)
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(33, 66)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(42, 12)
+        Me.Label1.Size = New System.Drawing.Size(147, 27)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Label1"
+        Me.Label1.Text = "타석번호 : "
         '
         'Timer1
         '
@@ -65,26 +68,31 @@ Partial Class LockScreenIntro
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(120, 66)
+        Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label2.Font = New System.Drawing.Font("Gulim", 20.0!)
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(186, 62)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(42, 12)
+        Me.Label2.Size = New System.Drawing.Size(51, 35)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Label1"
+        Me.Label2.Text = " "
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(0, 0)
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(66, 19)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(42, 12)
+        Me.Label3.Size = New System.Drawing.Size(249, 12)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Label3"
+        Me.Label3.Text = "잠시후 타석용 프로그램으로 자동전환됩니다."
         '
         'LockScreenIntro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(46, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(397, 261)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -94,7 +102,7 @@ Partial Class LockScreenIntro
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "LockScreenIntro"
-        Me.Text = "타석용 프로그램으로 자동전환"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

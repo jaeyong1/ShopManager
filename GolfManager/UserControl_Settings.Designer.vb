@@ -64,11 +64,14 @@ Partial Class UserControl_Settings
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnEnableLockScreenFeature = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnLocscreenPreview = New System.Windows.Forms.Button()
+        Me.TxtLockScreenComment = New System.Windows.Forms.TextBox()
         Me.btnLockScrnSettingSave = New System.Windows.Forms.Button()
         Me.TxtLockscrMyRoomNumber = New System.Windows.Forms.TextBox()
         Me.CheckBoxEnableLockScreen = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -479,11 +482,14 @@ Partial Class UserControl_Settings
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.btnLocscreenPreview)
+        Me.GroupBox2.Controls.Add(Me.TxtLockScreenComment)
         Me.GroupBox2.Controls.Add(Me.btnLockScrnSettingSave)
         Me.GroupBox2.Controls.Add(Me.TxtLockscrMyRoomNumber)
         Me.GroupBox2.Controls.Add(Me.CheckBoxEnableLockScreen)
         Me.GroupBox2.Controls.Add(Me.TextBox1)
         Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Enabled = False
         Me.GroupBox2.Font = New System.Drawing.Font("Gulim", 9.0!)
         Me.GroupBox2.Location = New System.Drawing.Point(182, 363)
@@ -493,9 +499,25 @@ Partial Class UserControl_Settings
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "타석용 컴퓨터 설정"
         '
+        'btnLocscreenPreview
+        '
+        Me.btnLocscreenPreview.Location = New System.Drawing.Point(362, 94)
+        Me.btnLocscreenPreview.Name = "btnLocscreenPreview"
+        Me.btnLocscreenPreview.Size = New System.Drawing.Size(75, 23)
+        Me.btnLocscreenPreview.TabIndex = 26
+        Me.btnLocscreenPreview.Text = "미리보기"
+        Me.btnLocscreenPreview.UseVisualStyleBackColor = True
+        '
+        'TxtLockScreenComment
+        '
+        Me.TxtLockScreenComment.Location = New System.Drawing.Point(105, 96)
+        Me.TxtLockScreenComment.Name = "TxtLockScreenComment"
+        Me.TxtLockScreenComment.Size = New System.Drawing.Size(246, 21)
+        Me.TxtLockScreenComment.TabIndex = 25
+        '
         'btnLockScrnSettingSave
         '
-        Me.btnLockScrnSettingSave.Location = New System.Drawing.Point(181, 94)
+        Me.btnLockScrnSettingSave.Location = New System.Drawing.Point(306, 123)
         Me.btnLockScrnSettingSave.Name = "btnLockScrnSettingSave"
         Me.btnLockScrnSettingSave.Size = New System.Drawing.Size(94, 23)
         Me.btnLockScrnSettingSave.TabIndex = 15
@@ -504,7 +526,7 @@ Partial Class UserControl_Settings
         '
         'TxtLockscrMyRoomNumber
         '
-        Me.TxtLockscrMyRoomNumber.Location = New System.Drawing.Point(104, 116)
+        Me.TxtLockscrMyRoomNumber.Location = New System.Drawing.Point(250, 125)
         Me.TxtLockscrMyRoomNumber.Name = "TxtLockscrMyRoomNumber"
         Me.TxtLockscrMyRoomNumber.Size = New System.Drawing.Size(48, 21)
         Me.TxtLockscrMyRoomNumber.TabIndex = 5
@@ -513,11 +535,11 @@ Partial Class UserControl_Settings
         'CheckBoxEnableLockScreen
         '
         Me.CheckBoxEnableLockScreen.AutoSize = True
-        Me.CheckBoxEnableLockScreen.Location = New System.Drawing.Point(11, 94)
+        Me.CheckBoxEnableLockScreen.Location = New System.Drawing.Point(8, 128)
         Me.CheckBoxEnableLockScreen.Name = "CheckBoxEnableLockScreen"
-        Me.CheckBoxEnableLockScreen.Size = New System.Drawing.Size(124, 16)
+        Me.CheckBoxEnableLockScreen.Size = New System.Drawing.Size(136, 16)
         Me.CheckBoxEnableLockScreen.TabIndex = 3
-        Me.CheckBoxEnableLockScreen.Text = "타석컴퓨터로 변경"
+        Me.CheckBoxEnableLockScreen.Text = "타석용컴퓨터로 변경"
         Me.CheckBoxEnableLockScreen.UseVisualStyleBackColor = True
         '
         'TextBox1
@@ -525,20 +547,29 @@ Partial Class UserControl_Settings
         Me.TextBox1.Location = New System.Drawing.Point(7, 20)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(448, 55)
+        Me.TextBox1.Size = New System.Drawing.Size(448, 70)
         Me.TextBox1.TabIndex = 2
         Me.TextBox1.Text = "카운터에서 설정한 사용시간에 따라 현재 컴퓨터의 화면잠금 기능을 제공합니다. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "기능활성화 후 프로그램 재시작시부터 적용됩니다." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "기능 비활성화는" &
-    " 프로그램 시작시 취소할 수 있습니다." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+    " 프로그램 시작시 취소할 수 있습니다." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "미리보기 종료키는 Alt + F4 입니다." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Location = New System.Drawing.Point(9, 119)
+        Me.Label9.Location = New System.Drawing.Point(155, 128)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(99, 12)
         Me.Label9.TabIndex = 1
         Me.Label9.Text = "타석번호(숫자) : "
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(6, 99)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(89, 12)
+        Me.Label10.TabIndex = 23
+        Me.Label10.Text = "종료안내문구 : "
         '
         'UserControl_Settings
         '
@@ -612,4 +643,7 @@ Partial Class UserControl_Settings
     Friend WithEvents CheckBoxEnableLockScreen As CheckBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label9 As Label
+    Friend WithEvents TxtLockScreenComment As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents btnLocscreenPreview As Button
 End Class

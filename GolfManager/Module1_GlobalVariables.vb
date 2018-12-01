@@ -17,5 +17,7 @@
     '''''''''''''''''''''
     Public Local_RoomReservation_SummaryTable_Sort_ASC As Boolean = True
     Public Local_RoomReservation_SummaryTable_Sort_by As String = "타석번호"
+    Public timer_cnt As Integer = 61 ' 예약현황 잔여시간 타이머
+    Public Local_WaitingCompleteByUser_AsRoomComputer As Boolean = False '프로그램시작후 시간적으로 동의얻음(타임아웃)
 
 End Module

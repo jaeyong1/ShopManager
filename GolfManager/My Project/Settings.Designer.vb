@@ -149,6 +149,18 @@ Namespace My
                 Me("MyRoomNumber") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("이용해 주셔서 감사합니다.")>  _
+        Public Property TextRoomComputerLockComment() As String
+            Get
+                Return CType(Me("TextRoomComputerLockComment"),String)
+            End Get
+            Set
+                Me("TextRoomComputerLockComment") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -26,5 +26,8 @@
     <Setting Name="MyRoomNumber" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="TextRoomComputerLockComment" Type="System.String" Scope="User">
+      <Value Profile="(Default)">이용해 주셔서 감사합니다.</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

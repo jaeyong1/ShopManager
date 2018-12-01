@@ -519,7 +519,7 @@ Public Class UserControl_RoomReservation
     End Sub
 
     '1초마다 Tick
-    Private timer_cnt As Integer = 61
+    ' Private timer_cnt As Integer = 61 --> global변수로 옮김
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         timer_cnt = timer_cnt - 1
         btnRoomReservRefresh.Text = "새로고침(" & timer_cnt & "초후)"
@@ -1126,6 +1126,11 @@ Public Class UserControl_RoomReservation
 
     '타석용컴퓨터 업데이트
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        '아직 사용자 동의과정 마치지 않은경우(부팅후 막대기 줄어들고 있는경우)
+        If Local_WaitingCompleteByUser_AsRoomComputer = False Then
+            Return
+        End If
+
         timer_cnt = timer_cnt - 1
         btnRoomReservRefresh.Text = "새로고침(" & timer_cnt & "초후)"
         If (timer_cnt = 0) Then
@@ -1139,6 +1144,20 @@ Public Class UserControl_RoomReservation
             updateSummaryTable() ' 한번더 실행
         End If
 
-        'update2ndScreen()
+        '정보검색 > 락걸기
+        For j = 0 To (lstRoomReservationSummary.Count - 1)
+            If lstRoomReservationSummary.Item(j).타석번호.Equals(My.Settings.MyRoomNumber & "") Then
+                If lstRoomReservationSummary.Item(j).상태.Equals("사용중") Then
+                    '폼이 열려있으면 닫음
+                    '    Console.WriteLine(">> 락스크린 : 사용중")
+                    Form3Lockscreen.Close()
+                Else
+                    '   Console.WriteLine(">> 락스크린 : 사용중 이외 > 잠금")
+                    Form3Lockscreen.Show()
+                End If
+            End If
+        Next
+
+
     End Sub
 End Class

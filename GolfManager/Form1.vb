@@ -46,6 +46,15 @@
             MsgBox(G_RootDir & " 또는 하위폴더를 정상적으로 생성할 수 없습니다. 프로그램의 정상동작에 문제가 발생할 수 있습니다.")
         End Try
 
+        '타석락스크린용 컴퓨터이면.. 카운트다운화면 표시
+        If My.Settings.IsRoomComputer = True Then
+            LockScreenIntro.Show()
+            LockScreenIntro.setMainFormPointer(Me)
+            Me.Width = 1
+            Me.Height = 1
+        End If
+
+
     End Sub
 
     '웹서버 주소를 로컬 -> cafe24로 변경
@@ -108,6 +117,10 @@
         Dim frmLoginDialogue As New FormLogin1
 
         frmLoginDialogue.ShowDialog()
+
+    End Sub
+
+    Private Sub btnShowFacebook_Click(sender As Object, e As EventArgs) Handles btnShowFacebook.Click
 
     End Sub
 End Class
