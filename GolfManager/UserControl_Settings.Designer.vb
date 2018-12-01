@@ -24,10 +24,15 @@ Partial Class UserControl_Settings
     Private Sub InitializeComponent()
         Me.btn2ndScrDragEnable = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.rbtnTopicBlack = New System.Windows.Forms.RadioButton()
-        Me.rbtnTopicWhite = New System.Windows.Forms.RadioButton()
-        Me.rbtnTopbannerColorBlack = New System.Windows.Forms.RadioButton()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.rbtnTopbannerColorWhite = New System.Windows.Forms.RadioButton()
+        Me.rbtnTopbannerColorBlack = New System.Windows.Forms.RadioButton()
+        Me.btnApplyUISetting = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtBoxHeight = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.rbtnTopicWhite = New System.Windows.Forms.RadioButton()
+        Me.rbtnTopicBlack = New System.Windows.Forms.RadioButton()
         Me.chkbottomimg = New System.Windows.Forms.CheckBox()
         Me.chkBgimg = New System.Windows.Forms.CheckBox()
         Me.btnBottomBannerPath = New System.Windows.Forms.Button()
@@ -40,12 +45,9 @@ Partial Class UserControl_Settings
         Me.txtTopbanner = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtTopbannerFontsize = New System.Windows.Forms.TextBox()
-        Me.btnApplyUISetting = New System.Windows.Forms.Button()
         Me.btnBoxDefaultPosition = New System.Windows.Forms.Button()
         Me.btnUISettingLoad = New System.Windows.Forms.Button()
         Me.btnUISettingSave = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtBoxHeight = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtBoxWidth = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -60,11 +62,17 @@ Partial Class UserControl_Settings
         Me.Label1 = New System.Windows.Forms.Label()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnEnableLockScreenFeature = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnLockScrnSettingSave = New System.Windows.Forms.Button()
+        Me.TxtLockscrMyRoomNumber = New System.Windows.Forms.TextBox()
+        Me.CheckBoxEnableLockScreen = New System.Windows.Forms.CheckBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn2ndScrDragEnable
@@ -78,7 +86,7 @@ Partial Class UserControl_Settings
         Me.btn2ndScrDragEnable.Name = "btn2ndScrDragEnable"
         Me.btn2ndScrDragEnable.Size = New System.Drawing.Size(142, 130)
         Me.btn2ndScrDragEnable.TabIndex = 0
-        Me.btn2ndScrDragEnable.Text = "타석화면설정"
+        Me.btn2ndScrDragEnable.Text = "타석정보화면설정"
         Me.btn2ndScrDragEnable.UseVisualStyleBackColor = False
         '
         'GroupBox1
@@ -124,27 +132,25 @@ Partial Class UserControl_Settings
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " 타석표시 화면설정 "
         '
-        'rbtnTopicBlack
+        'Panel2
         '
-        Me.rbtnTopicBlack.AutoSize = True
-        Me.rbtnTopicBlack.Location = New System.Drawing.Point(76, 3)
-        Me.rbtnTopicBlack.Name = "rbtnTopicBlack"
-        Me.rbtnTopicBlack.Size = New System.Drawing.Size(54, 16)
-        Me.rbtnTopicBlack.TabIndex = 30
-        Me.rbtnTopicBlack.TabStop = True
-        Me.rbtnTopicBlack.Text = "Black"
-        Me.rbtnTopicBlack.UseVisualStyleBackColor = True
+        Me.Panel2.Controls.Add(Me.rbtnTopbannerColorWhite)
+        Me.Panel2.Controls.Add(Me.rbtnTopbannerColorBlack)
+        Me.Panel2.Location = New System.Drawing.Point(181, 229)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(200, 23)
+        Me.Panel2.TabIndex = 32
         '
-        'rbtnTopicWhite
+        'rbtnTopbannerColorWhite
         '
-        Me.rbtnTopicWhite.AutoSize = True
-        Me.rbtnTopicWhite.Location = New System.Drawing.Point(9, 3)
-        Me.rbtnTopicWhite.Name = "rbtnTopicWhite"
-        Me.rbtnTopicWhite.Size = New System.Drawing.Size(53, 16)
-        Me.rbtnTopicWhite.TabIndex = 29
-        Me.rbtnTopicWhite.TabStop = True
-        Me.rbtnTopicWhite.Text = "White"
-        Me.rbtnTopicWhite.UseVisualStyleBackColor = True
+        Me.rbtnTopbannerColorWhite.AutoSize = True
+        Me.rbtnTopbannerColorWhite.Location = New System.Drawing.Point(5, 3)
+        Me.rbtnTopbannerColorWhite.Name = "rbtnTopbannerColorWhite"
+        Me.rbtnTopbannerColorWhite.Size = New System.Drawing.Size(53, 16)
+        Me.rbtnTopbannerColorWhite.TabIndex = 28
+        Me.rbtnTopbannerColorWhite.TabStop = True
+        Me.rbtnTopbannerColorWhite.Text = "White"
+        Me.rbtnTopbannerColorWhite.UseVisualStyleBackColor = True
         '
         'rbtnTopbannerColorBlack
         '
@@ -157,16 +163,62 @@ Partial Class UserControl_Settings
         Me.rbtnTopbannerColorBlack.Text = "Black"
         Me.rbtnTopbannerColorBlack.UseVisualStyleBackColor = True
         '
-        'rbtnTopbannerColorWhite
+        'btnApplyUISetting
         '
-        Me.rbtnTopbannerColorWhite.AutoSize = True
-        Me.rbtnTopbannerColorWhite.Location = New System.Drawing.Point(5, 3)
-        Me.rbtnTopbannerColorWhite.Name = "rbtnTopbannerColorWhite"
-        Me.rbtnTopbannerColorWhite.Size = New System.Drawing.Size(53, 16)
-        Me.rbtnTopbannerColorWhite.TabIndex = 28
-        Me.rbtnTopbannerColorWhite.TabStop = True
-        Me.rbtnTopbannerColorWhite.Text = "White"
-        Me.rbtnTopbannerColorWhite.UseVisualStyleBackColor = True
+        Me.btnApplyUISetting.Location = New System.Drawing.Point(207, 120)
+        Me.btnApplyUISetting.Name = "btnApplyUISetting"
+        Me.btnApplyUISetting.Size = New System.Drawing.Size(170, 23)
+        Me.btnApplyUISetting.TabIndex = 19
+        Me.btnApplyUISetting.Text = "설정적용하여 미리보기"
+        Me.btnApplyUISetting.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(317, 97)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(89, 12)
+        Me.Label6.TabIndex = 11
+        Me.Label6.Text = "박스세로크기 : "
+        '
+        'txtBoxHeight
+        '
+        Me.txtBoxHeight.Location = New System.Drawing.Point(407, 92)
+        Me.txtBoxHeight.Name = "txtBoxHeight"
+        Me.txtBoxHeight.Size = New System.Drawing.Size(48, 21)
+        Me.txtBoxHeight.TabIndex = 10
+        Me.txtBoxHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.rbtnTopicWhite)
+        Me.Panel1.Controls.Add(Me.rbtnTopicBlack)
+        Me.Panel1.Location = New System.Drawing.Point(310, 65)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(154, 29)
+        Me.Panel1.TabIndex = 31
+        '
+        'rbtnTopicWhite
+        '
+        Me.rbtnTopicWhite.AutoSize = True
+        Me.rbtnTopicWhite.Location = New System.Drawing.Point(9, 3)
+        Me.rbtnTopicWhite.Name = "rbtnTopicWhite"
+        Me.rbtnTopicWhite.Size = New System.Drawing.Size(53, 16)
+        Me.rbtnTopicWhite.TabIndex = 29
+        Me.rbtnTopicWhite.TabStop = True
+        Me.rbtnTopicWhite.Text = "White"
+        Me.rbtnTopicWhite.UseVisualStyleBackColor = True
+        '
+        'rbtnTopicBlack
+        '
+        Me.rbtnTopicBlack.AutoSize = True
+        Me.rbtnTopicBlack.Location = New System.Drawing.Point(76, 3)
+        Me.rbtnTopicBlack.Name = "rbtnTopicBlack"
+        Me.rbtnTopicBlack.Size = New System.Drawing.Size(54, 16)
+        Me.rbtnTopicBlack.TabIndex = 30
+        Me.rbtnTopicBlack.TabStop = True
+        Me.rbtnTopicBlack.Text = "Black"
+        Me.rbtnTopicBlack.UseVisualStyleBackColor = True
         '
         'chkbottomimg
         '
@@ -275,15 +327,6 @@ Partial Class UserControl_Settings
         Me.txtTopbannerFontsize.TabIndex = 20
         Me.txtTopbannerFontsize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'btnApplyUISetting
-        '
-        Me.btnApplyUISetting.Location = New System.Drawing.Point(207, 120)
-        Me.btnApplyUISetting.Name = "btnApplyUISetting"
-        Me.btnApplyUISetting.Size = New System.Drawing.Size(170, 23)
-        Me.btnApplyUISetting.TabIndex = 19
-        Me.btnApplyUISetting.Text = "설정적용하여 미리보기"
-        Me.btnApplyUISetting.UseVisualStyleBackColor = True
-        '
         'btnBoxDefaultPosition
         '
         Me.btnBoxDefaultPosition.Location = New System.Drawing.Point(107, 120)
@@ -310,23 +353,6 @@ Partial Class UserControl_Settings
         Me.btnUISettingSave.TabIndex = 14
         Me.btnUISettingSave.Text = "현재설정 저장"
         Me.btnUISettingSave.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(317, 97)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(89, 12)
-        Me.Label6.TabIndex = 11
-        Me.Label6.Text = "박스세로크기 : "
-        '
-        'txtBoxHeight
-        '
-        Me.txtBoxHeight.Location = New System.Drawing.Point(407, 92)
-        Me.txtBoxHeight.Name = "txtBoxHeight"
-        Me.txtBoxHeight.Size = New System.Drawing.Size(48, 21)
-        Me.txtBoxHeight.TabIndex = 10
-        Me.txtBoxHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label7
         '
@@ -437,29 +463,90 @@ Partial Class UserControl_Settings
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'Panel1
+        'btnEnableLockScreenFeature
         '
-        Me.Panel1.Controls.Add(Me.rbtnTopicWhite)
-        Me.Panel1.Controls.Add(Me.rbtnTopicBlack)
-        Me.Panel1.Location = New System.Drawing.Point(310, 65)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(154, 29)
-        Me.Panel1.TabIndex = 31
+        Me.btnEnableLockScreenFeature.BackColor = System.Drawing.Color.Silver
+        Me.btnEnableLockScreenFeature.FlatAppearance.BorderSize = 0
+        Me.btnEnableLockScreenFeature.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEnableLockScreenFeature.Font = New System.Drawing.Font("Gulim", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.btnEnableLockScreenFeature.ForeColor = System.Drawing.Color.White
+        Me.btnEnableLockScreenFeature.Location = New System.Drawing.Point(34, 363)
+        Me.btnEnableLockScreenFeature.Name = "btnEnableLockScreenFeature"
+        Me.btnEnableLockScreenFeature.Size = New System.Drawing.Size(142, 52)
+        Me.btnEnableLockScreenFeature.TabIndex = 2
+        Me.btnEnableLockScreenFeature.Text = "타석용컴퓨터전환"
+        Me.btnEnableLockScreenFeature.UseVisualStyleBackColor = False
         '
-        'Panel2
+        'GroupBox2
         '
-        Me.Panel2.Controls.Add(Me.rbtnTopbannerColorWhite)
-        Me.Panel2.Controls.Add(Me.rbtnTopbannerColorBlack)
-        Me.Panel2.Location = New System.Drawing.Point(181, 229)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(200, 23)
-        Me.Panel2.TabIndex = 32
+        Me.GroupBox2.Controls.Add(Me.btnLockScrnSettingSave)
+        Me.GroupBox2.Controls.Add(Me.TxtLockscrMyRoomNumber)
+        Me.GroupBox2.Controls.Add(Me.CheckBoxEnableLockScreen)
+        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Enabled = False
+        Me.GroupBox2.Font = New System.Drawing.Font("Gulim", 9.0!)
+        Me.GroupBox2.Location = New System.Drawing.Point(182, 363)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(477, 176)
+        Me.GroupBox2.TabIndex = 3
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "타석용 컴퓨터 설정"
+        '
+        'btnLockScrnSettingSave
+        '
+        Me.btnLockScrnSettingSave.Location = New System.Drawing.Point(181, 94)
+        Me.btnLockScrnSettingSave.Name = "btnLockScrnSettingSave"
+        Me.btnLockScrnSettingSave.Size = New System.Drawing.Size(94, 23)
+        Me.btnLockScrnSettingSave.TabIndex = 15
+        Me.btnLockScrnSettingSave.Text = "설정저장"
+        Me.btnLockScrnSettingSave.UseVisualStyleBackColor = True
+        '
+        'TxtLockscrMyRoomNumber
+        '
+        Me.TxtLockscrMyRoomNumber.Location = New System.Drawing.Point(104, 116)
+        Me.TxtLockscrMyRoomNumber.Name = "TxtLockscrMyRoomNumber"
+        Me.TxtLockscrMyRoomNumber.Size = New System.Drawing.Size(48, 21)
+        Me.TxtLockscrMyRoomNumber.TabIndex = 5
+        Me.TxtLockscrMyRoomNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'CheckBoxEnableLockScreen
+        '
+        Me.CheckBoxEnableLockScreen.AutoSize = True
+        Me.CheckBoxEnableLockScreen.Location = New System.Drawing.Point(11, 94)
+        Me.CheckBoxEnableLockScreen.Name = "CheckBoxEnableLockScreen"
+        Me.CheckBoxEnableLockScreen.Size = New System.Drawing.Size(124, 16)
+        Me.CheckBoxEnableLockScreen.TabIndex = 3
+        Me.CheckBoxEnableLockScreen.Text = "타석컴퓨터로 변경"
+        Me.CheckBoxEnableLockScreen.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(7, 20)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(448, 55)
+        Me.TextBox1.TabIndex = 2
+        Me.TextBox1.Text = "카운터에서 설정한 사용시간에 따라 현재 컴퓨터의 화면잠금 기능을 제공합니다. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "기능활성화 후 프로그램 재시작시부터 적용됩니다." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "기능 비활성화는" &
+    " 프로그램 시작시 취소할 수 있습니다." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.Location = New System.Drawing.Point(9, 119)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(99, 12)
+        Me.Label9.TabIndex = 1
+        Me.Label9.Text = "타석번호(숫자) : "
         '
         'UserControl_Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.btnEnableLockScreenFeature)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btn2ndScrDragEnable)
         Me.Font = New System.Drawing.Font("NanumGothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
@@ -468,10 +555,12 @@ Partial Class UserControl_Settings
         Me.Size = New System.Drawing.Size(1276, 692)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -516,4 +605,11 @@ Partial Class UserControl_Settings
     Friend WithEvents rbtnTopicWhite As RadioButton
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents btnEnableLockScreenFeature As Button
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents btnLockScrnSettingSave As Button
+    Friend WithEvents TxtLockscrMyRoomNumber As TextBox
+    Friend WithEvents CheckBoxEnableLockScreen As CheckBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label9 As Label
 End Class

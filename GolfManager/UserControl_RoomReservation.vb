@@ -50,7 +50,6 @@ Public Class UserControl_RoomReservation
     Private Sub UserControl_RoomReservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Console.WriteLine("타석예약화면 초기화")
 
-
         '타석번호 콤보박스 초기화
         ComboRoomNumber.Items.Clear()
         For i = 1 To (G_NumberOfRooms)
@@ -72,14 +71,24 @@ Public Class UserControl_RoomReservation
         DataGridViewSummary.DataSource = BindingSource2
         AdjustSummaryTableColumnOrder() '요약테이블 표시순서
 
-        '서버로부터 DB정보 업데이트
-        refreshRoomReservationWithServer()
-
         '시작시간/종료시간 포맷
         timepickerStartTime.Format = DateTimePickerFormat.Custom
         timepickerStartTime.CustomFormat = "tt hh:mm"
         timepickerEndTime.Format = DateTimePickerFormat.Custom
         timepickerEndTime.CustomFormat = "tt hh:mm"
+
+        If My.Settings.IsRoomComputer = False Then
+            '일반 카운터용 프로그램
+            Console.WriteLine("[일반 카운터용 프로그램]")
+            Timer1.Enabled = True
+        Else
+            '타석화면락스크린용 프로그램
+            Console.WriteLine("[타석화면락스크린용 프로그램]")
+            Timer2.Enabled = True
+        End If
+
+        '곧 서버로부터 DB정보 업데이트
+        timer_cnt = 5
 
     End Sub
 
@@ -413,6 +422,36 @@ Public Class UserControl_RoomReservation
     End Sub
 
 
+    '서버에서 특정타석 조회(타석제어용)
+    Private Function refreshSingleRoomReservationWithServer()
+        If My.Settings.IsRoomComputer = False Then
+            MsgBox("타석용 컴퓨터가 아닌데 잘못된 코드가 실행됐습니다. 재시작해주세요.", vbOK)
+            Return False
+        End If
+
+        If My.Settings.MyRoomNumber = 0 Then
+            MsgBox("타석 번호가 잘못설정되었습니다. 재설정해주세요.", vbOK)
+            Return False
+        End If
+
+        Dim clsRoomReservationJSON1 = New clsRoomReservationJSON()
+        clsRoomReservationJSON1.reservedSchduleId = ""
+        clsRoomReservationJSON1.reservedRoomNumber = (My.Settings.MyRoomNumber & "")
+        clsRoomReservationJSON1.reservedState = ""
+        clsRoomReservationJSON1.custCode = ""
+        clsRoomReservationJSON1.emCode = ""
+        clsRoomReservationJSON1.reservedStartTime = ""
+        clsRoomReservationJSON1.reservedEndTime = ""
+        Dim JsonData As String = JsonConvert.SerializeObject(clsRoomReservationJSON1)
+        Console.WriteLine("Request JsonData:{0}", JsonData)
+        Console.WriteLine("")
+        Dim myRequest As HttpWebRequest = PostJSON(G_WebServerURL & "testver_getmyroomreservation", JsonData)
+        Dim response As String = GetResponse(myRequest)
+        Console.WriteLine("Response of Request:{0}", response)
+        Return updatelstRoomReservationRaw(response)
+    End Function
+
+
 
     '서버에서 타석예약현황 조회&업데이트
     Private Function refreshRoomReservationWithServer()
@@ -422,6 +461,12 @@ Public Class UserControl_RoomReservation
         Dim myRequest As HttpWebRequest = PostJSON(G_WebServerURL & "testver_getroomreservation", JsonData)
         Dim response As String = GetResponse(myRequest)
         Console.WriteLine("Response of Request:{0}", response)
+        Return updatelstRoomReservationRaw(response)
+
+    End Function
+
+    '타석예약 업데이트
+    Private Function updatelstRoomReservationRaw(response As String)
 
         'JSON파싱->화면
         Dim jsonObject As JObject
@@ -1079,4 +1124,21 @@ Public Class UserControl_RoomReservation
         BindingSource2.ResetBindings(False)
     End Sub
 
+    '타석용컴퓨터 업데이트
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        timer_cnt = timer_cnt - 1
+        btnRoomReservRefresh.Text = "새로고침(" & timer_cnt & "초후)"
+        If (timer_cnt = 0) Then
+            refreshSingleRoomReservationWithServer()
+            timer_cnt = 61
+        End If
+
+        '주기적으로 서버로부터 테이블 업데이트
+        If (updateSummaryTable() = True) Then
+            Console.WriteLine("Retry updateSummaryTable")
+            updateSummaryTable() ' 한번더 실행
+        End If
+
+        'update2ndScreen()
+    End Sub
 End Class

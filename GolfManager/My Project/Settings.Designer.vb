@@ -125,6 +125,30 @@ Namespace My
                 Me("Text2ndScreenTopicFontColor") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property IsRoomComputer() As Boolean
+            Get
+                Return CType(Me("IsRoomComputer"),Boolean)
+            End Get
+            Set
+                Me("IsRoomComputer") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property MyRoomNumber() As Integer
+            Get
+                Return CType(Me("MyRoomNumber"),Integer)
+            End Get
+            Set
+                Me("MyRoomNumber") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

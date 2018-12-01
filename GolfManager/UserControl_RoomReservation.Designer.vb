@@ -78,6 +78,7 @@ Partial Class UserControl_RoomReservation
         Me.radio소팅상태 = New System.Windows.Forms.RadioButton()
         Me.radio소팅타석번호 = New System.Windows.Forms.RadioButton()
         Me.ChkboxSummaryTableAscDesc = New System.Windows.Forms.CheckBox()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupNewRoomReserv.SuspendLayout()
         Me.groupWaitings.SuspendLayout()
@@ -526,7 +527,6 @@ Partial Class UserControl_RoomReservation
         '
         'Timer1
         '
-        Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
         'lbl2ndopennotify
@@ -681,6 +681,10 @@ Partial Class UserControl_RoomReservation
         Me.ChkboxSummaryTableAscDesc.UseVisualStyleBackColor = True
         Me.ChkboxSummaryTableAscDesc.Visible = False
         '
+        'Timer2
+        '
+        Me.Timer2.Interval = 1000
+        '
         'UserControl_RoomReservation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -766,4 +770,5 @@ Partial Class UserControl_RoomReservation
     Friend WithEvents radio소팅담당직원 As RadioButton
     Friend WithEvents radio소팅회원 As RadioButton
     Friend WithEvents ChkboxSummaryTableAscDesc As CheckBox
+    Friend WithEvents Timer2 As Timer
 End Class

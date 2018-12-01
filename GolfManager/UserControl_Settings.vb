@@ -277,4 +277,45 @@
         End If
     End Sub
 
+    '[타석용컴퓨터전환]버튼클릭
+    Private Sub btnEnableLockScreenFeature_Click(sender As Object, e As EventArgs) Handles btnEnableLockScreenFeature.Click
+        '그룹박스 켜져 있으면 끄기
+        If GroupBox2.Enabled = True Then
+            GroupBox2.Enabled = False
+            Exit Sub
+        End If
+        'ELSE~ 그룹박스 꺼져 있으면 켜기
+        MsgBox("우측 안내를 숙지 후 기능을 활성화 하세요.", vbOK)
+        If My.Settings.IsRoomComputer = True Then
+            CheckBoxEnableLockScreen.Checked = True
+            TxtLockscrMyRoomNumber.Text = My.Settings.MyRoomNumber
+        Else
+            CheckBoxEnableLockScreen.Checked = False
+            TxtLockscrMyRoomNumber.Text = "0"
+
+        End If
+        GroupBox2.Enabled = True
+    End Sub
+
+    Private Sub btnLockScrnSettingSave_Click(sender As Object, e As EventArgs) Handles btnLockScrnSettingSave.Click
+        '검증
+        If CheckBoxEnableLockScreen.Checked = True And IsNumeric(TxtLockscrMyRoomNumber.Text) = False Then
+            MsgBox("숫자가 입력되지 않았습니다.")
+            TxtLockscrMyRoomNumber.Focus()
+            Exit Sub
+        End If
+
+
+        '저장
+        If CheckBoxEnableLockScreen.Checked = True Then
+            My.Settings.IsRoomComputer = True
+            My.Settings.MyRoomNumber = TxtLockscrMyRoomNumber.Text
+        Else
+            My.Settings.IsRoomComputer = False
+            My.Settings.MyRoomNumber = 0
+        End If
+
+        My.Settings.Save()
+        MsgBox("저장되었습니다. 프로그램 재시작부터 적용됩니다.")
+    End Sub
 End Class
