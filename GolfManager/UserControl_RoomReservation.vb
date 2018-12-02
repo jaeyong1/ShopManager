@@ -1147,7 +1147,7 @@ Public Class UserControl_RoomReservation
         '정보검색 > 락걸기
         For j = 0 To (lstRoomReservationSummary.Count - 1)
             If lstRoomReservationSummary.Item(j).타석번호.Equals(My.Settings.MyRoomNumber & "") Then
-                If lstRoomReservationSummary.Item(j).상태.Equals("사용중") Then
+                If lstRoomReservationSummary.Item(j).상태.Equals("사용중") Or lstRoomReservationSummary.Item(j).상태.Equals("끝나감") Then
                     '폼이 열려있으면 닫음
                     '    Console.WriteLine(">> 락스크린 : 사용중")
                     Form3Lockscreen.Close()
