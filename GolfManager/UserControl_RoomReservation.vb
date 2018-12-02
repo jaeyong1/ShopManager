@@ -473,7 +473,9 @@ Public Class UserControl_RoomReservation
         Try
             jsonObject = JObject.Parse(response) 'Object 만 파싱 한다.
         Catch ex As Exception
-            MsgBox("서버에서 정보를 가져오는데 실패했습니다.")
+            If My.Settings.IsRoomComputer = False Then
+                MsgBox("서버에서 정보를 가져오는데 실패했습니다.")
+            End If
             Return False
 
         End Try
